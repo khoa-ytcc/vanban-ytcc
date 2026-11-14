@@ -6,9 +6,9 @@
     [string]$SoDi = "...",
     [string]$KyHieu = "VP",
     [string]$TrichYeu = "Trích yếu nội dung văn bản",
-    [string]$KinhGui = "Ban Giám hiệu (qua Phòng Chức năng)",
+    [string]$KinhGui = "- Ban Giám hiệu Đại học Y Dược TP.HCM;`r`n- Phòng Tổ chức Cán bộ.",
     [string]$NoiDung = "Nội dung chi tiết của văn bản...",
-    [string]$NoiNhan = "- Như trên;`r`n- BCN Khoa YTCC;`r`n- Lưu: VT, Khoa YTCC.",
+    [string]$NoiNhan = "- Như trên;`r`n- BCN Khoa YTCC;`r`n- Lưu: VT, HCTC_VTTH.",
     [string]$ThamQuyen = "TRƯỞNG KHOA",
     [string]$NguoiKy = "PGS. TS. Nguyễn Duy Phong",
     [string]$HoTen = "",
@@ -35,6 +35,14 @@ if (-not (Test-Path $templatePath)) {
     exit 1
 }
 
+# Clean TrichYeu header (Khong de bi lap V/v V/v)
+$cleanTrichYeu = $TrichYeu.Trim()
+if ($cleanTrichYeu -match "^(V/v|Về việc)\s*") {
+    $cleanTrichYeuHeader = "V/v " + ($cleanTrichYeu -replace "^(V/v|Về việc)\s*", "")
+} else {
+    $cleanTrichYeuHeader = "V/v " + $cleanTrichYeu
+}
+
 $safeTrichYeu = ($TrichYeu -replace '[\\/:*?"<>|]', '_').Trim()
 if ($safeTrichYeu.Length -gt 40) { $safeTrichYeu = $safeTrichYeu.Substring(0, 40) }
 $outFileName = ("Draft_{0}_{1}_{2}.docx" -f $TemplateType, $today.ToString("yyyyMMdd"), $safeTrichYeu)
@@ -42,7 +50,6 @@ $outPath = Join-Path $outputDir $outFileName
 
 # Copy template to target
 Copy-Item $templatePath -Destination $outPath -Force
-Write-Host "Khoi tao ban thao tu template: $outPath"
 
 $word = New-Object -ComObject Word.Application
 $word.Visible = $false
@@ -64,8 +71,8 @@ try {
     Replace-Placeholder "{{NGAY}}" $ngay
     Replace-Placeholder "{{THANG}}" $thang
     Replace-Placeholder "{{NAM}}" $nam
-    Replace-Placeholder "{{TRICH_YEU_NOI_DUNG}}" $TrichYeu
-    Replace-Placeholder "{{TRICH_YEU}}" $TrichYeu
+    Replace-Placeholder "{{TRICH_YEU_NOI_DUNG}}" $cleanTrichYeu
+    Replace-Placeholder "{{TRICH_YEU}}" $cleanTrichYeuHeader
     Replace-Placeholder "{{KINH_GUI}}" $KinhGui
     Replace-Placeholder "{{THAM_QUYEN_KY}}" $ThamQuyen
     Replace-Placeholder "{{NGUOI_KY}}" $NguoiKy
@@ -74,8 +81,6 @@ try {
         Replace-Placeholder "{{NOI_DUNG_TO_TRINH}}" $NoiDung
     } elseif ($TemplateType -eq "Cong_van") {
         Replace-Placeholder "{{NOI_DUNG_CONG_VAN}}" $NoiDung
-        Replace-Placeholder "{{CAN_CU_PHAP_LY}}" ""
-        Replace-Placeholder "{{NOI_DUNG_CHINH}}" $NoiDung
     } elseif ($TemplateType -eq "Giay_gioi_thieu") {
         Replace-Placeholder "{{HO_TEN}}" $HoTen
         Replace-Placeholder "{{CHUC_VU}}" $ChucVu
@@ -89,9 +94,26 @@ try {
         Replace-Placeholder "{{NOI_DUNG_BAO_CAO}}" $NoiDung
     }
 
+    # Kiem tra so trang: Neu > 1 trang thi tu dong toi uu gian dong & khoang cach de vua khit 1 trang
+    $pages = $doc.ComputeStatistics(2) # 2 = wdStatisticPages
+    if ($pages -gt 1) {
+        Write-Host "Phat hien van ban tran sang $pages trang. Dang tu dong thu gon de vua tron 1 trang..."
+        # Giam spacing cua cac doan noi dung
+        foreach ($p in $doc.Paragraphs) {
+            if ($p.Range.Tables.Count -eq 0) {
+                if ($p.Range.Font.Size -ge 12) { $p.Range.Font.Size = 11.5 }
+                $p.Range.ParagraphFormat.LineSpacing = 12.0 # single compact
+                if ($p.Range.ParagraphFormat.SpaceAfter -gt 2) { $p.Range.ParagraphFormat.SpaceAfter = 2 }
+                if ($p.Range.ParagraphFormat.SpaceBefore -gt 2) { $p.Range.ParagraphFormat.SpaceBefore = 0 }
+            }
+        }
+        $pagesAfter = $doc.ComputeStatistics(2)
+        Write-Host "Sau khi toi uu: $pagesAfter trang."
+    }
+
     $doc.Save()
     $doc.Close()
-    Write-Host "Tao ban thao Word thanh cong: $outPath"
+    Write-Host "Tao ban thao Word thanh cong: $outPath (So trang: $($pagesAfter -or $pages))"
 } catch {
     Write-Error "Loi khi ghi noi dung vao file Word: $_"
 } finally {

@@ -9,3 +9,8 @@
 *.bak
 .DS_Store
 Thumbs.db
+
+# Bulk PDF sample downloads (Keep repo under GitHub 1GB limit, run tools/download_all_sample_pdfs.ps1 to populate locally)
+knowledge_base/sample_pdfs/CVDi_*.pdf
+drafts/2026-11/*.png
+knowledge_base/sample_pdfs/*.png
