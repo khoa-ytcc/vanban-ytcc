@@ -1,0 +1,212 @@
+﻿{
+    "TotalFiles":  800,
+    "PageDistribution":  [
+                             {
+                                 "Pages":  1,
+                                 "Count":  277,
+                                 "Pct":  34.6
+                             },
+                             {
+                                 "Pages":  2,
+                                 "Count":  212,
+                                 "Pct":  26.5
+                             },
+                             {
+                                 "Pages":  3,
+                                 "Count":  79,
+                                 "Pct":  9.9
+                             },
+                             {
+                                 "Pages":  4,
+                                 "Count":  56,
+                                 "Pct":  7
+                             },
+                             {
+                                 "Pages":  5,
+                                 "Count":  32,
+                                 "Pct":  4
+                             },
+                             {
+                                 "Pages":  6,
+                                 "Count":  20,
+                                 "Pct":  2.5
+                             },
+                             {
+                                 "Pages":  7,
+                                 "Count":  13,
+                                 "Pct":  1.6
+                             },
+                             {
+                                 "Pages":  8,
+                                 "Count":  16,
+                                 "Pct":  2
+                             },
+                             {
+                                 "Pages":  9,
+                                 "Count":  19,
+                                 "Pct":  2.4
+                             },
+                             {
+                                 "Pages":  10,
+                                 "Count":  15,
+                                 "Pct":  1.9
+                             },
+                             {
+                                 "Pages":  11,
+                                 "Count":  11,
+                                 "Pct":  1.4
+                             },
+                             {
+                                 "Pages":  12,
+                                 "Count":  6,
+                                 "Pct":  0.8
+                             },
+                             {
+                                 "Pages":  13,
+                                 "Count":  9,
+                                 "Pct":  1.1
+                             },
+                             {
+                                 "Pages":  14,
+                                 "Count":  6,
+                                 "Pct":  0.8
+                             },
+                             {
+                                 "Pages":  15,
+                                 "Count":  2,
+                                 "Pct":  0.2
+                             },
+                             {
+                                 "Pages":  16,
+                                 "Count":  5,
+                                 "Pct":  0.6
+                             },
+                             {
+                                 "Pages":  17,
+                                 "Count":  2,
+                                 "Pct":  0.2
+                             },
+                             {
+                                 "Pages":  18,
+                                 "Count":  1,
+                                 "Pct":  0.1
+                             },
+                             {
+                                 "Pages":  19,
+                                 "Count":  2,
+                                 "Pct":  0.2
+                             },
+                             {
+                                 "Pages":  20,
+                                 "Count":  2,
+                                 "Pct":  0.2
+                             },
+                             {
+                                 "Pages":  21,
+                                 "Count":  3,
+                                 "Pct":  0.4
+                             },
+                             {
+                                 "Pages":  28,
+                                 "Count":  1,
+                                 "Pct":  0.1
+                             },
+                             {
+                                 "Pages":  29,
+                                 "Count":  2,
+                                 "Pct":  0.2
+                             },
+                             {
+                                 "Pages":  30,
+                                 "Count":  3,
+                                 "Pct":  0.4
+                             },
+                             {
+                                 "Pages":  32,
+                                 "Count":  1,
+                                 "Pct":  0.1
+                             },
+                             {
+                                 "Pages":  34,
+                                 "Count":  1,
+                                 "Pct":  0.1
+                             },
+                             {
+                                 "Pages":  38,
+                                 "Count":  1,
+                                 "Pct":  0.1
+                             },
+                             {
+                                 "Pages":  40,
+                                 "Count":  2,
+                                 "Pct":  0.2
+                             },
+                             {
+                                 "Pages":  45,
+                                 "Count":  1,
+                                 "Pct":  0.1
+                             }
+                         ],
+    "TypeDistribution":  [
+                             {
+                                 "Type":  "Cong_van",
+                                 "Count":  200,
+                                 "AvgPages":  2.6,
+                                 "OnePageCount":  110
+                             },
+                             {
+                                 "Type":  "Ke_hoach",
+                                 "Count":  141,
+                                 "AvgPages":  4.2,
+                                 "OnePageCount":  36
+                             },
+                             {
+                                 "Type":  "To_trinh",
+                                 "Count":  125,
+                                 "AvgPages":  3.6,
+                                 "OnePageCount":  33
+                             },
+                             {
+                                 "Type":  "Giay_gioi_thieu",
+                                 "Count":  87,
+                                 "AvgPages":  5.2,
+                                 "OnePageCount":  37
+                             },
+                             {
+                                 "Type":  "Danh_sach",
+                                 "Count":  87,
+                                 "AvgPages":  3.7,
+                                 "OnePageCount":  32
+                             },
+                             {
+                                 "Type":  "Bao_cao",
+                                 "Count":  65,
+                                 "AvgPages":  6.5,
+                                 "OnePageCount":  9
+                             },
+                             {
+                                 "Type":  "Khac",
+                                 "Count":  38,
+                                 "AvgPages":  4.7,
+                                 "OnePageCount":  9
+                             },
+                             {
+                                 "Type":  "Thong_bao",
+                                 "Count":  24,
+                                 "AvgPages":  2.1,
+                                 "OnePageCount":  5
+                             },
+                             {
+                                 "Type":  "Quy_dinh_Quyet_dinh",
+                                 "Count":  22,
+                                 "AvgPages":  2.3,
+                                 "OnePageCount":  4
+                             },
+                             {
+                                 "Type":  "Giay_moi",
+                                 "Count":  11,
+                                 "AvgPages":  4.2,
+                                 "OnePageCount":  2
+                             }
+                         ]
+}
