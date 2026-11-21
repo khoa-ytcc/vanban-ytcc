@@ -1,43 +1,43 @@
 ---
 name: ytcc-reply-incoming
 description: >-
-  Đọc hiểu văn bản đến (Công văn, Quyết định, Giấy mời, Kế hoạch đến từ ĐHYD TP.HCM, Bộ Y tế, Bệnh viện...)
-  và tự động thiết lập phương án trả lời bằng Văn bản đi (Công văn trả lời, Tờ trình đề xuất, Báo cáo phúc đáp)
-  kèm trích dẫn căn cứ pháp lý và ma trận nơi nhận chuẩn xác.
+  Đọc văn bản đến, trích xuất định danh và thời hạn có nguồn,
+  đề xuất hình thức phúc đáp và soạn trả lời cho Khoa YTCC.
 ---
 
-# KỸ NĂNG SOẠN THẢO VĂN BẢN ĐI PHÚC ĐÁP VĂN BẢN ĐẾN
+# PHÚC ĐÁP VĂN BẢN ĐẾN YTCC
 
-Kỹ năng này được kích hoạt khi người dùng cung cấp thông tin về một văn bản đến (File PDF, hình ảnh, văn bản copy hoặc mã số ký hiệu đến) và yêu cầu soạn thảo văn bản trả lời / báo cáo / cử nhân sự.
+Use this skill when the user supplies an incoming PDF, image, copied text, or a QL văn bản identifier. Read [source rules](../../rules/source_provenance.md), [recipient routing](../../rules/recipient_matrix.md), and [signing authority](../../rules/authority_rules.md). Locate and verify a supplied record identifier before treating it as evidence.
 
-## 1. QUY TRÌNH 4 BƯỚC XỬ LÝ VĂN BẢN ĐẾN
+## Extraction
 
-### Bước 1: Trích xuất thông tin định danh của Văn bản đến
-Từ văn bản đến, trích xuất chính xác 5 trường thông tin:
-1. **Tác giả (Cơ quan ban hành):** (Ví dụ: Đại học Y Dược TP.HCM, Bộ Y tế, Cục Phòng bệnh, Quỹ NAFOSTED, Bệnh viện Chợ Rẫy...)
-2. **Số và Ký hiệu:** (Ví dụ: `407/TCNS`, `8544/BYT-KH-TC`, `215/QĐ-PB`, `556/GM-NAFOSTED`...)
-3. **Ngày tháng năm ban hành văn bản đến:** (Ví dụ: `ngày 10 tháng 11 năm 2026`)
-4. **Tên loại & Trích yếu nội dung:** (Ví dụ: *Công văn về việc lấy ý kiến góp ý Dự thảo Quy định...*)
-5. **Nội dung yêu cầu & Thời hạn (Deadline):** (Cơ quan gửi yêu cầu Khoa YTCC làm gì? Báo cáo, góp ý dự thảo, cử người, nộp danh sách? Hạn chót là ngày nào?)
+Extract and label the evidence for:
 
-### Bước 2: Xác định Hình thức Văn bản đi phúc đáp
-- Nếu văn bản đến yêu cầu **báo cáo số liệu, đóng góp ý kiến dự thảo, cử người thông thường**:
-  $\rightarrow$ Soạn: **CÔNG VĂN PHÚC ĐÁP**
-- Nếu văn bản đến yêu cầu một việc **cần xin chủ trương, kinh phí hoặc nhân sự từ Ban Giám hiệu**:
-  $\rightarrow$ Soạn: **TỜ TRÌNH ĐỀ XUẤT** gửi Ban Giám hiệu, viện dẫn văn bản đến làm căn cứ.
-- Nếu văn bản đến là Giấy mời tham dự hội thảo / hội đồng:
-  $\rightarrow$ Soạn: **CÔNG VĂN CỬ VIÊN CHỨC THAM DỰ** hoặc **GIẤY GIỚI THIỆU**.
+1. issuing organization;
+2. document number and symbol;
+3. issue date;
+4. document type and subject;
+5. requested action, deadline, attachments, and responsible unit.
 
-### Bước 3: Soạn thảo câu Căn cứ Pháp lý mở đầu chuẩn xác
-Mọi văn bản đi phúc đáp bắt buộc phải mở đầu bằng câu căn cứ viện dẫn đầy đủ:
-- *Ví dụ 1 (Góp ý dự thảo):*
-  > "Căn cứ Công văn số 407/TCNS ngày 10/11/2026 của Đại học Y Dược TP. Hồ Chí Minh về việc lấy ý kiến góp ý Dự thảo Quy định bổ nhiệm chức danh viên chức quản lý;"
-  > "Khoa Y tế công cộng kính gửi Ban Giám hiệu và Phòng Tổ chức Cán bộ nội dung đóng góp ý kiến như sau:..."
-- *Ví dụ 2 (Cử cán bộ tham dự):*
-  > "Căn cứ Giấy mời số 556/GM-NAFOSTED ngày 08/11/2026 của Quỹ Phát triển Khoa học và Công nghệ Quốc gia về việc tham dự Hội thảo khoa học quốc tế;"
-  > "Khoa Y tế công cộng kính cử viên chức sau đây tham dự:..."
+If a field is unreadable or appears only in a derived index, mark it `chưa xác minh`.
 
-### Bước 4: Định tuyến Nơi nhận & Thẩm quyền ký
-- **Kính gửi:** Trực tiếp cơ quan/phòng ban đã gửi văn bản đến (theo đúng Ma trận nơi nhận).
-- **Nơi nhận:** Phải có cơ quan đã gửi đến, phòng chức năng phối hợp, Ban Chủ nhiệm Khoa, và lưu VT.
-- **Người ký:** Trưởng khoa hoặc Phó Trưởng khoa phụ trách chuyên môn tương ứng.
+## Routing
+
+- report, ordinary comment, confirmation, or ordinary personnel nomination: usually a **Công văn phúc đáp**;
+- a request that requires university approval, funding, or a major policy decision: usually a **Tờ trình đề xuất**;
+- an invitation requiring attendance or nomination: usually a reply công văn, an official nomination, or a giấy giới thiệu depending on the requested action.
+
+Use the recipient rule to establish the route from the incoming document and verified precedents. The reply recipient may differ from the issuing organization. The signer is a recommendation until supplied for the current task or verified through current authority/delegation evidence.
+
+## Output
+
+Produce:
+
+- an evidence table with source paths or record identifiers;
+- the recommended response type and reason;
+- an opening sentence referring to verified incoming-document identifiers, for example "Thực hiện..." or "Phúc đáp...". An incoming letter is a procedural basis, not automatically a legal rule; do not force every reply to begin with "Căn cứ";
+- `Kính gửi`, `Nơi nhận`, signer recommendation, and deadline;
+- missing facts and questions for the user;
+- a draft using the available facts; clearly mark missing fields. Ask only for gaps that affect a material decision and continue the independent portions.
+
+Never fabricate a document number, date, deadline, legal basis, recipient, or signer.

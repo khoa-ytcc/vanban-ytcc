@@ -1,0 +1,552 @@
+{
+  "files": 800,
+  "unique_hashes": 762,
+  "duplicate_excess": 38,
+  "duplicate_groups": [
+    [
+      "knowledge_base/sample_pdfs/Bao_cao_SoDi_816.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_816_Báo cáo Về việc chấp hành pháp luật về vệ sinh lao động, chă.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Bao_cao_SoDi_859.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_859_BÁO CÁO CÔNG TÁC THÁNG 10_2026 & KẾ HOẠCH CÔNG TÁC THÁNG 11_.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Bao_cao_SoDi_860.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_860_Báo cáo định hướng trọng tâm khoa YTCC giai đoạn 2026-2030.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Bao_cao_SoDi_937.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_937_Báo cáo về tình hình triển khai và đề xuất hoàn thiện hồ sơ .pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_843.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_843_Công văn V_v Đề nghị thay đổi tên đề tài, giảng viên hướng d.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_849.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_849_Công văn về việc mời giảng viên thỉnh giảng cho lớp Thạc sĩ .pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_858.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_858_Công văn về việc gửi kế hoạch đào tạo chi tiết.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_872.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_872_Công văn V_v báo cáo tình hình học tập học viên tại Đại học .pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_877.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_877_Công văn về việc cử viên chức có tên sau đi tham dự Hội nghị.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_887.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_887_Công văn Về việc đề nghị cử sinh viên tham dự Hội nghị Y học.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_895.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_895_Công văn V_v góp ý Dự thảo Quy định tuyển sinh và đào tạo tr.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_920.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_920_Công văn V_v cử giảng viên tham gia công tác chuyên môn, hỗ .pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_925.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_925_Công văn Về việc thông báo lịch hoạt động ngoài giờ của sinh.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/Cong_van_SoDi_928.pdf",
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_928_Công văn V_v thống nhất sử dụng số văn bản đã được cấp để ho.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_721_Quyết định Về việc công nhận tên đề tài và người hướng dẫn h.pdf",
+      "knowledge_base/sample_pdfs/Quyet_dinh_SoDi_721.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_754_Kế hoạch tổ chức Hội nghị viên chức, người lao động năm học .pdf",
+      "knowledge_base/sample_pdfs/Ke_hoach_SoDi_754.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_766_kế hoạch về việc trao đổi hợp tác giữa bộ môn giáo dục sức k.pdf",
+      "knowledge_base/sample_pdfs/Ke_hoach_SoDi_766.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_769_KẾ HOẠCH KHẢO SÁT TRỰC TUYẾN (ĐỢT 2 VÀ ĐỢT 3) DÀNH CHO GIẢNG.pdf",
+      "knowledge_base/sample_pdfs/Ke_hoach_SoDi_769.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_857_Tờ trình V_v tiếp đón Giáo sư Jason Kai Wei Lee - Đại học Qu.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_857.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_871_Tờ trình về việc đề nghị hợp đồng nhân sự thuộc Khoa YTCC.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_871.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_874_Quyết định Về việc thành lập Nhóm cốt lõi AI thuộc Khoa Y tế.pdf",
+      "knowledge_base/sample_pdfs/Quyet_dinh_SoDi_874.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_875_Quyết định Về việc thành lập Tổ đối sánh chương trình đào tạ.pdf",
+      "knowledge_base/sample_pdfs/Quyet_dinh_SoDi_875.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_876_Quyết định Về việc thành lập Tổ chuyên môn cấp Khoa xét tặng.pdf",
+      "knowledge_base/sample_pdfs/Quyet_dinh_SoDi_876.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_881_Kế hoạch Về việc trao đổi hợp tác giữa Bộ môn Giáo dục sức k.pdf",
+      "knowledge_base/sample_pdfs/Ke_hoach_SoDi_881.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_889_GGT.pdf",
+      "knowledge_base/sample_pdfs/Giay_gioi_thieu_SoDi_889.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_890_Tờ trình đề nghị xét tặng _Nhà giáo tiêu biểu_ năm 2026.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_890.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_892_Tờ trình về việc đề nghị Bằng khen BYT 50 năm ngày mang tên .pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_892.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_893_Tờ trình về việc đề nghị khen thưởng Bằng khen của Chủ tịch .pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_893.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_901_Tờ trình Về việc mở khóa điểm học phần Dinh dưỡng các lứa tu.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_901.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_902_GGT.pdf",
+      "knowledge_base/sample_pdfs/Giay_gioi_thieu_SoDi_902.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_907_GGT.pdf",
+      "knowledge_base/sample_pdfs/Giay_gioi_thieu_SoDi_907.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_913_Tờ trình Về việc mở khóa điểm học phần Sinh lý bệnh - Miễn d.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_913.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_916_Kế hoạch Tổ chức chương trình Gặp gỡ, đối thoại giữa lãnh đạ.pdf",
+      "knowledge_base/sample_pdfs/Ke_hoach_SoDi_916.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_922_Tờ trình về việc đề nghị khen thưởng giấy khen của Hiệu trưở.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_922.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_927_Tờ trình Về việc xin phép cho viên chức tham dự họp Tổ soạn .pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_927.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_931_GGT.pdf",
+      "knowledge_base/sample_pdfs/Giay_gioi_thieu_SoDi_931.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_932_GGT.pdf",
+      "knowledge_base/sample_pdfs/Giay_gioi_thieu_SoDi_932.pdf"
+    ],
+    [
+      "knowledge_base/sample_pdfs/CVDi_2026_SoDi_940_Tờ trình về việc đề xuất thuê Cloud sever.pdf",
+      "knowledge_base/sample_pdfs/To_trinh_SoDi_940.pdf"
+    ]
+  ],
+  "parse_errors": [],
+  "page_distribution": {
+    "4": 59,
+    "13": 9,
+    "9": 20,
+    "2": 216,
+    "1": 259,
+    "3": 79,
+    "14": 7,
+    "16": 5,
+    "8": 15,
+    "6": 22,
+    "5": 34,
+    "18": 1,
+    "10": 16,
+    "7": 13,
+    "11": 12,
+    "38": 1,
+    "19": 2,
+    "28": 1,
+    "32": 1,
+    "21": 4,
+    "12": 7,
+    "20": 2,
+    "45": 1,
+    "23": 1,
+    "30": 3,
+    "17": 2,
+    "34": 1,
+    "15": 2,
+    "29": 2,
+    "67": 1,
+    "40": 2
+  },
+  "regex_mismatches": [
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_140_GGT_ SV YHDP xin thông tin làm KLTN.pdf",
+      "sha256": "5e60871af1a4420486461322b610d3f41337199ee4f1f5798a9afac107383007",
+      "bytes": 4810710,
+      "pages": 5,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "140",
+      "json_candidates": [
+        2138
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_17_GGT_ SVĐH xin thông tin làm KLTN.pdf",
+      "sha256": "f5827996556fe5937bae897f6c3db6e7cea1a85c2ed753be4f5a5e93f7a72e5e",
+      "bytes": 5850336,
+      "pages": 6,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "17",
+      "json_candidates": [
+        2014
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_208_GGT_ xin thông tin làm KLTN.pdf",
+      "sha256": "eb25ef1518e483cb51e0b673e8811e6c012f50aa6e816c3a1c4399b62df8b579",
+      "bytes": 2305964,
+      "pages": 2,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "208",
+      "json_candidates": [
+        2207
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_223_GGT_ Lê Trường Vĩnh Phúc xin thông tin làm đề tài nghiên cứu.pdf",
+      "sha256": "1de77118383ecfb14feafb7383b525813f9c4195c665678f5536217d120d2de2",
+      "bytes": 1917334,
+      "pages": 2,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "223",
+      "json_candidates": [
+        2222
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_252_GGT_ SV YHDP xin thông tin làm KLTN.pdf",
+      "sha256": "7f2443cf84e3c29a2171903e3f87750699290f64f88d89ad1ecba86c586326c7",
+      "bytes": 1975793,
+      "pages": 2,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "252",
+      "json_candidates": [
+        2251
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_33_GGT_ SV BS YHDP xin thông tin làm KLTN.pdf",
+      "sha256": "9e1ade71ea5405f4924fa3122a128c90a28a269f045eab3a1937c7886af5c2be",
+      "bytes": 5833478,
+      "pages": 6,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "33",
+      "json_candidates": [
+        2030
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_342_Công văn V_v Báo cáo cải tiến chất lượng CTĐT Cử nhân YTCC.pdf",
+      "sha256": "9a70365743efe1beafd965123b6c57bae30e8a2cc24571a8ba4b2c9018ce1757",
+      "bytes": 4946920,
+      "pages": 21,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "342",
+      "json_candidates": [
+        2345
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 0,
+      "legacy_regex_pages": 8
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_34_Công văn về việc sv YTCC thực tập tại các cơ sở y tế tỉnh Tâ.pdf",
+      "sha256": "a088adf9084f239d1ad50542b8856ac59a1ed6324132b7062cda8349d0006096",
+      "bytes": 10886564,
+      "pages": 12,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "34",
+      "json_candidates": [
+        2031
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_3_GGT_ SV xin thông tin làm KLTN.pdf",
+      "sha256": "a3509b5c11fa52ed664e188385388950a566eba2f38d19d335500ac648d8ae2f",
+      "bytes": 4101043,
+      "pages": 4,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "3",
+      "json_candidates": [
+        2000
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_449_Báo cáo Kết quả rèn luyện sinh viên học kỳ 2, năm học 2025 –.pdf",
+      "sha256": "1eed64434ef047a2b2c8033174d221dccc0d81aaa0225a038c9105c60afcfae8",
+      "bytes": 1317811,
+      "pages": 23,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "449",
+      "json_candidates": [
+        2452
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 0,
+      "legacy_regex_pages": 8
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_517_Báo cáo Kết quả rèn luyện sinh viên học kỳ 2, năm học 2025 –.pdf",
+      "sha256": "475fe650bfcce473a6514c826f089c15618bed3c3e577e7743d45a1c543750e7",
+      "bytes": 1511986,
+      "pages": 9,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "517",
+      "json_candidates": [
+        2520
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 0,
+      "legacy_regex_pages": 8
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_630_GGT sv lấy mẫu.pdf",
+      "sha256": "3107d2f23187a0402fc790d5b1c80dc8de0f110902c8c9f690b988aa81baa6aa",
+      "bytes": 1851273,
+      "pages": 2,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "630",
+      "json_candidates": [
+        2634
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_665_GGT.pdf",
+      "sha256": "bf2718adfe4c458eb38e0c7199d6e3042358c2c78dd38d70afc96a8d0a7b66c1",
+      "bytes": 3836023,
+      "pages": 4,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "665",
+      "json_candidates": [
+        2669
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_693_Tờ trình về Về việc đề nghị giao Khoa Y tế công cộng làm đầu.pdf",
+      "sha256": "2df904f6c67b9d4d80d76f2feb5f81c728a067afad25d0b01f316255ce04c477",
+      "bytes": 6451098,
+      "pages": 5,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "693",
+      "json_candidates": [
+        2697
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_725_Báo cáo Kết quả sinh hoạt công dân Tân sinh viên Khoa Y tế c.pdf",
+      "sha256": "021391edb59633a9c489c3f33c1b8ae457c770e3dee885f39e88e993a2fe09d0",
+      "bytes": 886587,
+      "pages": 14,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "725",
+      "json_candidates": [
+        2729
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 0,
+      "legacy_regex_pages": 8
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_750_GGT.pdf",
+      "sha256": "5e0991e40d620a365178289fe684d14b5d28a4a933816da2b82494c1e60036c1",
+      "bytes": 7512132,
+      "pages": 8,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "750",
+      "json_candidates": [
+        2754
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_765_Tờ trình phê duyệt kế hoạch nhà thầu gói thầu _Mua các thiết.pdf",
+      "sha256": "d461c3b631d88ac2598666d26603d02c339aa2236ba94c2e13e048e3c1945a22",
+      "bytes": 2951608,
+      "pages": 11,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "765",
+      "json_candidates": [
+        2769
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_785_Tờ trình Về việc đăng ký tổ chức Workshop chương  trình lãnh.pdf",
+      "sha256": "a27c0d10215a97aaf52bb673c38c248163509cf3a126411686eff93fabd53fee",
+      "bytes": 16899720,
+      "pages": 67,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "785",
+      "json_candidates": [
+        2789
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_853_GGT.pdf",
+      "sha256": "3beeac584e6bfa7aeae5bf6cb00c2f4fc87e14f7eb04b79acd992cae54a68a46",
+      "bytes": 11745550,
+      "pages": 10,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "853",
+      "json_candidates": [
+        2857
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_86_GGT_ SV xin thông tin làm KLTN.pdf",
+      "sha256": "e0a3942639bcc721f22062adbd1197c3e969a578c6c924dd7ffdafdc22eccf8f",
+      "bytes": 4101112,
+      "pages": 4,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "86",
+      "json_candidates": [
+        2083
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/CVDi_2026_SoDi_902_GGT.pdf",
+      "sha256": "602cecdf21d5a5847e9d2383ab8f2c80b9263ca369ab73a7f03b87c8966622e6",
+      "bytes": 8427529,
+      "pages": 8,
+      "parse_status": "ok",
+      "name_year": "2026",
+      "name_number": "902",
+      "json_candidates": [
+        2906
+      ],
+      "link_method": "filename_year_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    },
+    {
+      "path": "knowledge_base/sample_pdfs/Giay_gioi_thieu_SoDi_902.pdf",
+      "sha256": "602cecdf21d5a5847e9d2383ab8f2c80b9263ca369ab73a7f03b87c8966622e6",
+      "bytes": 8427529,
+      "pages": 8,
+      "parse_status": "ok",
+      "name_year": "",
+      "name_number": "902",
+      "json_candidates": [
+        2906
+      ],
+      "link_method": "filename_number_only",
+      "encrypted": false,
+      "first_page_images": 1,
+      "legacy_regex_pages": 1
+    }
+  ],
+  "filename_link_counts": {
+    "('filename_number_only', 1)": 34,
+    "('filename_year_number_only', 1)": 762,
+    "('filename_number_only', 2)": 4
+  }
+}

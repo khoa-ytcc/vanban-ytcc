@@ -1,51 +1,40 @@
 ---
 name: ytcc-classify-doc
 description: >-
-  Phân loại và tư vấn chính xác loại văn bản hành chính (Tờ trình, Công văn, Kế hoạch, Quyết định,
-  Giấy giới thiệu, Báo cáo, Giấy mời...) cho Khoa Y Tế Công Cộng (YTCC) - ĐHYD TP.HCM dựa trên
-  nội dung công việc và mục đích hành chính của người dùng.
+  Phân loại yêu cầu hành chính của Khoa YTCC khi chưa rõ loại văn bản;
+  đề xuất hướng gửi, thẩm quyền cần xác minh và dữ liệu còn thiếu.
 ---
 
-# KỸ NĂNG PHÂN LOẠI VĂN BẢN HÀNH CHÍNH KHOA YTCC
+# PHÂN LOẠI VĂN BẢN HÀNH CHÍNH YTCC
 
-Khi người dùng đưa ra một yêu cầu công việc hoặc ý tưởng soạn thảo nhưng chưa rõ cần soạn văn bản gì, hãy áp dụng quy trình phân loại dưới đây:
+Use this skill when the user has a task but has not yet selected the document type. Read [source rules](../../rules/source_provenance.md), [recipient routing](../../rules/recipient_matrix.md), and [signing authority](../../rules/authority_rules.md).
 
-## 1. CÂY QUYẾT ĐỊNH PHÂN LOẠI (DECISION TREE)
+## Decision order
 
-1. **Gửi lên cấp trên (Ban Giám hiệu ĐHYD TP.HCM) để xin chủ trương, xin kinh phí, nhân sự, phê duyệt đề án?**
-   $\rightarrow$ Chọn: **TỜ TRÌNH (TTr)**
-   - *Đặc điểm:* Có phần "Kính gửi: Ban Giám hiệu (qua Phòng...)", phần "I. Sự cần thiết / Căn cứ", "II. Nội dung đề xuất", "III. Dự toán kinh phí (nếu có)", "IV. Kiến nghị".
-   - *Người ký:* Trưởng khoa (PGS. TS. Nguyễn Duy Phong).
+1. Identify from the request what action the document must cause: approval, reply, report, plan, introduction, invitation, internal decision, or notice. Ask only if the missing purpose materially changes the choice.
+2. Identify the recipient and whether the request goes through a university functional office.
+3. Select the type using the purpose:
+   - request for policy, funding, staffing, or approval from the university: **Tờ trình**;
+   - exchange, reply, request, or official information: **Công văn**;
+   - send a person to contact, study, survey, or collect data: **Giấy giới thiệu**;
+   - organize a program with schedule, tasks, resources, or budget: **Kế hoạch**;
+   - periodic or result reporting: **Báo cáo**;
+   - establish a council, issue an internal rule, or assign authority: consider **Quyết định** only after confirming issuing authority; otherwise consider a **Tờ trình** to the competent authority;
+   - invite a person or organization to an event: **Giấy mời**;
+   - announce information or a deadline to the relevant audience: consider **Thông báo**, with recipient structure based on the source.
+4. Confirm signing authority from the authority rule. Treat the signer as a recommendation until the user's current delegation is confirmed.
 
-2. **Trao đổi công tác, lấy ý kiến, trả lời văn bản đến, gửi thông tin với cơ quan khác (Bệnh viện, Sở Y tế, Viện...) hoặc phòng ban Trường?**
-   $\rightarrow$ Chọn: **CÔNG VĂN (CV)**
-   - *Đặc điểm:* Có trích yếu dưới số đi (V/v...), phần căn cứ pháp lý, nội dung chính, phần kết luận và nơi nhận.
-   - *Người ký:* Trưởng khoa hoặc Phó Trưởng khoa ký thay.
+## Response contract
 
-3. **Cử cán bộ, sinh viên, học viên sau đại học đi liên hệ công tác, thực tập, thu thập số liệu nghiên cứu tại các cơ quan, bệnh viện?**
-   $\rightarrow$ Chọn: **GIẤY GIỚI THIỆU (GGT)**
-   - *Đặc điểm:* Ghi rõ họ tên, chức danh/khóa học, mục đích liên hệ, thời gian làm việc, nơi đến liên hệ.
-   - *Người ký:* Trưởng khoa hoặc Phó Trưởng khoa (PGS. TS. Thái Thanh Trúc).
+Return:
 
-4. **Tổ chức một sự kiện, chương trình đào tạo, hội thảo khoa học, hoặc tiếp đón đoàn quốc tế có lộ trình, nhân sự, dự trù kinh phí?**
-   $\rightarrow$ Chọn: **KẾ HOẠCH (KH)**
-   - *Đặc điểm:* Gồm Mục đích - yêu cầu, Thời gian - địa điểm, Nội dung chương trình, Phân công nhiệm vụ, Dự trù kinh phí. (Thường đi kèm 01 Tờ trình xin phê duyệt kế hoạch gửi BGH).
+1. recommended document type;
+2. administrative reason;
+3. proposed `Kính gửi` and `Nơi nhận`;
+4. proposed signing authority;
+5. facts still needed;
+6. a short outline if classification alone was requested. If the user already requested a full draft or file, proceed with the drafting/export skill without asking for the same authorization again.
 
-5. **Mời chuyên gia, giảng viên thỉnh giảng, đại biểu tham gia hội đồng, hội thảo, buổi làm việc?**
-   $\rightarrow$ Chọn: **GIẤY MỜI (GM)**
+Do not invent a recipient, signer, deadline, legal basis, or budget. Label inferences and ask for confirmation when they affect the final document.
 
-6. **Báo cáo định kỳ tháng, quý, năm, báo cáo kiểm định, báo cáo kết quả sau khi đi công tác/đoàn ra?**
-   $\rightarrow$ Chọn: **BÁO CÁO (BC)**
-
-7. **Thành lập Hội đồng chấm luận văn/khóa luận, ban hành quy chế, phân công nhiệm vụ nội bộ thuộc thẩm quyền khoa?**
-   $\rightarrow$ Chọn: **QUYẾT ĐỊNH (QĐ)**
-
----
-
-## 2. FORMAT TRẢ LỜI NGƯỜI DÙNG KHI PHÂN LOẠI
-Luôn trả lời ngắn gọn, rõ ràng theo cấu trúc:
-1. **Loại văn bản khuyến nghị:** (Ví dụ: `Tờ trình` hoặc `Công văn`)
-2. **Lý do lựa chọn:** (Dựa trên mục đích hành chính)
-3. **Cơ quan Kính gửi & Nơi nhận khuyến nghị:** (Theo ma trận nơi nhận)
-4. **Thẩm quyền ký:** (Ai sẽ ký văn bản này)
-5. **Đề xuất khung nội dung tóm tắt** và hỏi người dùng có muốn tiến hành soạn thảo chi tiết không.
+Classification capability is broader than the current five-template generator. Read [runtime guidance](../../rules/runtime.md) before promising DOCX support for Quyết định, Giấy mời or Thông báo. Do not use the wrong template as a substitute.

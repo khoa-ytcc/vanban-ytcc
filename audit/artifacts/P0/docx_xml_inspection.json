@@ -1,0 +1,507 @@
+[
+  {
+    "path": "knowledge_base/templates/Mau_Bao_cao.docx",
+    "parts": {
+      "word/document.xml": {
+        "placeholders": [
+          "{{KET_QUA}}",
+          "{{KIEN_NGHI}}",
+          "{{NAM}}",
+          "{{NGAY}}",
+          "{{SO_DI}}",
+          "{{THANG}}",
+          "{{TINH_HINH}}",
+          "{{TRICH_YEU_NOI_DUNG}}"
+        ],
+        "paragraphs": [
+          "ĐẠI HỌC Y DƯỢC",
+          "THÀNH PHỐ HỒ CHÍ MINH",
+          "KHOA Y TẾ CÔNG CỘNG",
+          "Số: {{SO_DI}}/BC-YTCC",
+          "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "Độc lập – Tự do – Hạnh phúc",
+          "Thành phố Hồ Chí Minh, ngày {{NGAY}} tháng {{THANG}} năm {{NAM}}",
+          "",
+          "BÁO CÁO",
+          "{{TRICH_YEU_NOI_DUNG}}",
+          "Kính gửi:",
+          "- Ban Giám hiệu Đại học Y Dược TP.HCM.",
+          "I. TÌNH HÌNH THỰC HIỆN",
+          "{{TINH_HINH}}",
+          "",
+          "II. KẾT QUẢ ĐẠT ĐƯỢC",
+          "{{KET_QUA}}",
+          "",
+          "III. KIẾN NGHỊ VÀ ĐỀ XUẤT",
+          "{{KIEN_NGHI}}",
+          "",
+          "Nơi nhận:",
+          "- Như trên;",
+          "- BCN Khoa YTCC;",
+          "- Lưu: VT, HCTC_VTTH.",
+          "TRƯỞNG KHOA",
+          "",
+          "",
+          "",
+          "PGS. TS. Nguyễn Duy Phong",
+          ""
+        ],
+        "section_properties": [
+          "<ns0:sectPr xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:rsidR=\"00CF1A99\" ns0:rsidRPr=\"00CF1A99\" ns0:rsidSect=\"00CF1A99\"><ns0:pgSz ns0:w=\"12240\" ns0:h=\"15840\" /><ns0:pgMar ns0:top=\"1134\" ns0:right=\"850\" ns0:bottom=\"850\" ns0:left=\"1416\" ns0:header=\"720\" ns0:footer=\"720\" ns0:gutter=\"0\" /><ns0:cols ns0:space=\"720\" /><ns0:docGrid ns0:linePitch=\"360\" /></ns0:sectPr>"
+        ],
+        "explicit_halfpoint_sizes": [
+          "19",
+          "20",
+          "21",
+          "23",
+          "24",
+          "26"
+        ],
+        "page_fields": [],
+        "table_count": 2,
+        "repeat_table_headers": 0,
+        "keep_next_count": 0,
+        "cant_split_count": 0
+      },
+      "word/styles.xml": {
+        "placeholders": []
+      }
+    },
+    "all_placeholders": [
+      "{{KET_QUA}}",
+      "{{KIEN_NGHI}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{TINH_HINH}}",
+      "{{TRICH_YEU_NOI_DUNG}}"
+    ],
+    "unmapped_placeholders": [
+      "{{KET_QUA}}",
+      "{{KIEN_NGHI}}",
+      "{{TINH_HINH}}"
+    ],
+    "generator_replacements_absent": [
+      "{{CHUC_VU}}",
+      "{{DEN_NGAY}}",
+      "{{HO_TEN}}",
+      "{{KINH_GUI}}",
+      "{{KY_HIEU}}",
+      "{{MUC_DICH_CONG_TAC}}",
+      "{{NGUOI_KY}}",
+      "{{NOI_DEN}}",
+      "{{NOI_DUNG_BAO_CAO}}",
+      "{{NOI_DUNG_CONG_VAN}}",
+      "{{NOI_DUNG_KE_HOACH}}",
+      "{{NOI_DUNG_TO_TRINH}}",
+      "{{THAM_QUYEN_KY}}",
+      "{{TRICH_YEU}}",
+      "{{TU_NGAY}}"
+    ],
+    "zip_crc_error": null
+  },
+  {
+    "path": "knowledge_base/templates/Mau_Cong_van.docx",
+    "parts": {
+      "word/document.xml": {
+        "placeholders": [
+          "{{KINH_GUI}}",
+          "{{NAM}}",
+          "{{NGAY}}",
+          "{{NOI_DUNG_CONG_VAN}}",
+          "{{SO_DI}}",
+          "{{THANG}}",
+          "{{TRICH_YEU}}"
+        ],
+        "paragraphs": [
+          "ĐẠI HỌC Y DƯỢC",
+          "THÀNH PHỐ HỒ CHÍ MINH",
+          "KHOA Y TẾ CÔNG CỘNG",
+          "Số: {{SO_DI}}/YTCC-VP",
+          "{{TRICH_YEU}}",
+          "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "Độc lập – Tự do – Hạnh phúc",
+          "Thành phố Hồ Chí Minh, ngày {{NGAY}} tháng {{THANG}} năm {{NAM}}",
+          "",
+          "Kính gửi:",
+          "{{KINH_GUI}}",
+          "{{NOI_DUNG_CONG_VAN}}",
+          "",
+          "Trân trọng kính chào./.",
+          "",
+          "Nơi nhận:",
+          "- Như trên;",
+          "- BCN Khoa YTCC;",
+          "- Lưu: VT, HCTC_VTTH.",
+          "TRƯỞNG KHOA",
+          "",
+          "",
+          "",
+          "PGS. TS. Nguyễn Duy Phong",
+          ""
+        ],
+        "section_properties": [
+          "<ns0:sectPr xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:rsidR=\"003D40FC\" ns0:rsidRPr=\"003D40FC\" ns0:rsidSect=\"003D40FC\"><ns0:pgSz ns0:w=\"12240\" ns0:h=\"15840\" /><ns0:pgMar ns0:top=\"1134\" ns0:right=\"850\" ns0:bottom=\"850\" ns0:left=\"1416\" ns0:header=\"720\" ns0:footer=\"720\" ns0:gutter=\"0\" /><ns0:cols ns0:space=\"720\" /><ns0:docGrid ns0:linePitch=\"360\" /></ns0:sectPr>"
+        ],
+        "explicit_halfpoint_sizes": [
+          "19",
+          "20",
+          "21",
+          "23",
+          "24"
+        ],
+        "page_fields": [],
+        "table_count": 2,
+        "repeat_table_headers": 0,
+        "keep_next_count": 0,
+        "cant_split_count": 0
+      },
+      "word/styles.xml": {
+        "placeholders": []
+      }
+    },
+    "all_placeholders": [
+      "{{KINH_GUI}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{NOI_DUNG_CONG_VAN}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{TRICH_YEU}}"
+    ],
+    "unmapped_placeholders": [],
+    "generator_replacements_absent": [
+      "{{CHUC_VU}}",
+      "{{DEN_NGAY}}",
+      "{{HO_TEN}}",
+      "{{KY_HIEU}}",
+      "{{MUC_DICH_CONG_TAC}}",
+      "{{NGUOI_KY}}",
+      "{{NOI_DEN}}",
+      "{{NOI_DUNG_BAO_CAO}}",
+      "{{NOI_DUNG_KE_HOACH}}",
+      "{{NOI_DUNG_TO_TRINH}}",
+      "{{THAM_QUYEN_KY}}",
+      "{{TRICH_YEU_NOI_DUNG}}",
+      "{{TU_NGAY}}"
+    ],
+    "zip_crc_error": null
+  },
+  {
+    "path": "knowledge_base/templates/Mau_Giay_gioi_thieu.docx",
+    "parts": {
+      "word/document.xml": {
+        "placeholders": [
+          "{{CHUC_VU}}",
+          "{{CO_SO_DEN}}",
+          "{{DEN_NGAY}}",
+          "{{HO_TEN}}",
+          "{{MUC_DICH_CONG_TAC}}",
+          "{{NAM}}",
+          "{{NGAY}}",
+          "{{SO_DI}}",
+          "{{THANG}}",
+          "{{TU_NGAY}}"
+        ],
+        "paragraphs": [
+          "ĐẠI HỌC Y DƯỢC",
+          "THÀNH PHỐ HỒ CHÍ MINH",
+          "KHOA Y TẾ CÔNG CỘNG",
+          "Số: {{SO_DI}}/GGT-YTCC",
+          "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "Độc lập – Tự do – Hạnh phúc",
+          "Thành phố Hồ Chí Minh, ngày {{NGAY}} tháng {{THANG}} năm {{NAM}}",
+          "",
+          "GIẤY GIỚI THIỆU",
+          "KHOA Y TẾ CÔNG CỘNG TRÂN TRỌNG GIỚI THIỆU:",
+          "Kính gửi:",
+          "- Ban Giám đốc {{CO_SO_DEN}}.",
+          "Ông/Bà: {{HO_TEN}}",
+          "Chức danh / Đơn vị / Lớp: {{CHUC_VU}}",
+          "Được cử đến liên hệ với Quý cơ quan để: {{MUC_DICH_CONG_TAC}}",
+          "Thời gian làm việc từ ngày {{TU_NGAY}} đến hết ngày {{DEN_NGAY}}",
+          "",
+          "Kính mong Quý cơ quan tạo điều kiện thuận lợi để viên chức / học viên hoàn thành nhiệm vụ.",
+          "",
+          "Trân trọng cảm ơn./.",
+          "",
+          "Nơi nhận:",
+          "- Như trên;",
+          "- Học viên/Cán bộ (để t/h);",
+          "- Lưu: VT, HCTC_VTTH.",
+          "TRƯỞNG KHOA",
+          "",
+          "",
+          "",
+          "PGS. TS. Nguyễn Duy Phong",
+          ""
+        ],
+        "section_properties": [
+          "<ns0:sectPr xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:rsidR=\"006C6CB8\" ns0:rsidRPr=\"006C6CB8\" ns0:rsidSect=\"006C6CB8\"><ns0:pgSz ns0:w=\"12240\" ns0:h=\"15840\" /><ns0:pgMar ns0:top=\"1134\" ns0:right=\"850\" ns0:bottom=\"850\" ns0:left=\"1416\" ns0:header=\"720\" ns0:footer=\"720\" ns0:gutter=\"0\" /><ns0:cols ns0:space=\"720\" /><ns0:docGrid ns0:linePitch=\"360\" /></ns0:sectPr>"
+        ],
+        "explicit_halfpoint_sizes": [
+          "19",
+          "20",
+          "21",
+          "23",
+          "24",
+          "26"
+        ],
+        "page_fields": [],
+        "table_count": 2,
+        "repeat_table_headers": 0,
+        "keep_next_count": 0,
+        "cant_split_count": 0
+      },
+      "word/styles.xml": {
+        "placeholders": []
+      }
+    },
+    "all_placeholders": [
+      "{{CHUC_VU}}",
+      "{{CO_SO_DEN}}",
+      "{{DEN_NGAY}}",
+      "{{HO_TEN}}",
+      "{{MUC_DICH_CONG_TAC}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{TU_NGAY}}"
+    ],
+    "unmapped_placeholders": [
+      "{{CO_SO_DEN}}"
+    ],
+    "generator_replacements_absent": [
+      "{{KINH_GUI}}",
+      "{{KY_HIEU}}",
+      "{{NGUOI_KY}}",
+      "{{NOI_DEN}}",
+      "{{NOI_DUNG_BAO_CAO}}",
+      "{{NOI_DUNG_CONG_VAN}}",
+      "{{NOI_DUNG_KE_HOACH}}",
+      "{{NOI_DUNG_TO_TRINH}}",
+      "{{THAM_QUYEN_KY}}",
+      "{{TRICH_YEU_NOI_DUNG}}",
+      "{{TRICH_YEU}}"
+    ],
+    "zip_crc_error": null
+  },
+  {
+    "path": "knowledge_base/templates/Mau_Ke_hoach.docx",
+    "parts": {
+      "word/document.xml": {
+        "placeholders": [
+          "{{MUC_DICH_YEU_CAU}}",
+          "{{NAM}}",
+          "{{NGAY}}",
+          "{{NOI_DUNG_CHUONG_TRINH}}",
+          "{{PHAN_CONG}}",
+          "{{SO_DI}}",
+          "{{THANG}}",
+          "{{THOI_GIAN_DIA_DIEM}}",
+          "{{TRICH_YEU_NOI_DUNG}}"
+        ],
+        "paragraphs": [
+          "ĐẠI HỌC Y DƯỢC",
+          "THÀNH PHỐ HỒ CHÍ MINH",
+          "KHOA Y TẾ CÔNG CỘNG",
+          "Số: {{SO_DI}}/KH-YTCC",
+          "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "Độc lập – Tự do – Hạnh phúc",
+          "Thành phố Hồ Chí Minh, ngày {{NGAY}} tháng {{THANG}} năm {{NAM}}",
+          "",
+          "KẾ HOẠCH",
+          "Về việc {{TRICH_YEU_NOI_DUNG}}",
+          "I. MỤC ĐÍCH - YÊU CẦU",
+          "{{MUC_DICH_YEU_CAU}}",
+          "",
+          "II. THỜI GIAN VÀ ĐỊA ĐIỂM",
+          "{{THOI_GIAN_DIA_DIEM}}",
+          "",
+          "III. NỘI DUNG CHƯƠNG TRÌNH",
+          "{{NOI_DUNG_CHUONG_TRINH}}",
+          "",
+          "IV. PHÂN CÔNG THỰC HIỆN",
+          "{{PHAN_CONG}}",
+          "",
+          "Nơi nhận:",
+          "- BCN Khoa YTCC;",
+          "- Các Bộ môn liên quan;",
+          "- Lưu: VT, HCTC_VTTH.",
+          "TRƯỞNG KHOA",
+          "",
+          "",
+          "",
+          "PGS. TS. Nguyễn Duy Phong",
+          ""
+        ],
+        "section_properties": [
+          "<ns0:sectPr xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:rsidR=\"001C70B5\" ns0:rsidSect=\"001C70B5\"><ns0:pgSz ns0:w=\"12240\" ns0:h=\"15840\" /><ns0:pgMar ns0:top=\"1134\" ns0:right=\"850\" ns0:bottom=\"850\" ns0:left=\"1416\" ns0:header=\"720\" ns0:footer=\"720\" ns0:gutter=\"0\" /><ns0:cols ns0:space=\"720\" /><ns0:docGrid ns0:linePitch=\"360\" /></ns0:sectPr>"
+        ],
+        "explicit_halfpoint_sizes": [
+          "19",
+          "20",
+          "21",
+          "23",
+          "24",
+          "26"
+        ],
+        "page_fields": [],
+        "table_count": 2,
+        "repeat_table_headers": 0,
+        "keep_next_count": 0,
+        "cant_split_count": 0
+      },
+      "word/styles.xml": {
+        "placeholders": []
+      }
+    },
+    "all_placeholders": [
+      "{{MUC_DICH_YEU_CAU}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{NOI_DUNG_CHUONG_TRINH}}",
+      "{{PHAN_CONG}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{THOI_GIAN_DIA_DIEM}}",
+      "{{TRICH_YEU_NOI_DUNG}}"
+    ],
+    "unmapped_placeholders": [
+      "{{MUC_DICH_YEU_CAU}}",
+      "{{NOI_DUNG_CHUONG_TRINH}}",
+      "{{PHAN_CONG}}",
+      "{{THOI_GIAN_DIA_DIEM}}"
+    ],
+    "generator_replacements_absent": [
+      "{{CHUC_VU}}",
+      "{{DEN_NGAY}}",
+      "{{HO_TEN}}",
+      "{{KINH_GUI}}",
+      "{{KY_HIEU}}",
+      "{{MUC_DICH_CONG_TAC}}",
+      "{{NGUOI_KY}}",
+      "{{NOI_DEN}}",
+      "{{NOI_DUNG_BAO_CAO}}",
+      "{{NOI_DUNG_CONG_VAN}}",
+      "{{NOI_DUNG_KE_HOACH}}",
+      "{{NOI_DUNG_TO_TRINH}}",
+      "{{THAM_QUYEN_KY}}",
+      "{{TRICH_YEU}}",
+      "{{TU_NGAY}}"
+    ],
+    "zip_crc_error": null
+  },
+  {
+    "path": "knowledge_base/templates/Mau_To_trinh.docx",
+    "parts": {
+      "word/document.xml": {
+        "placeholders": [
+          "{{DU_TRU_KINH_PHI}}",
+          "{{NAM}}",
+          "{{NGAY}}",
+          "{{NOI_DUNG_DE_XUAT}}",
+          "{{PHONG_CHUC_NANG}}",
+          "{{SO_DI}}",
+          "{{SU_CAN_THIET}}",
+          "{{THANG}}",
+          "{{TRICH_YEU_NOI_DUNG}}"
+        ],
+        "paragraphs": [
+          "ĐẠI HỌC Y DƯỢC",
+          "THÀNH PHỐ HỒ CHÍ MINH",
+          "KHOA Y TẾ CÔNG CỘNG",
+          "Số: {{SO_DI}}/TTr-YTCC",
+          "CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM",
+          "Độc lập – Tự do – Hạnh phúc",
+          "Thành phố Hồ Chí Minh, ngày {{NGAY}} tháng {{THANG}} năm {{NAM}}",
+          "",
+          "TỜ TRÌNH",
+          "Về việc {{TRICH_YEU_NOI_DUNG}}",
+          "Kính gửi:",
+          "- Ban Giám hiệu Đại học Y Dược TP.HCM;",
+          "- Phòng {{PHONG_CHUC_NANG}}.",
+          "I. SỰ CẦN THIẾT",
+          "{{SU_CAN_THIET}}",
+          "",
+          "II. NỘI DUNG ĐỀ XUẤT",
+          "{{NOI_DUNG_DE_XUAT}}",
+          "",
+          "III. DỰ TRÙ KINH PHÍ",
+          "{{DU_TRU_KINH_PHI}}",
+          "",
+          "IV. KIẾN NGHỊ",
+          "Khoa Y tế công cộng kính đề nghị Ban Giám hiệu xem xét, phê duyệt đề xuất nêu trên.",
+          "",
+          "Nơi nhận:",
+          "- Như trên;",
+          "- Phòng {{PHONG_CHUC_NANG}};",
+          "- BCN Khoa YTCC;",
+          "- Lưu: VT, HCTC_VTTH.",
+          "TRƯỞNG KHOA",
+          "",
+          "",
+          "",
+          "PGS. TS. Nguyễn Duy Phong",
+          ""
+        ],
+        "section_properties": [
+          "<ns0:sectPr xmlns:ns0=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" ns0:rsidR=\"00426DB0\" ns0:rsidRPr=\"00426DB0\" ns0:rsidSect=\"00426DB0\"><ns0:pgSz ns0:w=\"12240\" ns0:h=\"15840\" /><ns0:pgMar ns0:top=\"1134\" ns0:right=\"850\" ns0:bottom=\"850\" ns0:left=\"1416\" ns0:header=\"720\" ns0:footer=\"720\" ns0:gutter=\"0\" /><ns0:cols ns0:space=\"720\" /><ns0:docGrid ns0:linePitch=\"360\" /></ns0:sectPr>"
+        ],
+        "explicit_halfpoint_sizes": [
+          "19",
+          "20",
+          "21",
+          "23",
+          "24",
+          "26"
+        ],
+        "page_fields": [],
+        "table_count": 2,
+        "repeat_table_headers": 0,
+        "keep_next_count": 0,
+        "cant_split_count": 0
+      },
+      "word/styles.xml": {
+        "placeholders": []
+      }
+    },
+    "all_placeholders": [
+      "{{DU_TRU_KINH_PHI}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{NOI_DUNG_DE_XUAT}}",
+      "{{PHONG_CHUC_NANG}}",
+      "{{SO_DI}}",
+      "{{SU_CAN_THIET}}",
+      "{{THANG}}",
+      "{{TRICH_YEU_NOI_DUNG}}"
+    ],
+    "unmapped_placeholders": [
+      "{{DU_TRU_KINH_PHI}}",
+      "{{NOI_DUNG_DE_XUAT}}",
+      "{{PHONG_CHUC_NANG}}",
+      "{{SU_CAN_THIET}}"
+    ],
+    "generator_replacements_absent": [
+      "{{CHUC_VU}}",
+      "{{DEN_NGAY}}",
+      "{{HO_TEN}}",
+      "{{KINH_GUI}}",
+      "{{KY_HIEU}}",
+      "{{MUC_DICH_CONG_TAC}}",
+      "{{NGUOI_KY}}",
+      "{{NOI_DEN}}",
+      "{{NOI_DUNG_BAO_CAO}}",
+      "{{NOI_DUNG_CONG_VAN}}",
+      "{{NOI_DUNG_KE_HOACH}}",
+      "{{NOI_DUNG_TO_TRINH}}",
+      "{{THAM_QUYEN_KY}}",
+      "{{TRICH_YEU}}",
+      "{{TU_NGAY}}"
+    ],
+    "zip_crc_error": null
+  }
+]

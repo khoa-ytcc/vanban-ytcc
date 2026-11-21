@@ -1,4 +1,4 @@
-﻿$dllPath = Join-Path $PSScriptRoot "MySql.Data.dll"
+$dllPath = Join-Path $PSScriptRoot "MySql.Data.dll"
 [System.Reflection.Assembly]::Load([System.IO.File]::ReadAllBytes($dllPath)) | Out-Null
 
 $connStr = "server=45.117.169.194; port=3306; userid=dvdung_user; password=D0.4nhuy; database=dvdung_dbase; pooling=false; Character Set=utf8; convert zero datetime=True"

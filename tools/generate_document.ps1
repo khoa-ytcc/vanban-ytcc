@@ -1,4 +1,4 @@
-﻿param(
+param(
     [Parameter(Mandatory=$true)]
     [ValidateSet("To_trinh", "Cong_van", "Giay_gioi_thieu", "Ke_hoach", "Bao_cao")]
     [string]$TemplateType,

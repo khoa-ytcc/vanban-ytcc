@@ -1,59 +1,28 @@
-# QUY TẮC THẨM QUYỀN KÝ VĂN BẢN (AUTHORITY RULES)
-# KHOA Y TẾ CÔNG CỘNG – ĐẠI HỌC Y DƯỢC TP. HỒ CHÍ MINH
+# XÁC ĐỊNH THẨM QUYỀN KÝ
 
-## 1. NGUYÊN TẮC PHÂN CÔNG THẨM QUYỀN KÝ
+## Trạng thái
 
-### 1.1. TRƯỞNG KHOA (PGS. TS. Nguyễn Duy Phong)
-Ký trực tiếp với tư cách người đứng đầu Khoa đối với:
-- Tất cả các **Tờ trình (TTr)** gửi Ban Giám hiệu Đại học Y Dược TP.HCM (về kinh phí, cơ sở vật chất, nhân sự, tuyển dụng, chủ trương lớn).
-- Tất cả các **Quyết định (QĐ)** thuộc thẩm quyền Khoa (thành lập hội đồng, ban hành quy chế nội bộ).
-- Các **Báo cáo (BC)** công tác định kỳ năm, báo cáo kiểm định chất lượng đào tạo gửi Trường hoặc Bộ GD&ĐT, Bộ Y tế.
-- Các **Công văn quan trọng** gửi Bộ Y tế, các Cục/Vụ, Ban Giám hiệu, các Bệnh viện lớn hoặc đối tác quốc tế.
-- Các **Giấy mời (GM)** tham dự sự kiện lớn, lễ tốt nghiệp, hội thảo quốc tế.
+Quy tắc cũ do AI viết đã gán tên người và mảng phụ trách mà chưa có dẫn chứng hồ sơ tại từng mục. Không dùng các gán đó làm cấu hình người ký mặc định.
 
-*Thể thức chữ ký:*
-```
-TRƯỞNG KHOA
-(Chữ ký, đóng dấu)
-PGS. TS. Nguyễn Duy Phong
-```
+PDF và QL văn bản cho biết ai đã ký một hồ sơ tại thời điểm đó. Để gán người ký cho văn bản mới, dùng thông tin hiện hành người dùng cung cấp hoặc văn bản phân công/ủy quyền có hiệu lực và phù hợp phạm vi công việc.
 
----
+## Cách xử lý
 
-### 1.2. KÝ THAY TRƯỞNG KHOA (KT. TRƯỞNG KHOA - PHÓ TRƯỞNG KHOA)
-Khi được phân công phụ trách mảng hoặc khi Trưởng khoa đi vắng / ủy quyền:
+1. Xác định loại văn bản, đơn vị ban hành, hành động đề nghị và phạm vi thẩm quyền.
+2. Tìm hồ sơ tương tự trong QL văn bản, mở PDF gốc để đối chiếu khối ký. Ghi rõ đây là tiền lệ lịch sử.
+3. Dùng người ký/chức vụ do người dùng xác định cho yêu cầu hiện tại. Nếu chỉ có tiền lệ, trình bày là đề xuất; không biến thành dữ kiện đã được xác nhận.
+4. Khi chưa đủ thông tin, vẫn soạn phần nội dung độc lập; để `[CHỨC VỤ NGƯỜI KÝ]`, `[HỌ TÊN NGƯỜI KÝ]` và ghi trường cần bổ sung.
+5. Với ký thay, thừa lệnh, thừa ủy quyền: kiểm tra hình thức, phạm vi và hiệu lực của căn cứ tương ứng trước khi dùng. Không suy ra quyền ký từ việc người đứng đầu vắng mặt.
 
-#### A. PGS. TS. Tô Gia Kiên (Phó Trưởng khoa phụ trách NCKH, Hợp tác, Đối ngoại)
-Ký các văn bản thuộc lĩnh vực:
-- Công văn về đề tài nghiên cứu khoa học, chuyển giao công nghệ.
-- Kế hoạch, công văn tiếp đón đoàn chuyên gia nước ngoài, đối tác quốc tế.
-- Giấy giới thiệu cán bộ, giảng viên đi công tác đối ngoại.
+Không tự xác định Khoa có quyền ban hành một Quyết định thành lập hội đồng hoặc quy chế chỉ vì skill phân loại gợi ý loại văn bản đó. Có thể cần Tờ trình gửi cấp có thẩm quyền.
 
-*Thể thức chữ ký:*
-```
-KT. TRƯỞNG KHOA
-PHÓ TRƯỞNG KHOA
-(Chữ ký, đóng dấu)
-PGS. TS. Tô Gia Kiên
-```
+## Ghi nhận nguồn
 
-#### B. PGS. TS. Thái Thanh Trúc (Phó Trưởng khoa phụ trách Đào tạo, Sinh viên)
-Ký các văn bản thuộc lĩnh vực:
-- Công văn về kế hoạch đào tạo, lịch giảng dạy, kiểm tra, thi cử.
-- Quyết định / Danh sách thành lập Hội đồng chấm luận văn, khóa luận cử nhân, thạc sĩ.
-- Công văn cử sinh viên, học viên đi thực tập, thực địa tại cơ sở y tế.
-- Giấy giới thiệu học viên SĐH thu thập số liệu luận văn.
+| Trường | Bằng chứng cần lưu |
+|---|---|
+| Người ký và chức vụ ở văn bản cũ | Khóa hồ sơ QL văn bản, PDF và trang có khối ký |
+| Người ký dự kiến văn bản mới | Thông tin người dùng hiện tại hoặc căn cứ phân công/ủy quyền |
+| Hình thức ký | Khối ký nguồn và căn cứ áp dụng; trạng thái đã xác minh/chưa xác minh |
+| Thời điểm áp dụng | Ngày ban hành dự kiến, hiệu lực của căn cứ nếu có |
 
-*Thể thức chữ ký:*
-```
-KT. TRƯỞNG KHOA
-PHÓ TRƯỞNG KHOA
-(Chữ ký, đóng dấu)
-PGS. TS. Thái Thanh Trúc
-```
-
----
-
-### 1.3. KÝ THỪA ỦY QUYỀN / XÁC NHẬN VĂN PHÒNG KHOA
-(TS. Huỳnh Hồ Ngọc Quỳnh, ThS. Đỗ Thị Thu Thảo):
-Ký các bảng tổng hợp kết quả học tập, danh sách trích ngang học viên, giấy xác nhận sinh viên thông thường hoặc chứng nhận thực tập theo ủy quyền của Ban Chủ nhiệm Khoa.
+Không sao chép chữ ký hoặc con dấu từ PDF để đặt vào văn bản dự thảo. Chừa khoảng ký theo mẫu đã kiểm chứng.

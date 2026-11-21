@@ -1,0 +1,47 @@
+[
+  {
+    "Path": "analyze_corpus_stats.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "build_talkshow_cv.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "create_templates.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "download_all_sample_pdfs.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "download_samples.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "export_pdf.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "extract_metadata.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "generate_document.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  },
+  {
+    "Path": "search_history.ps1",
+    "ParserVersion": "7.6.9",
+    "Errors": []
+  }
+]

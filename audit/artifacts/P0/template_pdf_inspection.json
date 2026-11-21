@@ -1,0 +1,105 @@
+[
+  {
+    "path": "audit/artifacts/P0/template_render/Mau_Bao_cao.pdf",
+    "pages": 1,
+    "page_boxes_pt": [
+      [
+        612.0,
+        792.0
+      ]
+    ],
+    "placeholders_in_pdf": [
+      "{{KET_QUA}}",
+      "{{KIEN_NGHI}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{TINH_HINH}}",
+      "{{TRICH_YEU_NOI_DUNG}}"
+    ]
+  },
+  {
+    "path": "audit/artifacts/P0/template_render/Mau_Cong_van.pdf",
+    "pages": 1,
+    "page_boxes_pt": [
+      [
+        612.0,
+        792.0
+      ]
+    ],
+    "placeholders_in_pdf": [
+      "{{KINH_GUI}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{NOI_DUNG_CONG_VAN}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{TRICH_YEU}}"
+    ]
+  },
+  {
+    "path": "audit/artifacts/P0/template_render/Mau_Giay_gioi_thieu.pdf",
+    "pages": 1,
+    "page_boxes_pt": [
+      [
+        612.0,
+        792.0
+      ]
+    ],
+    "placeholders_in_pdf": [
+      "{{CHUC_VU}}",
+      "{{CO_SO_DEN}}",
+      "{{DEN_NGAY}}",
+      "{{HO_TEN}}",
+      "{{MUC_DICH_CONG_TAC}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{TU_NGAY}}"
+    ]
+  },
+  {
+    "path": "audit/artifacts/P0/template_render/Mau_Ke_hoach.pdf",
+    "pages": 1,
+    "page_boxes_pt": [
+      [
+        612.0,
+        792.0
+      ]
+    ],
+    "placeholders_in_pdf": [
+      "{{MUC_DICH_YEU_CAU}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{NOI_DUNG_CHUONG_TRINH}}",
+      "{{PHAN_CONG}}",
+      "{{SO_DI}}",
+      "{{THANG}}",
+      "{{THOI_GIAN_DIA_DIEM}}",
+      "{{TRICH_YEU_NOI_DUNG}}"
+    ]
+  },
+  {
+    "path": "audit/artifacts/P0/template_render/Mau_To_trinh.pdf",
+    "pages": 1,
+    "page_boxes_pt": [
+      [
+        612.0,
+        792.0
+      ]
+    ],
+    "placeholders_in_pdf": [
+      "{{DU_TRU_KINH_PHI}}",
+      "{{NAM}}",
+      "{{NGAY}}",
+      "{{NOI_DUNG_DE_XUAT}}",
+      "{{PHONG_CHUC_NANG}}",
+      "{{SO_DI}}",
+      "{{SU_CAN_THIET}}",
+      "{{THANG}}",
+      "{{TRICH_YEU_NOI_DUNG}}"
+    ]
+  }
+]

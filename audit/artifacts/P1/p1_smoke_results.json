@@ -1,0 +1,62 @@
+﻿{
+    "TestDate":  "2026-11-16 21:52:47",
+    "TotalTests":  6,
+    "ComCleanupTestPassed":  true,
+    "Cases":  [
+                  {
+                      "Success":  true,
+                      "TemplateType":  "Cong_van",
+                      "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Cong_van.docx",
+                      "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Cong_van.pdf",
+                      "PageCount":  1,
+                      "UnreplacedCount":  0,
+                      "UnreplacedList":  {
+
+                                         }
+                  },
+                  {
+                      "Success":  true,
+                      "TemplateType":  "Giay_gioi_thieu",
+                      "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Giay_gioi_thieu.docx",
+                      "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Giay_gioi_thieu.pdf",
+                      "PageCount":  1,
+                      "UnreplacedCount":  0,
+                      "UnreplacedList":  {
+
+                                         }
+                  },
+                  {
+                      "Success":  true,
+                      "TemplateType":  "To_trinh",
+                      "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_To_trinh.docx",
+                      "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_To_trinh.pdf",
+                      "PageCount":  1,
+                      "UnreplacedCount":  0,
+                      "UnreplacedList":  {
+
+                                         }
+                  },
+                  {
+                      "Success":  true,
+                      "TemplateType":  "Ke_hoach",
+                      "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Ke_hoach.docx",
+                      "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Ke_hoach.pdf",
+                      "PageCount":  1,
+                      "UnreplacedCount":  0,
+                      "UnreplacedList":  {
+
+                                         }
+                  },
+                  {
+                      "Success":  true,
+                      "TemplateType":  "Bao_cao",
+                      "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Bao_cao.docx",
+                      "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P1\\Test_P1_Bao_cao.pdf",
+                      "PageCount":  1,
+                      "UnreplacedCount":  0,
+                      "UnreplacedList":  {
+
+                                         }
+                  }
+              ]
+}

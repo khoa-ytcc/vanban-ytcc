@@ -1,49 +1,47 @@
 ---
 name: ytcc-draft-writer
 description: >-
-  Soạn thảo chi tiết toàn văn văn bản đi (Tờ trình, Công văn, Kế hoạch, Quyết định, Giấy giới thiệu)
-  theo chuẩn Nghị định 30/2020/NĐ-CP và phong cách văn phong y tế học thuật của Khoa YTCC - ĐHYD TP.HCM.
+  Soạn toàn văn văn bản đi YTCC từ yêu cầu và nguồn đã kiểm chứng;
+  chọn cấu trúc ngắn hoặc nhiều trang, ghi rõ thông tin còn thiếu.
 ---
 
-# KỸ NĂNG SOẠN THẢO CHI TIẾT VĂN BẢN ĐI YTCC
+# SOẠN THẢO VĂN BẢN ĐI YTCC
 
-Khi soạn thảo nội dung toàn văn văn bản đi, AI phải luôn đảm bảo cấu trúc hoàn chỉnh gồm 4 khối:
+Read [layout rules](../../rules/gemini.md), [source rules](../../rules/source_provenance.md), [recipient routing](../../rules/recipient_matrix.md), and [signing authority](../../rules/authority_rules.md) before drafting.
 
-```
-[KHỐI 1: HEADER & TIÊU ĐỀ]
-├── Cột trái: ĐẠI HỌC Y DƯỢC TP. HỒ CHÍ MINH / KHOA Y TẾ CÔNG CỘNG / Số ký hiệu
-├── Cột phải: CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM / Độc lập - Tự do - Hạnh phúc / Ngày tháng
-└── Tên loại văn bản & Trích yếu nội dung
+## Drafting sequence
 
-[KHỐI 2: KÍNH GỬI]
-└── Định tuyến chuẩn theo ma trận nơi nhận (ví dụ: Ban Giám hiệu qua Phòng chức năng)
+1. Build a fact sheet: purpose, recipient, document type, signer, dates, number/symbol, legal basis, body facts, attachments, and recipients.
+2. Mark each fact as verified, user-provided, inferred, or missing.
+3. Select a short one-page layout only when the content and required blocks fit without loss. Otherwise select a multi-page layout.
+4. Draft the header, recipient block, body, conclusion, signature block, and distribution list.
+5. Check that the wording matches the selected administrative purpose and does not create authority or legal claims unsupported by the source.
 
-[KHỐI 3: NỘI DUNG CHÍNH]
-├── Đoạn mở đầu: Căn cứ pháp lý, sự cần thiết, mục đích văn bản
-├── Các đề mục nội dung (phân cấp I, II, III; 1, 2, 3; -, +)
-├── Bảng biểu / Dự toán / Danh sách nhân sự (nếu có)
-└── Đoạn kết luận: Lời đề nghị, thời hạn, cam kết
+## Structure
 
-[KHỐI 4: FOOTER & KÝ TÊN]
-├── Cột trái: Nơi nhận (liệt kê các đơn vị nhận theo ma trận)
-└── Cột phải: Chức vụ, thẩm quyền ký, khoảng trống ký tên, Họ và tên người ký
-```
+- **Header:** issuing body, number/symbol, national header, date, and subject.
+- **Recipient:** use `Kính gửi` when appropriate for the document type and source structure; do not force the same recipient block into every plan, report or decision.
+- **Body:** legal basis when verified, purpose, facts, requested action, time limit, and conclusion.
+- **Signature/distribution:** current signing authority recommendation and the correct distribution list.
 
-## BỘ MẪU CẤU TRÚC THEO TỪNG LOẠI VĂN BẢN
+For a multi-page document, preserve meaningful content before the signature, repeat table headers, and use page numbers only after the layout rule has been verified for that document class.
 
-### 1. Mẫu Tờ trình (TTr):
-- **Phần mở đầu:** Sự cần thiết hoặc cơ sở thực tiễn (Ví dụ: xuất phát từ nhu cầu giảng dạy, bảo dưỡng thiết bị...).
-- **Phần nội dung đề xuất:** Nêu rõ các hạng mục đề xuất (số lượng, thông số kỹ thuật, thời gian thực hiện, nhân sự tham gia).
-- **Phần dự trù kinh phí (nếu có):** Bảng dự toán chi tiết, nguồn kinh phí đề xuất (kinh phí Khoa, kinh phí Trường, kinh phí đề tài).
-- **Phần kiến nghị:** Kính đề nghị Ban Giám hiệu xem xét, phê duyệt chủ trương và kinh phí.
+## Content by type
 
-### 2. Mẫu Công văn (CV):
-- **Căn cứ:** Viện dẫn văn bản chỉ đạo của Trường, Bộ Y tế hoặc nhu cầu thực tế của Khoa.
-- **Nội dung:** Trao đổi, trả lời hoặc đề nghị cụ thể.
-- **Kết luận:** Lời cảm ơn và đề nghị quý cơ quan phối hợp hỗ trợ.
+- **Tờ trình:** need and objective; proposal; budget/resource table if relevant; requested approval. A short single-issue request does not need four fixed sections.
+- **Công văn:** reference to the incoming document if any; specific reply/request; responsibilities, deadline or next action.
+- **Giấy giới thiệu:** person or list, role, destination, purpose and complete start/end dates; separate an attached list when necessary.
+- **Kế hoạch:** objectives, schedule/location, activities, responsibilities and resources as applicable.
+- **Báo cáo:** period/scope, evidence and results, limitations and recommendations. Reconcile numeric totals.
+- Other types: establish authority and inspect a matching source before imposing a structure.
 
-### 3. Mẫu Giấy giới thiệu (GGT):
-- **Kính gửi:** Ban Giám đốc và Phòng chức năng của cơ sở đến liên hệ.
-- **Giới thiệu:** Ông/Bà [Họ tên], Chức vụ [Viên chức / Học viên cao học khóa... / Sinh viên năm...].
-- **Mục đích:** Thu thập số liệu đề tài nghiên cứu [Tên đề tài], thực tập cộng đồng...
-- **Thời hạn giá trị:** Giấy giới thiệu có giá trị đến ngày [dd/mm/yyyy].
+Use a verified PDF example for wording when available; cite its path/page in the validation note. Do not represent a generated sample sentence as a corpus quote. Preserve evidence-based figures and names; use explicit placeholders for missing facts. Do not create an issued document number or signature.
+
+## Output contract
+
+Return the draft plus a short validation note listing:
+
+- layout class and why it was selected;
+- unresolved placeholders or assumptions;
+- source references for facts;
+- the requested DOCX/PDF handoff using the export skill, with only parameters supported by the current implementation. If only text was requested, do not add unnecessary execution commands.

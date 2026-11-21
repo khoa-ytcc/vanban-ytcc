@@ -1,4 +1,4 @@
-﻿param(
+param(
     [string]$outputDir = "D:\TH\vanban-ytcc\knowledge_base\templates"
 )
 

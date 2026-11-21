@@ -1,89 +1,41 @@
-# HỆ THỐNG TRỢ LÝ AI SOẠN THẢO VĂN BẢN ĐI (YTCC DOC COPILOT)
-**Khoa Y Tế Công Cộng – Đại học Y Dược TP. Hồ Chí Minh**
+# Trợ lý văn bản Khoa Y tế Công cộng
 
-Hệ thống được thiết kế theo chuẩn **Antigravity Best Practice**, chuyên dụng hỗ trợ soạn thảo văn bản đi chuẩn Nghị định 30/2020/NĐ-CP, tích hợp cơ sở tri thức mẫu hơn 4.000 văn bản thực tế của Khoa YTCC giai đoạn 2023 - 2026.
+Hỗ trợ tra cứu, phân loại, soạn thảo và tạo DOCX/PDF cho Khoa YTCC. Hệ thống đang ở giai đoạn chuẩn bị audit; chưa nghiệm thu bộ template và scripts do AI tạo.
 
----
+## Bắt đầu
 
-## 1. CẤU TRÚC THƯ MỤC HỆ THỐNG
+- [AGENTS.md](AGENTS.md): phân vai và quy tắc làm việc của AI.
+- [PLAN.md](PLAN.md): phase P0–P4, tiêu chí nghiệm thu, trạng thái và prompt giao P0 tại mục 8.
+- [HANDOFF.md](HANDOFF.md): bối cảnh và những kết luận cũ cần kiểm chứng.
+- [Runtime](.agents/rules/runtime.md): đường dẫn, công cụ hiện có và giới hạn.
 
-```
-D:\TH\vanban-ytcc\
-│
-├── .agents/                                # Cấu hình AI Antigravity
-│   ├── rules/
-│   │   ├── gemini.md                       # Thể thức chuẩn NĐ 30/2020, font chữ, lề, xưng hô
-│   │   ├── recipient_matrix.md             # Ma trận nơi nhận, kính gửi các phòng ban ĐHYD & đối tác
-│   │   └── authority_rules.md              # Quy tắc thẩm quyền ký (Trưởng khoa, Phó Trưởng khoa)
-│   └── skills/
-│       ├── ytcc-classify-doc/SKILL.md     # Kỹ năng phân loại và gợi ý loại văn bản
-│       ├── ytcc-reply-incoming/SKILL.md   # Kỹ năng đọc hiểu văn bản đến & soạn phúc đáp
-│       ├── ytcc-draft-writer/SKILL.md     # Kỹ năng soạn thảo chi tiết văn phong y tế
-│       └── ytcc-docx-export/SKILL.md      # Kỹ năng xuất file Word .docx & PDF
-│
-├── knowledge_base/                         # Cơ sở tri thức mẫu
-│   ├── templates/                          # 5 mẫu Word (.docx) chuẩn thể thức NĐ 30
-│   │   ├── Mau_To_trinh.docx
-│   │   ├── Mau_Cong_van.docx
-│   │   ├── Mau_Giay_gioi_thieu.docx
-│   │   ├── Mau_Ke_hoach.docx
-│   │   └── Mau_Bao_cao.docx
-│   ├── metadata_index/                     # Dữ liệu tra cứu lịch sử 2023 - 2026
-│   │   ├── cv_di_history.json              # 2.960 văn bản đi đã phân loại & nơi nhận
-│   │   ├── cv_den_history.json             # 3.873 văn bản đến (cơ quan gửi, số ký hiệu, trích yếu)
-│   │   └── recipient_summary.json          # Thống kê phân bổ nơi nhận
-│   └── sample_pdfs/                        # 38 file PDF mẫu tải từ Google Drive (Tờ trình, CV, GGT, KH...)
-│
-├── drafts/                                 # Thư mục lưu bản thảo Word & PDF đang soạn
-│   └── YYYY-MM/                            # Tự động chia theo tháng (VD: 2026-11/)
-│
-└── tools/                                  # Công cụ tự động hóa
-    ├── generate_document.ps1               # Tạo bản thảo Word .docx từ mẫu
-    ├── export_pdf.ps1                      # 1-Click chuyển đổi .docx sang .pdf
-    ├── search_history.ps1                  # Tra cứu nhanh văn bản cũ tương tự
-    └── download_samples.ps1                # Tải bổ sung file PDF mẫu từ Cloud CSDL
-```
+**Planner trực tiếp cập nhật environment/rules/skills. Người dùng tự giao từng phase cho một worker GPT-6.1 Sol duy nhất.** Không tạo subagent.
 
----
+## Nguồn và sản phẩm cần audit
 
-## 2. HƯỚNG DẪN SỬ DỤNG HÀNG NGÀY VỚI ANTIGRAVITY
+| Đường dẫn | Vai trò |
+|---|---|
+| `knowledge_base/sample_pdfs/` | Có 800 file PDF tại lần kiểm kê 14/11/2026; PDF gốc là nguồn đối chiếu, cần kiểm tra liên kết hồ sơ và bản trùng/file thử |
+| `D:\Hương\QUANLYVANBAN` | Hệ thống QL văn bản cũ; dữ liệu đăng ký là nguồn đối chiếu, audit dùng chế độ chỉ đọc |
+| `knowledge_base/metadata_index/` | JSON dẫn xuất: 2.960 bản ghi đi, 3.873 bản ghi đến; chưa đối chiếu tính đầy đủ với QL văn bản |
+| `knowledge_base/templates/` | 5 DOCX do AI tạo, cần kiểm tra từ PDF gốc |
+| `tools/` | 9 script PowerShell do AI tạo, cần kiểm tra tính đúng và an toàn thực thi |
+| `drafts/` | Bản thảo/output; không dùng làm nguồn chuẩn |
+| `.agents/` | Rules và skills do planner duy trì |
 
-### Kịch bản 1: Chưa biết nên làm loại văn bản gì
-- **Bạn chỉ cần chat:**
-  > *"Tôi cần gửi Trường xin cấp kinh phí 20 triệu để bảo trì hệ thống máy lạnh phòng thực hành, nên làm văn bản gì và gửi ai?"*
-- **AI sẽ tự động:**
-  1. Phân loại thành **TỜ TRÌNH**.
-  2. Gợi ý Kính gửi: **Ban Giám hiệu (qua Phòng Quản trị - Thiết bị và Phòng Tài chính - Kế toán)**.
-  3. Gợi ý Nơi nhận: Ban Giám hiệu, Phòng QTTB, Phòng TCKT, BCN Khoa, Lưu VT.
-  4. Xác định người ký: **Trưởng khoa PGS. TS. Nguyễn Duy Phong**.
-  5. Soạn khung nội dung và xuất file Word `.docx` sẵn sàng.
+Chi tiết: [quy tắc nguồn](.agents/rules/source_provenance.md). Số lượng file/bản ghi không chứng minh chúng đầy đủ, duy nhất hoặc đúng nội dung.
 
----
+## Công việc trước mắt
 
-### Kịch bản 2: Dùng Văn bản đến để soạn trả lời Văn bản đi
-- **Bạn chỉ cần chat:**
-  > *"Trường vừa gửi Công văn số 407/TCNS ngày 10/11/2026 về việc lấy ý kiến góp ý Dự thảo Quy định bổ nhiệm chức danh quản lý. Hãy soạn công văn trả lời thống nhất với dự thảo."*
-- **AI sẽ tự động:**
-  1. Trích dẫn chuẩn: *"Căn cứ Công văn số 407/TCNS ngày 10/11/2026 của Đại học Y Dược TP. Hồ Chí Minh về việc..."*
-  2. Chọn hình thức: **CÔNG VĂN** (Số ký hiệu: `.../YTCC-VP`).
-  3. Kính gửi: **Ban Giám hiệu (qua Phòng Tổ chức Cán bộ)**.
-  4. Lập luận nội dung góp ý theo văn phong hành chính chuẩn mực.
-  5. Sinh file Word `.docx` lưu vào `drafts/2026-11/`.
+P0 phải kiểm tra cả nguồn dữ liệu lẫn DOCX/scripts thực tế. Các vấn đề đã thấy qua đọc mã gồm logic thu nhỏ chữ khi quá một trang và mapping placeholder cần đối chiếu. Chưa chạy kiểm thử đầu cuối hoặc xác nhận các file mẫu đúng thể thức.
 
----
+Sau P0, một worker lần lượt thực hiện P1 (công cụ), P2 (layout), P3 (dữ liệu ví dụ), P4 (nghiệm thu). Planner rà soát kết quả và cập nhật environment, bao gồm phần tích hợp skills của P3.
 
-### Kịch bản 3: Tra cứu tiền lệ văn bản cũ trong lịch sử Khoa
-- **Chạy lệnh nhanh trong terminal:**
-  ```powershell
-  powershell -File "D:\TH\vanban-ytcc\tools\search_history.ps1" -Keyword "máy lạnh" -Scope di
-  ```
-  *(Sẽ tìm thấy ngay các tờ trình, công văn về máy lạnh năm 2023, 2024 để tham khảo cách viết)*.
+## Quy trình nghiệp vụ đích
 
----
+1. Đọc yêu cầu/văn bản đến, xác định nguồn và dữ kiện.
+2. Phân loại, định tuyến nơi nhận, xác minh người ký phù hợp.
+3. Soạn nội dung, đánh dấu trường thiếu; không ép tất cả văn bản vào một trang.
+4. Dùng công cụ đã được kiểm tra để tạo DOCX/PDF, xem bản render và kiểm tra nội dung.
 
-### Kịch bản 4: Xuất file Word sang PDF
-- Sau khi chỉnh sửa xong bản thảo Word:
-  ```powershell
-  powershell -File "D:\TH\vanban-ytcc\tools\export_pdf.ps1" -docxPath "D:\TH\vanban-ytcc\drafts\2026-11\Draft_To_trinh_....docx"
-  ```
-  *(File PDF sẽ được tạo ngay cạnh file Word, giữ nguyên 100% định dạng)*.
+Đây là quy trình cần nghiệm thu. Trước khi chạy lệnh, xem tham số thật trong script và trạng thái ở PLAN; không suy ra tính năng từ tên file hoặc mô tả cũ.

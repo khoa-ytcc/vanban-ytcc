@@ -1,0 +1,86 @@
+﻿[
+    {
+        "Success":  true,
+        "TemplateType":  "Cong_van",
+        "LayoutProfile":  "Short",
+        "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S01_Cong_van_1page_1.docx",
+        "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S01_Cong_van_1page_1.pdf",
+        "PageCount":  1,
+        "AntiOrphanApplied":  false,
+        "RepeatedHeaderTables":  0,
+        "UnreplacedCount":  0,
+        "UnreplacedList":  {
+
+                           }
+    },
+    {
+        "Success":  true,
+        "TemplateType":  "To_trinh",
+        "LayoutProfile":  "Short",
+        "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S02_To_trinh_1page.docx",
+        "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S02_To_trinh_1page.pdf",
+        "PageCount":  1,
+        "AntiOrphanApplied":  false,
+        "RepeatedHeaderTables":  0,
+        "UnreplacedCount":  0,
+        "UnreplacedList":  {
+
+                           }
+    },
+    {
+        "Success":  true,
+        "TemplateType":  "Giay_gioi_thieu",
+        "LayoutProfile":  "Short",
+        "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S04_Giay_gioi_thieu_1page.docx",
+        "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S04_Giay_gioi_thieu_1page.pdf",
+        "PageCount":  1,
+        "AntiOrphanApplied":  false,
+        "RepeatedHeaderTables":  0,
+        "UnreplacedCount":  0,
+        "UnreplacedList":  {
+
+                           }
+    },
+    {
+        "Success":  true,
+        "TemplateType":  "To_trinh",
+        "LayoutProfile":  "MultiPage",
+        "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S03_To_trinh_multipage.docx",
+        "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S03_To_trinh_multipage.pdf",
+        "PageCount":  4,
+        "AntiOrphanApplied":  true,
+        "RepeatedHeaderTables":  1,
+        "UnreplacedCount":  0,
+        "UnreplacedList":  {
+
+                           }
+    },
+    {
+        "Success":  true,
+        "TemplateType":  "Ke_hoach",
+        "LayoutProfile":  "MultiPage",
+        "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S06_Ke_hoach_multipage.docx",
+        "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S06_Ke_hoach_multipage.pdf",
+        "PageCount":  3,
+        "AntiOrphanApplied":  true,
+        "RepeatedHeaderTables":  0,
+        "UnreplacedCount":  0,
+        "UnreplacedList":  {
+
+                           }
+    },
+    {
+        "Success":  true,
+        "TemplateType":  "Bao_cao",
+        "LayoutProfile":  "MultiPage",
+        "DocxPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S07_Bao_cao_multipage.docx",
+        "PdfPath":  "D:\\TH\\vanban-ytcc\\audit\\artifacts\\P2\\P2_S07_Bao_cao_multipage.pdf",
+        "PageCount":  1,
+        "AntiOrphanApplied":  true,
+        "RepeatedHeaderTables":  0,
+        "UnreplacedCount":  0,
+        "UnreplacedList":  {
+
+                           }
+    }
+]
