@@ -1,0 +1,73 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": true,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "[HỌ TÊN LÃNH ĐẠO BGH]",
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "....",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "....",
+    "thang": "....",
+    "nam": "2026",
+    "trich_yeu": "Về việc xin chủ trương và phê duyệt dự toán kinh phí hoạt động chuyên môn"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược TP. Hồ Chí Minh",
+        "Phòng Tài chính - Kế toán",
+        "Phòng Quản trị - Thiết bị"
+      ]
+    },
+    {
+      "type": "p",
+      "italic": true,
+      "text": "Căn cứ Kế hoạch năm học 2026-2027 của Đại học Y Dược Thành phố Hồ Chí Minh;"
+    },
+    {
+      "type": "p",
+      "italic": true,
+      "text": "Căn cứ nhu cầu công tác đào tạo và nghiên cứu khoa học thực tế của Khoa Y tế Công cộng;"
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế Công cộng kính trình Ban Giám hiệu xem xét phê duyệt chủ trương và dự toán kinh phí tổ chức với các nội dung cụ thể như sau:"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Nội dung chi", "Số lượng", "Đơn giá (đồng)", "Thành tiền (đồng)"],
+      "rows": [
+        ["1", "Thù lao chuyên gia giảng dạy", "1", "3.000.000", "3.000.000"],
+        ["2", "Tài liệu tập huấn và biểu mẫu", "1", "1.500.000", "1.500.000"],
+        ["3", "Nước uống và teabreak phục vụ", "1", "1.500.000", "1.500.000"],
+        ["", "Tổng cộng", "", "", "6.000.000"]
+      ],
+      "col_widths": [12, 60, 20, 32, 36]
+    },
+    {
+      "type": "p",
+      "text": "Nguồn kinh phí: Đề xuất trích từ nguồn kinh phí hoạt động thường xuyên của Khoa năm 2026."
+    },
+    {
+      "type": "p",
+      "text": "Kính trình Ban Giám hiệu xem xét, phê duyệt để Khoa có cơ sở triển khai thực hiện./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Như kính gửi;",
+      "- Lưu: VT, VP_YTCC."
+    ],
+    "dept_code": "VP",
+    "creator_initials": "YTCC"
+  }
+}

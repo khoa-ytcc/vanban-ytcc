@@ -14,6 +14,174 @@ from docx.enum.section import WD_SECTION, WD_ORIENTATION
 from docx.oxml import parse_xml, OxmlElement
 from docx.oxml.ns import nsdecls, qn
 
+VALID_DOC_TYPES = ["cong_van", "to_trinh", "giay_gioi_thieu", "ke_hoach", "bao_cao", "chung"]
+VALID_BLOCK_TYPES = [
+    "paragraph", "p",
+    "heading", "h1", "h2", "h3",
+    "bullet",
+    "key_value",
+    "table",
+    "quote", "trich_dan",
+    "kinh_gui",
+    "landscape_section"
+]
+ALLOWED_ROOT_KEYS = [
+    "doc_type", "target_one_page", "title", "trich_yeu",
+    "has_bgh_approval", "bgh_approver_title", "bgh_approver_name",
+    "header", "blocks", "sign_block", "post_sign_blocks"
+]
+
+def add_markdown_runs(paragraph, text, font_size=Pt(13), base_bold=False, base_italic=False, font_name="Times New Roman", font_color=None):
+    """
+    Parser inline markdown chuyển đổi các cú pháp:
+      ***đậm nghiêng*** -> bold=True, italic=True
+      **in đậm**        -> bold=True, italic=base_italic
+      *in nghiêng*      -> bold=base_bold, italic=True
+      chữ thường        -> bold=base_bold, italic=base_italic
+    Đảm bảo không sót ký tự '*' trong Word và hỗ trợ tiếng Việt có dấu.
+    """
+    if not text:
+        return
+    text = str(text)
+    pattern = re.compile(r'(\*\*\*.*?\*\*\*|\*\*.*?\*\*|\*.*?\*)', re.DOTALL)
+    tokens = pattern.split(text)
+    for token in tokens:
+        if not token:
+            continue
+        if token.startswith("***") and token.endswith("***") and len(token) >= 6:
+            run_text = token[3:-3]
+            is_bold = True
+            is_italic = True
+        elif token.startswith("**") and token.endswith("**") and len(token) >= 4:
+            run_text = token[2:-2]
+            is_bold = True
+            is_italic = base_italic
+        elif token.startswith("*") and token.endswith("*") and len(token) >= 2:
+            run_text = token[1:-1]
+            is_bold = base_bold
+            is_italic = True
+        else:
+            run_text = token
+            is_bold = base_bold
+            is_italic = base_italic
+            
+        r = paragraph.add_run(run_text)
+        r.font.name = font_name
+        r.font.size = font_size
+        if is_bold:
+            r.font.bold = True
+        if is_italic:
+            r.font.italic = True
+        if font_color:
+            r.font.color.rgb = font_color
+
+def validate_blocks(blocks, prefix="blocks"):
+    errors = []
+    if not isinstance(blocks, list):
+        errors.append(f"{prefix}: phải là danh sách (list)")
+        return errors
+        
+    for idx, b in enumerate(blocks):
+        path = f"{prefix}[{idx}]"
+        if not isinstance(b, dict):
+            errors.append(f"{path}: mỗi block phải là một object (dict)")
+            continue
+            
+        btype = b.get("type")
+        if not btype:
+            errors.append(f"{path}: thiếu trường 'type'")
+            continue
+            
+        if btype not in VALID_BLOCK_TYPES:
+            hint = ""
+            if btype == "para":
+                hint = ", hãy dùng 'p' hoặc 'paragraph'"
+            elif btype in ("h", "head"):
+                hint = ", hãy dùng 'heading', 'h1', 'h2' hoặc 'h3'"
+            elif btype == "tbl":
+                hint = ", hãy dùng 'table'"
+            errors.append(f"{path}.type: kiểu '{btype}' không hợp lệ{hint}. Các kiểu hợp lệ: {', '.join(VALID_BLOCK_TYPES)}")
+            continue
+            
+        if btype in ("paragraph", "p"):
+            if "text" not in b and "prefix_bold" not in b:
+                errors.append(f"{path}: đoạn văn cần có trường 'text' hoặc 'prefix_bold'")
+        elif btype in ("heading", "h1", "h2", "h3"):
+            if "text" not in b:
+                errors.append(f"{path}: tiêu đề mục (heading) cần có trường 'text'")
+            if btype == "heading" and "level" in b and b["level"] not in (1, 2, 3):
+                errors.append(f"{path}.level: level heading phải là 1, 2 hoặc 3")
+        elif btype == "bullet":
+            if "text" not in b:
+                errors.append(f"{path}: danh sách bullet cần có trường 'text'")
+        elif btype in ("quote", "trich_dan"):
+            if "text" not in b:
+                errors.append(f"{path}: trích dẫn (quote) cần có trường 'text'")
+        elif btype == "table":
+            if "rows" not in b or not isinstance(b.get("rows"), list):
+                errors.append(f"{path}: bảng biểu (table) cần có mảng 'rows'")
+        elif btype == "key_value":
+            if "items" not in b or not isinstance(b.get("items"), list):
+                errors.append(f"{path}: key_value cần có mảng 'items'")
+        elif btype == "kinh_gui":
+            if "items" not in b and "text" not in b:
+                errors.append(f"{path}: kinh_gui cần có trường 'items' (mảng) hoặc 'text' (chuỗi)")
+        elif btype == "landscape_section":
+            if "blocks" not in b or not isinstance(b.get("blocks"), list):
+                errors.append(f"{path}: landscape_section cần có mảng 'blocks'")
+            else:
+                errors.extend(validate_blocks(b["blocks"], f"{path}.blocks"))
+                
+    return errors
+
+def validate_schema(data):
+    """
+    Strict Schema Validator kiểm tra toàn diện cấu trúc dữ liệu JSON đầu vào.
+    Trả về danh sách các lỗi phát hiện được.
+    """
+    errors = []
+    if not isinstance(data, dict):
+        return ["Dữ liệu JSON gốc phải là một dictionary/object."]
+        
+    # 1. Kiểm tra các root keys lạ
+    for k in data.keys():
+        if k not in ALLOWED_ROOT_KEYS:
+            errors.append(f"Root key không xác định: '{k}'. Các key hợp lệ: {', '.join(ALLOWED_ROOT_KEYS)}")
+            
+    # 2. Kiểm tra các trường bắt buộc ở root
+    required_root = ["doc_type", "header", "blocks", "sign_block"]
+    for req in required_root:
+        if req not in data:
+            errors.append(f"Thiếu trường bắt buộc ở root: '{req}'")
+            
+    doc_type = data.get("doc_type")
+    if doc_type and doc_type not in VALID_DOC_TYPES:
+        errors.append(f"doc_type '{doc_type}' không hợp lệ. Các loại hợp lệ: {', '.join(VALID_DOC_TYPES)}")
+        
+    # 3. Kiểm tra khối header
+    header = data.get("header")
+    if header is not None:
+        if not isinstance(header, dict):
+            errors.append("Trường 'header' phải là một dictionary/object.")
+            
+    # 4. Kiểm tra khối blocks
+    blocks = data.get("blocks")
+    if blocks is not None:
+        errors.extend(validate_blocks(blocks, "blocks"))
+        
+    # 5. Kiểm tra post_sign_blocks nếu có
+    post_blocks = data.get("post_sign_blocks")
+    if post_blocks is not None:
+        errors.extend(validate_blocks(post_blocks, "post_sign_blocks"))
+        
+    # 6. Kiểm tra sign_block
+    sign_block = data.get("sign_block")
+    if sign_block is not None:
+        if not isinstance(sign_block, dict):
+            errors.append("Trường 'sign_block' phải là một dictionary/object.")
+            
+    return errors
+
 def sanitize_trich_yeu(text):
     if not text:
         return ""
@@ -379,8 +547,16 @@ def render_blocks(doc, blocks, target_one_page=False):
                     r_it.font.name = "Times New Roman"
                     r_it.font.size = Pt(13 if not target_one_page else 12.5)
                     
-        elif btype == "heading":
-            level = b.get("level", 1)
+        elif btype in ("heading", "h1", "h2", "h3"):
+            if btype == "h1":
+                level = 1
+            elif btype == "h2":
+                level = 2
+            elif btype == "h3":
+                level = 3
+            else:
+                level = b.get("level", 1)
+                
             text = b.get("text", "")
             p_h = doc.add_paragraph()
             p_h.paragraph_format.keep_with_next = True
@@ -389,29 +565,19 @@ def render_blocks(doc, blocks, target_one_page=False):
                 p_h.paragraph_format.space_before = Pt(4 if target_one_page else 8)
                 p_h.paragraph_format.space_after = Pt(2 if target_one_page else 3)
                 p_h.paragraph_format.left_indent = Mm(0)
-                r_h = p_h.add_run(text)
-                r_h.font.name = "Times New Roman"
-                r_h.font.size = Pt(13 if not target_one_page else 12.5)
-                r_h.font.bold = True
+                add_markdown_runs(p_h, text, font_size=Pt(13 if not target_one_page else 12.5), base_bold=True)
             elif level == 2:
                 p_h.paragraph_format.space_before = Pt(3 if target_one_page else 5)
                 p_h.paragraph_format.space_after = Pt(1 if target_one_page else 2)
                 p_h.paragraph_format.left_indent = Mm(5)
-                r_h = p_h.add_run(text)
-                r_h.font.name = "Times New Roman"
-                r_h.font.size = Pt(13 if not target_one_page else 12.5)
-                r_h.font.bold = True
+                add_markdown_runs(p_h, text, font_size=Pt(13 if not target_one_page else 12.5), base_bold=True)
             else:
                 p_h.paragraph_format.space_before = Pt(2)
                 p_h.paragraph_format.space_after = Pt(1)
                 p_h.paragraph_format.left_indent = Mm(10)
-                r_h = p_h.add_run(text)
-                r_h.font.name = "Times New Roman"
-                r_h.font.size = Pt(13 if not target_one_page else 12.5)
-                r_h.font.bold = True
-                r_h.font.italic = True
+                add_markdown_runs(p_h, text, font_size=Pt(13 if not target_one_page else 12.5), base_bold=True, base_italic=True)
                 
-        elif btype == "paragraph":
+        elif btype in ("paragraph", "p"):
             text = b.get("text", "")
             prefix_bold = b.get("prefix_bold", "")
             align_str = b.get("align", "justify").lower()
@@ -444,11 +610,13 @@ def render_blocks(doc, blocks, target_one_page=False):
                 r_pfx.font.size = Pt(13 if not target_one_page else 12)
                 r_pfx.font.bold = True
                 
-            r = p.add_run(text)
-            r.font.name = "Times New Roman"
-            r.font.size = Pt(13 if not target_one_page else 12)
-            if b.get("bold", False): r.font.bold = True
-            if b.get("italic", False): r.font.italic = True
+            add_markdown_runs(
+                p,
+                text,
+                font_size=Pt(13 if not target_one_page else 12),
+                base_bold=b.get("bold", False),
+                base_italic=b.get("italic", False)
+            )
             
         elif btype == "bullet":
             text = b.get("text", "")
@@ -464,9 +632,47 @@ def render_blocks(doc, blocks, target_one_page=False):
             if is_last:
                 p.paragraph_format.keep_with_next = True
                 
-            r = p.add_run(f"{bullet_char}{text}")
-            r.font.name = "Times New Roman"
-            r.font.size = Pt(13 if not target_one_page else 12)
+            r_b = p.add_run(bullet_char)
+            r_b.font.name = "Times New Roman"
+            r_b.font.size = Pt(13 if not target_one_page else 12)
+            
+            add_markdown_runs(
+                p,
+                text,
+                font_size=Pt(13 if not target_one_page else 12),
+                base_bold=b.get("bold", False),
+                base_italic=b.get("italic", False)
+            )
+            
+        elif btype in ("quote", "trich_dan"):
+            text = b.get("text", "")
+            align_str = b.get("align", "justify").lower()
+            p = doc.add_paragraph()
+            if align_str == "center":
+                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+            elif align_str == "right":
+                p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            elif align_str == "left":
+                p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            else:
+                p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+                
+            p.paragraph_format.left_indent = Mm(15)
+            p.paragraph_format.right_indent = Mm(10)
+            p.paragraph_format.space_before = Pt(2)
+            p.paragraph_format.space_after = Pt(2 if target_one_page else 4)
+            p.paragraph_format.line_spacing = 1.05 if target_one_page else 1.15
+            
+            if is_last:
+                p.paragraph_format.keep_with_next = True
+                
+            add_markdown_runs(
+                p,
+                text,
+                font_size=Pt(12 if target_one_page else 12.5),
+                base_bold=b.get("bold", False),
+                base_italic=True
+            )
             
         elif btype == "key_value":
             # Dành cho Giấy giới thiệu hoặc biểu mẫu thông tin
@@ -516,10 +722,7 @@ def render_blocks(doc, blocks, target_one_page=False):
                     p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                     p.paragraph_format.space_before = Pt(1)
                     p.paragraph_format.space_after = Pt(1)
-                    r = p.add_run(str(htext))
-                    r.font.name = "Times New Roman"
-                    r.font.size = Pt(11.5 if not target_one_page else 10.5)
-                    r.font.bold = True
+                    add_markdown_runs(p, str(htext), font_size=Pt(11.5 if not target_one_page else 10.5), base_bold=True)
                 curr_row = 1
                 
             for rdata in rows_data:
@@ -534,16 +737,14 @@ def render_blocks(doc, blocks, target_one_page=False):
                     p.paragraph_format.space_after = Pt(1)
                     p.paragraph_format.line_spacing = 1.05
                     
-                    # Tự căn giữa nếu là STT hoặc mã số ngắn
+                    # Tự căn giữa nếu là STT hoặc mã số ngắn và không chứa markdown
                     val_str = str(val)
-                    if len(val_str) <= 4 or val_str.isdigit():
+                    if (len(val_str) <= 4 or val_str.isdigit()) and not ('*' in val_str):
                         p.alignment = WD_ALIGN_PARAGRAPH.CENTER
                     else:
                         p.alignment = WD_ALIGN_PARAGRAPH.LEFT
                         
-                    r = p.add_run(val_str)
-                    r.font.name = "Times New Roman"
-                    r.font.size = Pt(11 if not target_one_page else 10)
+                    add_markdown_runs(p, val_str, font_size=Pt(11 if not target_one_page else 10), base_bold=False, base_italic=False)
                 curr_row += 1
                 
             # Đặt độ rộng cột nếu có chỉ định (tính theo mm)
@@ -716,6 +917,11 @@ def build_document(json_path, output_docx_path):
     with open(json_path, "r", encoding="utf-8-sig") as f:
         data = json.load(f)
         
+    errors = validate_schema(data)
+    if errors:
+        err_msg = "Lỗi xác thực cấu trúc JSON (Schema Validation Errors):\n" + "\n".join(f"  - {e}" for e in errors)
+        raise ValueError(err_msg)
+        
     doc = Document()
     target_one_page = data.get("target_one_page", False)
     
@@ -775,11 +981,29 @@ def export_to_pdf(docx_path, pdf_path=None):
 def main():
     parser = argparse.ArgumentParser(description="YTCC JSON-to-DOCX & PDF Engine")
     parser.add_argument("--input", required=True, help="Đường dẫn file JSON mô tả văn bản")
-    parser.add_argument("--output", required=True, help="Đường dẫn file .docx đầu ra")
+    parser.add_argument("--output", help="Đường dẫn file .docx đầu ra")
     parser.add_argument("--pdf", action="store_true", help="Tự động gọi Word COM xuất PDF")
     parser.add_argument("--pdf-out", help="Đường dẫn file .pdf đầu ra tùy chọn")
+    parser.add_argument("--validate-only", action="store_true", help="Chỉ kiểm tra cấu trúc schema, không xuất file")
     
     args = parser.parse_args()
+    
+    if args.validate_only:
+        with open(args.input, "r", encoding="utf-8-sig") as f:
+            data = json.load(f)
+        errors = validate_schema(data)
+        if errors:
+            print("Lỗi cấu trúc schema:")
+            for e in errors:
+                print(f"  - {e}")
+            sys.exit(1)
+        else:
+            print(f"Schema hợp lệ: {args.input}")
+            sys.exit(0)
+            
+    if not args.output:
+        parser.error("Cần truyền --output khi không dùng --validate-only")
+        
     build_document(args.input, args.output)
     
     if args.pdf:

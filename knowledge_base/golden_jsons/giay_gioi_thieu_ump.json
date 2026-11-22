@@ -1,0 +1,62 @@
+{
+  "doc_type": "giay_gioi_thieu",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ump",
+    "so_hieu": "....",
+    "ma_loai": "GGT-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "....",
+    "thang": "....",
+    "nam": "2026",
+    "trich_yeu": "Giới thiệu học viên liên hệ thu thập số liệu nghiên cứu"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "text": "[TÊN CƠ QUAN / ĐƠN VỊ TIẾP NHẬN]"
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế Công cộng - Đại học Y Dược TP. Hồ Chí Minh trân trọng giới thiệu:"
+    },
+    {
+      "type": "key_value",
+      "items": [
+        { "key": "Ông/Bà", "value": "[HỌ VÀ TÊN HỌC VIÊN / SINH VIÊN]", "key_bold": true, "value_bold": true },
+        { "key": "Chức vụ / Học vị", "value": "Học viên Cao học", "key_bold": true },
+        { "key": "Chuyên ngành", "value": "Y tế Công cộng - Khóa 2024-2026", "key_bold": true },
+        { "key": "Cơ quan công tác", "value": "Khoa Y tế Công cộng, Đại học Y Dược TP. Hồ Chí Minh", "key_bold": true }
+      ]
+    },
+    {
+      "type": "p",
+      "prefix_bold": "Được cử đến:",
+      "text": "[TÊN CƠ QUAN / ĐƠN VỊ TIẾP NHẬN]"
+    },
+    {
+      "type": "p",
+      "prefix_bold": "Về việc:",
+      "text": "Liên hệ công tác, thu thập số liệu phục vụ đề tài nghiên cứu khoa học tốt nghiệp."
+    },
+    {
+      "type": "p",
+      "text": "Rất mong Quý Cơ quan tạo điều kiện thuận lợi để học viên hoàn thành nhiệm vụ học tập."
+    },
+    {
+      "type": "p",
+      "italic": true,
+      "text": "Giấy giới thiệu này có giá trị đến hết ngày [NGÀY HẾT HẠN]./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TL. HIỆU TRƯỞNG\nTRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Như kính gửi;",
+      "- Lưu: VT, QLĐT_YTCC."
+    ],
+    "dept_code": "QLĐT",
+    "creator_initials": "YTCC"
+  }
+}

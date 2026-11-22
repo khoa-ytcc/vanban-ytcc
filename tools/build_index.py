@@ -2,8 +2,10 @@ import os
 import re
 import json
 import sqlite3
+import datetime
 import unicodedata
 import pymupdf
+import docx
 
 def remove_accents(input_str):
     if not input_str:
@@ -13,16 +15,53 @@ def remove_accents(input_str):
     res = res.replace('đ', 'd').replace('Đ', 'D')
     return res.lower().strip()
 
+def extract_docx_text(path):
+    try:
+        doc = docx.Document(path)
+        lines = [p.text.strip() for p in doc.paragraphs if p.text.strip()]
+        for tbl in doc.tables:
+            for r in tbl.rows:
+                row_str = " | ".join(c.text.strip() for c in r.cells if c.text.strip())
+                if row_str:
+                    lines.append(row_str)
+        return "\n".join(lines)
+    except Exception:
+        return ""
+
+def extract_json_text(path):
+    try:
+        with open(path, "r", encoding="utf-8-sig") as f:
+            data = json.load(f)
+        texts = []
+        if "header" in data and isinstance(data["header"], dict):
+            for v in data["header"].values():
+                if isinstance(v, str): texts.append(v)
+        if "blocks" in data and isinstance(data["blocks"], list):
+            for b in data["blocks"]:
+                if isinstance(b, dict):
+                    if "text" in b: texts.append(str(b["text"]))
+                    if "prefix_bold" in b: texts.append(str(b["prefix_bold"]))
+                    if "items" in b and isinstance(b["items"], list):
+                        texts.extend(str(it) for it in b["items"])
+                    if b.get("type") == "table":
+                        for row in b.get("rows", []):
+                            texts.append(" | ".join(str(c) for c in row))
+        return "\n".join(texts)
+    except Exception:
+        return ""
+
 def main():
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     meta_dir = os.path.join(root_dir, "knowledge_base", "metadata_index")
     pdf_dir = os.path.join(root_dir, "knowledge_base", "sample_pdfs")
+    golden_dir = os.path.join(root_dir, "knowledge_base", "golden_jsons")
+    drafts_dir = os.path.join(root_dir, "drafts")
     db_path = os.path.join(meta_dir, "ytcc_history.db")
     
     cv_di_path = os.path.join(meta_dir, "cv_di_history.json")
     cv_den_path = os.path.join(meta_dir, "cv_den_history.json")
     
-    print(f"=== KHỞI TẠO INDEX SQLITE FTS5: {db_path} ===")
+    print(f"=== KHỞI TẠO & CẬP NHẬT INDEX SQLITE FTS5 (v2.5B): {db_path} ===")
     
     # 1. Quét toàn bộ file PDF trong sample_pdfs
     print("\n1. Đang quét 100% file PDF trong knowledge_base/sample_pdfs/...")
@@ -31,7 +70,6 @@ def main():
     print(f"   Tìm thấy {total_pdfs} file PDF.")
     
     pdf_records = []
-    # Map theo (nam, so_di) -> pdf item (ưu tiên file có tên CVDi_...)
     pdf_by_nam_sodi = {}
     matched_pdf_count = 0
     
@@ -41,6 +79,7 @@ def main():
     for fname in pdf_files:
         fpath = os.path.join(pdf_dir, fname)
         fsize = os.path.getsize(fpath)
+        mtime = os.path.getmtime(fpath)
         
         # Đọc qua pymupdf
         try:
@@ -53,22 +92,16 @@ def main():
         except Exception:
             num_pages = 0
             text_len = 0
+            total_text = ""
             is_scan = 1
         
-        # Phân bố trang
-        if num_pages == 1:
-            page_dist["1_page"] += 1
-        elif num_pages == 2:
-            page_dist["2_pages"] += 1
-        else:
-            page_dist["3_plus_pages"] += 1
+        if num_pages == 1: page_dist["1_page"] += 1
+        elif num_pages == 2: page_dist["2_pages"] += 1
+        else: page_dist["3_plus_pages"] += 1
             
-        if is_scan:
-            scan_counts["scan"] += 1
-        else:
-            scan_counts["has_text"] += 1
+        if is_scan: scan_counts["scan"] += 1
+        else: scan_counts["has_text"] += 1
             
-        # Parse tên file lấy so_di và nam
         m1 = re.match(r"^CVDi_(\d+)_SoDi_(\d+)_", fname, re.IGNORECASE)
         m2 = re.match(r"^([A-Za-z_]+)_SoDi_(\d+)\.pdf", fname, re.IGNORECASE)
         
@@ -86,10 +119,13 @@ def main():
         item = {
             "filename": fname,
             "filepath": rel_path,
+            "abs_path": fpath,
             "file_size": fsize,
+            "mtime": mtime,
             "page_count": num_pages,
             "is_scan": is_scan,
             "text_len": text_len,
+            "text": total_text if not is_scan else "",
             "so_di": matched_sodi,
             "nam": matched_nam
         }
@@ -98,7 +134,6 @@ def main():
         if matched_nam and matched_sodi:
             matched_pdf_count += 1
             key = (matched_nam, matched_sodi)
-            # Ưu tiên lưu file có tên dài CVDi_ nếu trùng
             if key not in pdf_by_nam_sodi or fname.startswith("CVDi_"):
                 pdf_by_nam_sodi[key] = item
                 
@@ -122,7 +157,6 @@ def main():
             nam INTEGER
         )
     """)
-    
     for p in pdf_records:
         cur.execute("""
             INSERT INTO pdf_samples (filename, filepath, file_size, page_count, is_scan, text_len, so_di, nam)
@@ -150,7 +184,7 @@ def main():
         )
     """)
     
-    # Bảng FTS5
+    # Bảng FTS5 Metadata
     cur.execute("""
         CREATE VIRTUAL TABLE documents_fts USING fts5(
             doc_id UNINDEXED,
@@ -164,6 +198,30 @@ def main():
             pdf_path UNINDEXED,
             pdf_pages UNINDEXED,
             pdf_is_scan UNINDEXED
+        )
+    """)
+    
+    # Bảng đồng bộ tăng dần indexed_files (v2.5B)
+    cur.execute("""
+        CREATE TABLE indexed_files (
+            file_path TEXT PRIMARY KEY,
+            mtime REAL,
+            file_size INTEGER,
+            source_type TEXT,
+            page_count INTEGER,
+            indexed_at TEXT
+        )
+    """)
+    
+    # Bảng FTS5 Toàn văn fulltext_fts (v2.5B)
+    cur.execute("""
+        CREATE VIRTUAL TABLE fulltext_fts USING fts5(
+            file_path UNINDEXED,
+            title,
+            content,
+            content_no_accent,
+            source_type UNINDEXED,
+            page_count UNINDEXED
         )
     """)
     
@@ -189,8 +247,7 @@ def main():
         pdf_pages = pdf_info["page_count"] if pdf_info else None
         pdf_size = pdf_info["file_size"] if pdf_info else None
         pdf_is_scan = pdf_info["is_scan"] if pdf_info else None
-        if pdf_info:
-            di_matched_records += 1
+        if pdf_info: di_matched_records += 1
             
         combined_text = f"{trich_yeu} {so_di} {nguoi_ky} {noi_nhan}"
         unaccent = remove_accents(combined_text)
@@ -240,21 +297,80 @@ def main():
         
     print(f"   Đã nạp {len(cv_den_list)} bản ghi CV đến.")
     
+    # 5. ĐÁNH CHỈ MỤC TOÀN VĂN (FULL-TEXT FTS5) (v2.5B)
+    print("\n4. Đang nạp toàn văn (Full-text FTS5) từ các file PDF có text...")
+    now_iso = datetime.datetime.now().isoformat()
+    fulltext_count = 0
+    
+    for p in pdf_records:
+        if p["is_scan"] == 0 and p["text"]:
+            c_text = p["text"]
+            c_unaccent = remove_accents(c_text)
+            rel_p = p["filepath"]
+            title = p["filename"]
+            
+            cur.execute("""
+                INSERT INTO fulltext_fts (file_path, title, content, content_no_accent, source_type, page_count)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (rel_p, title, c_text, c_unaccent, "sample_pdf", p["page_count"]))
+            
+            cur.execute("""
+                INSERT INTO indexed_files (file_path, mtime, file_size, source_type, page_count, indexed_at)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, (rel_p, p["mtime"], p["file_size"], "sample_pdf", p["page_count"], now_iso))
+            
+            fulltext_count += 1
+            
+    print(f"   Đã nạp toàn văn thành công {fulltext_count} file PDF mẫu.")
+    
+    # Quét thêm golden_jsons nếu đã có
+    if os.path.exists(golden_dir):
+        for gf in os.listdir(golden_dir):
+            if gf.lower().endswith(".json"):
+                gpath = os.path.join(golden_dir, gf)
+                gtxt = extract_json_text(gpath)
+                if gtxt:
+                    rel_g = os.path.relpath(gpath, root_dir).replace("\\", "/")
+                    cur.execute("""
+                        INSERT INTO fulltext_fts (file_path, title, content, content_no_accent, source_type, page_count)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                    """, (rel_g, gf, gtxt, remove_accents(gtxt), "golden_json", 1))
+                    cur.execute("""
+                        INSERT INTO indexed_files (file_path, mtime, file_size, source_type, page_count, indexed_at)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                    """, (rel_g, os.path.getmtime(gpath), os.path.getsize(gpath), "golden_json", 1, now_iso))
+                    fulltext_count += 1
+                    
+    # Quét thêm drafts docx/json nếu có
+    if os.path.exists(drafts_dir):
+        for root, _, files in os.walk(drafts_dir):
+            if "incoming" in root or "renders" in root:
+                continue
+            for df in files:
+                ext = os.path.splitext(df)[1].lower()
+                if ext in (".docx", ".json"):
+                    dpath = os.path.join(root, df)
+                    dtxt = extract_docx_text(dpath) if ext == ".docx" else extract_json_text(dpath)
+                    if dtxt and len(dtxt) > 30:
+                        rel_d = os.path.relpath(dpath, root_dir).replace("\\", "/")
+                        cur.execute("""
+                            INSERT INTO fulltext_fts (file_path, title, content, content_no_accent, source_type, page_count)
+                            VALUES (?, ?, ?, ?, ?, ?)
+                        """, (rel_d, df, dtxt, remove_accents(dtxt), f"draft_{ext.lstrip('.')}", 1))
+                        cur.execute("""
+                            INSERT INTO indexed_files (file_path, mtime, file_size, source_type, page_count, indexed_at)
+                            VALUES (?, ?, ?, ?, ?, ?)
+                        """, (rel_d, os.path.getmtime(dpath), os.path.getsize(dpath), f"draft_{ext.lstrip('.')}", 1, now_iso))
+                        fulltext_count += 1
+
     conn.commit()
     conn.close()
     
-    # 5. In báo cáo tổng kết
-    print("\n=== THỐNG KÊ KHO DỮ LIỆU ===")
-    print(f"- Tổng CV đi nạp: {len(cv_di_list)}")
-    print(f"- Tổng CV đến nạp: {len(cv_den_list)}")
-    print(f"- Tổng PDF quét: {total_pdfs}")
-    print(f"  + Tỷ lệ scan vs text: {scan_counts['scan']} scan ({scan_counts['scan']/total_pdfs*100:.1f}%) | {scan_counts['has_text']} has_text ({scan_counts['has_text']/total_pdfs*100:.1f}%)")
-    print(f"  + Phân bố trang:")
-    print(f"    * 1 trang: {page_dist['1_page']} ({page_dist['1_page']/total_pdfs*100:.1f}%)")
-    print(f"    * 2 trang: {page_dist['2_pages']} ({page_dist['2_pages']/total_pdfs*100:.1f}%)")
-    print(f"    * 3+ trang: {page_dist['3_plus_pages']} ({page_dist['3_plus_pages']/total_pdfs*100:.1f}%)")
-    print(f"- Số file PDF khớp với số đi trong lịch sử: {matched_pdf_count}/{total_pdfs} ({matched_pdf_count/total_pdfs*100:.1f}%)")
-    print(f"- Số bản ghi CV đi có file PDF liên kết: {di_matched_records}/{len(cv_di_list)} ({di_matched_records/len(cv_di_list)*100:.1f}%)")
+    db_size_mb = round(os.path.getsize(db_path) / (1024 * 1024), 2)
+    print(f"\n=== TỔNG KẾT BUILD INDEX v2.5B ===")
+    print(f"- CSDL SQLite: {db_path} ({db_size_mb} MB)")
+    print(f"- Tổng tài liệu Metadata (CV đi + đến): {len(cv_di_list) + len(cv_den_list)}")
+    print(f"- Tổng tài liệu Full-text FTS5: {fulltext_count}")
     print("=== HOÀN TẤT BUILD INDEX ===")
 
 if __name__ == "__main__":

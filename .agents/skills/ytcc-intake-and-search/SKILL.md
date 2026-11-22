@@ -1,50 +1,51 @@
 ---
 name: ytcc-intake-and-search
-description: Tiếp nhận văn bản đến hoặc yêu cầu soạn thảo mới và tra cứu tiền lệ văn bản Khoa YTCC qua SQLite FTS5 và kho PDF S0.
+description: Tiếp nhận văn bản đến hoặc yêu cầu soạn thảo mới và tra cứu tiền lệ văn bản Khoa YTCC qua SQLite FTS5 (Metadata & Full-text) và kho PDF S0.
 ---
 
-# SKILL: Tiếp nhận Yêu cầu & Tra cứu Tiền lệ (ytcc-intake-and-search)
+# SKILL: Tiếp nhận Yêu cầu & Tra cứu Tiền lệ (ytcc-intake-and-search v2.5)
 
-Skill này giúp Agent tiếp nhận thông tin đầu vào (văn bản đến, tin nhắn yêu cầu của lãnh đạo hoặc chuyên viên), phân tích cấu trúc sự việc và tự động tra cứu tiền lệ tương đồng trong lịch sử văn bản Khoa YTCC.
+Skill này giúp Agent tiếp nhận thông tin đầu vào (văn bản đến, tin nhắn yêu cầu của lãnh đạo hoặc chuyên viên), tự động tiền xử lý, phân tích cấu trúc sự việc và tra cứu tiền lệ tương đồng trong lịch sử văn bản Khoa YTCC.
 
 ---
 
 ## 1. Đầu vào (Inputs)
-- File văn bản đến (PDF, ảnh scan, Word) hoặc nội dung chỉ đạo từ người dùng.
+- File văn bản đến (.pdf, .docx, ảnh scan) hoặc nội dung chỉ đạo từ người dùng.
 - Thể loại dự kiến (Công văn, Tờ trình, Kế hoạch, Báo cáo, Giấy giới thiệu).
 
 ---
 
 ## 2. Quy trình Thực hiện (Steps)
 
-### Bước 1: Tiếp nhận & Bóc tách thực thể (Intake)
-Trích xuất đầy đủ 5 thông tin cốt lõi:
-1. **Đơn vị phát hành văn bản đến:** Tên chính xác của cơ quan gửi (Ví dụ: Cty TNHH Truyền hình Kết Nối, Bệnh viện ĐK Khu vực Thủ Đức...).
-2. **Số hiệu & Ngày văn bản đến:** Để đưa vào câu căn cứ phúc đáp (Ví dụ: *Căn cứ Công văn số 10-11/CV2026 ngày 10/11/2026 của...*).
-3. **Nội dung yêu cầu / Sự việc:** Tóm tắt nhiệm vụ (cử cán bộ tham gia hội đồng, xin kinh phí bảo trì, tổ chức thực tế cộng đồng...).
-4. **Nhân sự liên quan:** Họ tên, học hàm học vị, chức danh, bộ môn phụ trách nếu có.
-5. **Hạn xử lý (Deadline):** Ngày cần hoàn tất văn bản phúc đáp hoặc trình duyệt.
-
-### Bước 2: Tra cứu Tiền lệ Lịch sử (Search History)
-Chạy script tìm kiếm FTS5 SQLite với 2–3 biến thể từ khóa tiếng Việt (có dấu hoặc không dấu):
+### Bước 1: Tiếp nhận & Tiền xử lý (Ingest)
+Khi có file văn bản đến từ người dùng, chạy ngay lệnh ingest để tạo thư mục vụ việc chuẩn hóa:
 ```powershell
-d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\search_history.py --q "<từ_khóa_1>" --type all --limit 5
-d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\search_history.py --q "<từ_khóa_2>" --type di --limit 5
+d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\ytcc.py ingest --file "<đường_dẫn_file>" --case "<tên_case_viết_thường>"
 ```
-- **Tiêu chí chọn lọc tiền lệ:**
-  - Ưu tiên các bản ghi có đường dẫn file PDF thực tế (`pdf_path` khác rỗng).
-  - Chọn 1–2 văn bản có nội dung và thẩm quyền xử lý tương tự nhất.
+- Lệnh tự động tạo thư mục: `drafts/YYYY-MM/<YYYYMMDD_case>/incoming/`
+- Trích xuất toàn bộ text vào: `incoming/extracted_text.txt`
+- Tự động render các trang đầu ra ảnh PNG 150 DPI để Agent mở xem trực tiếp bằng `read_file`.
+
+### Bước 2: Tra cứu Tiền lệ & Toàn văn (Search History & Full-text)
+Chạy lệnh tìm kiếm FTS5 hợp nhất với cả chế độ metadata và toàn văn:
+```powershell
+d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\ytcc.py search "<từ_khóa>" --mode all --limit 5
+```
+- **Tra cứu toàn văn (`--mode fulltext`):** Giúp bóc tách ngay câu văn, căn cứ pháp lý và lập luận nằm sâu trong thân bài các file PDF cũ qua đoạn trích (snippet).
+- **Tham khảo bản mẫu vàng:** Đối chiếu ngay kho bản mẫu chuẩn tại `knowledge_base/golden_jsons/` để chọn khung JSON phù hợp nhất.
+- **Tham khảo ngân hàng căn cứ:** Mở `knowledge_base/memory/citations_bank.md` để lấy câu căn cứ chuẩn xác 100%, tuyệt đối không tự đoán số quyết định.
 
 ### Bước 3: Rút trích Văn phong & Căn cứ từ S0 (Inspect Reference)
-- Sử dụng subagent READ-ONLY hoặc Python PyMuPDF để đọc nhanh nội dung hoặc trích xuất text của PDF tiền lệ:
+- Sử dụng subagent READ-ONLY hoặc Python để đọc PDF tiền lệ:
   - Học cấu trúc câu văn mở đầu và kết luận đặc thù Khoa YTCC.
-  - Lấy mẫu các căn cứ pháp lý thường dùng.
-  - Kiểm tra danh sách `Kính gửi:` và `Nơi nhận:` thực tế (không tin cậy cột `noi_nhan` trong DB lịch sử).
+  - Lấy mẫu các căn cứ pháp lý thường dùng từ `citations_bank.md`.
+  - Kiểm tra danh sách `Kính gửi:` và `Nơi nhận:` thực tế (không tin cậy cột `noi_nhan` nội bộ trong DB lịch sử).
 
 ---
 
 ## 3. Đầu ra (Outputs)
 Một bảng tóm tắt nghiệp vụ gồm:
-1. **Thông tin bóc tách văn bản đến / yêu cầu mới.**
-2. **Tiền lệ sát nhất:** Số hiệu, trích yếu, trích đoạn văn phong phù hợp.
-3. **Đề xuất loại văn bản và hướng soạn thảo** cho Skill tiếp theo (`ytcc-draft-and-build`).
+1. **Thư mục vụ việc đã tạo:** `drafts/YYYY-MM/<YYYYMMDD_case>/`
+2. **Thông tin bóc tách văn bản đến:** Số hiệu, ngày ban hành, đơn vị gửi, nội dung chính.
+3. **Tiền lệ sát nhất:** File PDF nguồn, đoạn trích câu chữ phù hợp.
+4. **Bản mẫu vàng đề xuất:** Bản JSON tương ứng trong `knowledge_base/golden_jsons/`.

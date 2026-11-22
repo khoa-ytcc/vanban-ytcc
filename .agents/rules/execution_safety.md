@@ -9,25 +9,19 @@
 
 ---
 
-## 2. Quy trình 4 Bước Bắt buộc Trước khi Bàn giao Văn bản
+## 2. Quy trình 4 Bước Bắt buộc Trước khi Bàn giao Văn bản (v2.5)
 Mọi văn bản trước khi bàn giao cho người dùng hoặc chuyển Reviewer nghiệm thu bắt buộc phải trải qua đủ 4 bước tuần tự khép kín:
 ```mermaid
 flowchart LR
-    A["1. Soạn JSON"] --> B["2. build_doc.py + export_pdf.ps1"]
-    B --> C["3. inspect_pdf.py (Auto QA)"]
+    A["1. Soạn JSON (v2.5)"] --> B["2. ytcc.py build --pdf"]
+    B --> C["3. Auto QA & Telemetry Lố trang"]
     C --> D["4. Mở PNG soi trực quan 100% trang"]
     D --> E["Bàn giao Dự thảo"]
 ```
-1. **Bước 1 — Soạn JSON:** Lắp ráp file dữ liệu JSON chuẩn theo `knowledge_base/specs/doc_schema.md`.
-2. **Bước 2 — Sinh DOCX & PDF:** Gọi `tools/build_doc.py --input <file.json> --output <file.docx> --pdf` để chuyển đổi tự động qua Word COM.
-3. **Bước 3 — Kiểm định Tự động:** Chạy `tools/inspect_pdf.py <file.pdf>` để rà soát:
-   - Kích thước trang chuẩn A4 (210 × 297 mm hoặc 297 × 210 mm).
-   - Không bị rớt chữ `NAM` trên dòng Quốc hiệu.
-   - Không lặp từ `V/v` trong trích yếu.
-   - Trang 1 không có số trang; trang 2+ có số trang hợp lệ.
-   - Không sót placeholder dạng `{{...}}` hoặc giá trị `None` / `undefined`.
-   - Trang cuối không bị nguy cơ mồ côi khối chữ ký.
-4. **Bước 4 — Thẩm định Thị giác 100%:** Agent bắt buộc phải **mở trực tiếp toàn bộ ảnh PNG** được render ra để kiểm tra bằng mắt thường (độ liền nét vạch kẻ, cân đối lề trang, tiêu đề bảng, ô phê duyệt BGH). Nếu phát hiện lỗi thẩm mỹ, phải quay lại sửa JSON hoặc engine cho đến khi đạt độ hoàn thiện cao nhất.
+1. **Bước 1 — Soạn JSON:** Lắp ráp file dữ liệu JSON chuẩn theo `knowledge_base/specs/doc_schema.md` (hỗ trợ Inline Markdown `***...***`, `**...**`, `*...*`, bí danh `p`, `h1`-`h3`, `quote`).
+2. **Bước 2 — Sinh DOCX & PDF:** Gọi `tools/ytcc.py build <file.json> --pdf` (hoặc `tools/ytcc.py batch <batch.json>` cho nhiều file). Lệnh tự động chạy qua Validator (`validate_schema`) và Linter (`lint_doc`), sau đó xuất Word COM và PDF.
+3. **Bước 3 — Kiểm định Tự động & Telemetry:** `tools/inspect_pdf.py` tự động rà soát kích thước trang, rớt chữ NAM, lặp V/v, số trang, biến rác, và telemetry lố trang (`OVERFLOW_PAGE_2`). Nếu phát hiện `OVERFLOW_PAGE_2`, bắt buộc quay lại sửa JSON để văn bản co gọn vừa khít 1 trang.
+4. **Bước 4 — Thẩm định Thị giác 100%:** Agent bắt buộc phải **mở trực tiếp toàn bộ ảnh PNG** được render ra (`read_file`) để kiểm tra bằng mắt thường (độ liền nét vạch kẻ, cân đối lề trang, tiêu đề bảng, ô phê duyệt BGH, làm sạch ký tự `*`). Nếu phát hiện lỗi thẩm mỹ, phải quay lại sửa JSON hoặc engine cho đến khi đạt độ hoàn thiện cao nhất.
 
 ---
 

@@ -74,17 +74,27 @@
 
 ---
 
-## 3. CÁC KIỂU NỘI DUNG (BLOCKS)
+## 3. CÁC KIỂU NỘI DUNG (BLOCKS) VÀ ĐỊNH DẠNG INLINE MARKDOWN
 
-| Loại Block (`type`) | Các tham số | Ví dụ sử dụng |
-|:---|:---|:---|
-| `kinh_gui` | `items` (mảng) hoặc `text` (chuỗi) | Nơi gửi văn bản chính. Tự động thụt lề chuẩn. |
-| `paragraph` | `text`, `prefix_bold`, `bold`, `italic`, `align`, `indent` | Đoạn văn thân bài (căn đều, thụt đầu dòng 1.27 cm). |
-| `heading` | `level` (1, 2, 3), `text` | Tiêu đề mục. Tự động bật `keep_with_next = True` chống rớt mục. |
-| `bullet` | `text`, `bullet_char` (mặc định `"- "`) | Danh sách gạch đầu dòng thụt lề treo. |
-| `key_value` | `items`: mảng gồm `{key, value, key_bold, value_bold, value_italic}` | Dòng thông tin định dạng Học viên: ..., Ngành: ... |
-| `table` | `headers`, `rows`, `col_widths` (mảng mm), `header_shading` (tùy chọn mã hex, mặc định nền trắng theo chuẩn NĐ 30) | Bảng biểu có viền. Tự động bật **Repeat Header Row** (`w:tblHeader`) và chống tách dòng (`w:cantSplit`). |
-| `landscape_section`| `blocks`: mảng các block bên trong | **Ngắt Section chuyển trang A4 ngang (Landscape)** cho bảng rộng, sau đó tự quay lại dọc nếu cần. |
+### 3.1. Định dạng Inline Markdown hỗ trợ
+Toàn bộ nội dung chuỗi trong `paragraph` (`p`), `bullet`, `quote`, `heading` (`h1`-`h3`) và các ô trong `table` đều hỗ trợ cú pháp định dạng nội dòng (Inline Markdown):
+- `***nội dung***`: In đậm và in nghiêng (`bold=True`, `italic=True`).
+- `**nội dung**`: In đậm (`bold=True`).
+- `*nội dung*`: In nghiêng (`italic=True`).
+- Ký tự `*` được xử lý triệt để qua parser, bảo đảm không bị sót ký tự thừa trong Word/PDF.
+
+### 3.2. Bảng quy chuẩn các loại Block
+
+| Loại Block (`type`) | Bí danh (Alias) | Các tham số | Mô tả & Quy chuẩn |
+|:---|:---|:---|:---|
+| `paragraph` | `p` | `text`, `prefix_bold`, `bold`, `italic`, `align`, `indent` | Đoạn văn thân bài (căn đều, thụt đầu dòng 1.27 cm). |
+| `heading` | `h1`, `h2`, `h3` | `level` (1, 2, 3), `text` | Tiêu đề mục. Tự động bật `keep_with_next = True` chống rớt mục. |
+| `quote` | `trich_dan` | `text`, `align` | Đoạn trích dẫn lùi lề 2 bên (trái 15mm, phải 10mm), chữ in nghiêng. |
+| `bullet` | - | `text`, `bullet_char` (mặc định `"- "`) | Danh sách gạch đầu dòng thụt lề treo. |
+| `key_value` | - | `items`: mảng gồm `{key, value, key_bold, value_bold, value_italic}` | Dòng thông tin định dạng Học viên: ..., Ngành: ... |
+| `table` | - | `headers`, `rows`, `col_widths` (mảng mm), `header_shading` | Bảng biểu có viền. Tự động bật **Repeat Header Row** (`w:tblHeader`) và chống tách dòng (`w:cantSplit`). |
+| `kinh_gui` | - | `items` (mảng) hoặc `text` (chuỗi) | Nơi gửi văn bản chính. Tự động thụt lề chuẩn. |
+| `landscape_section`| - | `blocks`: mảng các block bên trong | **Ngắt Section chuyển trang A4 ngang (Landscape)** cho bảng rộng, sau đó tự quay lại dọc nếu cần. |
 
 ---
 

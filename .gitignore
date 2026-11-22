@@ -14,6 +14,9 @@ Thumbs.db
 knowledge_base/sample_pdfs/CVDi_*.pdf
 drafts/**/*.png
 drafts/**/renders/
+drafts/**/incoming/
+drafts/**/test_*/
+drafts/**/*test*
 knowledge_base/sample_pdfs/*.png
 
 # Archive & Sensitive local files
@@ -31,4 +34,6 @@ audit/p2_tests/*.docx
 audit/p2_tests/*.pdf
 audit/p2_tests/*.png
 audit/p2_tests/renders/
+audit/p25_tests/
 knowledge_base/metadata_index/*.db
+*.db

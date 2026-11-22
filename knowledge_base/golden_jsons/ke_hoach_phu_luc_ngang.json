@@ -1,0 +1,86 @@
+{
+  "doc_type": "ke_hoach",
+  "target_one_page": false,
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "....",
+    "ma_loai": "KH-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "....",
+    "thang": "....",
+    "nam": "2026",
+    "trich_yeu": "Kế hoạch tổ chức đợt thực địa cộng đồng năm học 2026-2027"
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "I. MỤC ĐÍCH VÀ YÊU CẦU"
+    },
+    {
+      "type": "p",
+      "text": "Nhằm trang bị cho sinh viên kiến thức và kỹ năng thực tế về điều tra dịch tễ học và đánh giá tình trạng sức khỏe cộng đồng tại tuyến y tế cơ sở, Khoa Y tế Công cộng ban hành Kế hoạch tổ chức thực địa với các mục tiêu trọng tâm sau:"
+    },
+    {
+      "type": "bullet",
+      "text": "Nâng cao năng lực phỏng vấn và thu thập thông tin y tế của sinh viên."
+    },
+    {
+      "type": "bullet",
+      "text": "Tăng cường gắn kết giữa Nhà trường với Trung tâm Y tế và Trạm Y tế địa phương."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "II. NỘI DUNG VÀ TIẾN ĐỘ THỰC HIỆN"
+    },
+    {
+      "type": "p",
+      "text": "Chi tiết phân công nhân sự, địa bàn và tiến độ hoạt động được quy định tại Phụ lục khổ ngang đính kèm dưới đây."
+    },
+    {
+      "type": "landscape_section",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "PHỤ LỤC: BẢNG PHÂN CÔNG ĐỊA BÀN VÀ TIẾN ĐỘ THỰC TẬP THỰC ĐỊA"
+        },
+        {
+          "type": "table",
+          "headers": ["STT", "Địa bàn (Huyện/Thị xã)", "Số lượng SV", "Giảng viên phụ trách", "Thời gian triển khai", "Đơn vị phối hợp"],
+          "rows": [
+            ["1", "Huyện Long Thành, Đồng Nai", "45", "TS. Nguyễn Văn A", "Tuần 1 - Tuần 2", "TTYT Huyện Long Thành"],
+            ["2", "Thị xã Bến Cát, Bình Dương", "50", "ThS. Trần Thị B", "Tuần 3 - Tuần 4", "TTYT Thị xã Bến Cát"],
+            ["3", "Huyện Cần Giờ, TP.HCM", "40", "TS. Lê Hoàng C", "Tuần 5 - Tuần 6", "TTYT Huyện Cần Giờ"]
+          ],
+          "col_widths": [15, 60, 25, 50, 45, 65]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "III. TỔ CHỨC THỰC HIỆN"
+    },
+    {
+      "type": "p",
+      "text": "Các Bộ môn trực thuộc Khoa, Ban cán sự lớp và các đơn vị liên quan chịu trách nhiệm phối hợp triển khai nghiêm túc kế hoạch này./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- BGH ĐHYD TP.HCM (để b/c);",
+      "- Phòng QLĐT, Phòng CTSV (để p/h);",
+      "- Các Bộ môn thuộc Khoa;",
+      "- Lưu: VT, VP_YTCC."
+    ],
+    "dept_code": "VP",
+    "creator_initials": "YTCC"
+  }
+}

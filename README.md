@@ -1,95 +1,87 @@
-# HỆ THỐNG TỰ ĐỘNG HÓA VĂN BẢN HÀNH CHÍNH KHOA YTCC (V2.0)
-> Giải pháp soạn thảo, tra cứu tiền lệ và xuất bản tài liệu chuẩn Nghị định 30/2020/NĐ-CP dành riêng cho Khoa Y tế Công cộng – Đại học Y Dược TP.HCM.
+# HỆ THỐNG TỰ ĐỘNG HÓA VĂN BẢN HÀNH CHÍNH KHOA YTCC (V2.5)
+> Giải pháp soạn thảo, tra cứu toàn văn FTS5, thẩm định tự động và xuất bản tài liệu chuẩn Nghị định 30/2020/NĐ-CP dành riêng cho Khoa Y tế Công cộng – Đại học Y Dược TP.HCM.
 
 ---
 
-## 1. Cấu trúc Thư mục v2.0
+## 1. Cấu trúc Thư mục v2.5
 ```text
 vanban-ytcc/
 ├── .agents/
 │   ├── rules/                # Bộ quy tắc vận hành, thể thức, thẩm quyền, an toàn
 │   └── skills/               # 4 kỹ năng tác nghiệp: Intake -> Draft -> QA -> Learn
 ├── audit/
-│   ├── p2_tests/             # Dữ liệu nghiệm thu 6 test case chuẩn hóa
-│   └── scripts/              # Các kịch bản chạy test tự động (P2, P3)
+│   ├── p2_tests/             # Dữ liệu nghiệm thu 6 test case chuẩn hóa P2
+│   ├── p25_tests/            # Thư mục kiểm thử hồi quy v2.5 (được gitignore)
+│   └── scripts/              # Kịch bản kiểm thử tự động (run_regression.py)
 ├── drafts/
-│   └── YYYY-MM/              # Thư mục lưu các bản nháp DOCX, PDF và JSON theo tháng
+│   └── YYYY-MM/              # Thư mục vụ việc: incoming/, v1, v2, final, renders/
 ├── knowledge_base/
-│   ├── memory/               # Bộ nhớ tự học: thói quen người dùng & bài học kinh nghiệm
-│   ├── metadata_index/       # SQLite FTS5 (ytcc_history.db) & JSON lịch sử
+│   ├── golden_jsons/         # Kho 5 bản mẫu vàng chuẩn hóa (0 ERROR)
+│   ├── memory/               # Bộ nhớ dài hạn v2: user_preferences, lessons_learned, citations_bank
+│   ├── metadata_index/       # SQLite FTS5 (ytcc_history.db: metadata + toàn văn) & JSON lịch sử
 │   ├── sample_pdfs/          # Kho 800 file PDF thực tế (S0 - Nguồn chân lý gốc)
 │   └── specs/                # Bảng đặc tả thể thức (ytcc_format_spec.md) & Schema (doc_schema.md)
 ├── tools/
-│   ├── build_doc.py          # Core Engine biên dịch JSON -> Word DOCX (+ xuất PDF)
-│   ├── build_index.py        # Tạo/cập nhật chỉ mục tìm kiếm SQLite FTS5 từ CSDL cũ
-│   ├── diff_draft.py         # So sánh khác biệt giữa bản AI tạo và bản người dùng đã sửa
-│   ├── export_pdf.ps1        # Script xuất PDF an toàn qua Word COM
-│   ├── inspect_pdf.py        # Công cụ tự động kiểm định thể thức PDF & render ảnh
-│   └── search_history.py     # CLI tra cứu nhanh tiền lệ lịch sử có/không dấu
-├── AGENTS.md                 # Quy chuẩn vận hành AI, phân vai & an toàn tiến trình
-├── GEMINI.md                 # Ngữ cảnh nạp nhanh cho trợ lý AI
-└── PLAN.md                   # Kế hoạch & tiến độ triển khai dự án
+│   ├── ytcc.py               # Unified CLI hợp nhất (build, batch, ingest, search, diff, sync, promote)
+│   ├── build_doc.py          # Core Engine JSON -> Word DOCX (Inline Markdown, Schema Validator)
+│   ├── lint_doc.py           # Linter hành chính (bảng tính, lịch thực tế, thể thức, placeholder)
+│   ├── export_pdf.ps1        # Script xuất PDF đơn lẻ & batch an toàn qua Word COM (UTF-8 BOM)
+│   ├── inspect_pdf.py        # Kiểm định thể thức PDF & Telemetry lố trang (target_one_page)
+│   ├── ingest_incoming.py    # Tiếp nhận & tiền xử lý văn bản đến (trích text, render ảnh)
+│   ├── search_history.py     # Tra cứu FTS5 (Metadata & Toàn văn kèm snippet ngữ cảnh)
+│   ├── sync_kb.py            # Đồng bộ tăng dần kho tri thức vào SQLite FTS5
+│   ├── fetch_mysql_delta.ps1 # Script phụ đồng bộ delta từ CSDL MySQL (nếu cấu hình)
+│   └── diff_draft.py         # So sánh khác biệt giữa bản AI tạo và bản người dùng đã sửa
+├── AGENTS.md                 # Quy chuẩn vận hành AI, phân vai & an toàn tiến trình v2.5
+├── GEMINI.md                 # Ngữ cảnh nạp nhanh cho trợ lý AI v2.5
+└── PLAN.md                   # Kế hoạch & tiến độ triển khai dự án v2.5
 ```
 
 ---
 
-## 2. Các Lệnh CLI Chính
+## 2. Hướng Dẫn Sử Dụng Unified CLI (`tools/ytcc.py`)
 
-Mọi lệnh chạy trong môi trường ảo Python đã được thiết lập sẵn:
+Mọi thao tác quản lý và vận hành văn bản đều được thực hiện qua công cụ dòng lệnh hợp nhất `tools/ytcc.py`:
 
-### A. Tra cứu Tiền lệ Văn bản Cũ (`search_history.py`)
-Tìm kiếm theo từ khóa có dấu hoặc không dấu trong toàn bộ kho 6.800+ văn bản lịch sử:
+### A. Soạn thảo, Kiểm định & Xuất PDF (`build`)
+Kiểm tra Schema -> Chạy Linter -> Dựng DOCX -> Xuất PDF -> Kiểm định tự động:
 ```powershell
-.venv\Scripts\python.exe tools/search_history.py --q "ghi hình" --type all --limit 5
-.venv\Scripts\python.exe tools/search_history.py --q "kinh phí" --type di --limit 5
+.venv\Scripts\python.exe tools/ytcc.py build "drafts/2026-11/case_01/v1.json" --pdf
+```
+- Bật cờ `--strict-final`: Nghiệm thu gắt gao, chặn hoàn toàn nếu còn placeholder.
+- Bật cờ `--force`: Bỏ qua cảnh báo linter để tiếp tục xuất file khi cần.
+
+### B. Xuất PDF Hàng loạt Siêu tốc qua 1 Phiên Word COM (`batch`)
+```powershell
+.venv\Scripts\python.exe tools/ytcc.py batch "audit/p25_tests/batch_p2/batch_tasks.json"
 ```
 
-### B. Sinh Tài liệu Word và PDF Cố định (`build_doc.py`)
-Biên dịch file dữ liệu JSON thành tài liệu Word `.docx` và tự động xuất bản PDF:
+### C. Tiếp nhận Văn bản Đến & Tiền xử lý (`ingest`)
+Tạo thư mục vụ việc, copy file gốc, trích xuất text và render ảnh PNG:
 ```powershell
-.venv\Scripts\python.exe tools/build_doc.py --input "drafts/2026-11/cv_phuc_dap.json" --output "drafts/2026-11/cv_phuc_dap.docx" --pdf
+.venv\Scripts\python.exe tools/ytcc.py ingest --file "duong/dan/CV_Den.pdf" --case "phuc_dap_tap_huan"
 ```
 
-### C. Kiểm định Thể thức & Xuất ảnh Soi trực quan (`inspect_pdf.py`)
-Kiểm tra tự động kích thước A4, chống rớt chữ `NAM`, đánh số trang, chống mồ côi chữ ký và render ảnh PNG:
+### D. Tra cứu Tiền lệ & Toàn văn FTS5 (`search`)
+Hỗ trợ tìm kiếm theo từ khóa có dấu/không dấu, hiển thị đoạn trích (snippet):
 ```powershell
-.venv\Scripts\python.exe tools/inspect_pdf.py "drafts/2026-11/cv_phuc_dap.pdf" --render-dir "drafts/2026-11/renders"
+.venv\Scripts\python.exe tools/ytcc.py search "Nghị định 30" --mode fulltext --limit 3
+.venv\Scripts\python.exe tools/ytcc.py search "dự toán" --mode all --limit 5
 ```
 
-### D. So sánh Bản Word Người dùng Đã Sửa (`diff_draft.py`)
-Soi các điểm khác biệt khi người dùng tự tay sửa file Word để AI học theo:
+### E. So sánh Khác biệt Bản sửa tay (`diff`)
 ```powershell
-.venv\Scripts\python.exe tools/diff_draft.py --ai "drafts/2026-11/ban_ai.docx" --final "drafts/2026-11/ban_sua.docx"
+.venv\Scripts\python.exe tools/ytcc.py diff --original "drafts/.../v1.docx" --revised "drafts/.../final.docx"
 ```
 
----
+### F. Đồng bộ Tăng dần Kho Tri thức (`sync`)
+Chỉ cập nhật các file mới hoặc vừa sửa trong < 1-2 giây:
+```powershell
+.venv\Scripts\python.exe tools/ytcc.py sync
+```
 
-## 3. Mẫu Câu Lệnh Giao Việc Nhanh Hằng Ngày Cho AI
-
-Chuyên viên chỉ cần gửi văn bản đến hoặc mô tả yêu cầu trong khung chat theo các mẫu sau:
-
-### Mẫu 1: Phúc đáp Công văn Đến
-> *"Có công văn đến số 10-11/CV2026 của Cty TNHH Truyền hình Kết Nối về việc mời ThS. Trương Nhật Khuê Tường tham gia ghi hình chương trình tư vấn sức khỏe. Hãy tra cứu tiền lệ tương tự của Khoa, soạn công văn phúc đáp đồng ý cử viên chức tham gia, xuất file DOCX/PDF vào `drafts/2026-11/` và kiểm định thể thức."*
-
-### Mẫu 2: Soạn Tờ trình Nội dung Mới (Trình Ban Giám hiệu)
-> *"Hãy tra cứu văn phong Tờ trình xin kinh phí của Khoa và soạn Tờ trình mới: 'Xin phê duyệt chủ trương và kinh phí tổ chức Hội thảo chuyên đề ứng dụng Trí tuệ nhân tạo (AI) trong công tác Y tế Công cộng năm 2026'. Kèm bảng dự trù kinh phí 4-5 hạng mục, có ô DUYỆT BAN GIÁM HIỆU căn giữa ở dưới."*
-
-### Mẫu 3: Soạn Kế hoạch Dài Nhiều Trang kèm Bảng biểu Khổ ngang
-> *"Soạn Kế hoạch: 'Tổ chức đợt Thực tế cộng đồng cho sinh viên khóa 2026 tại tỉnh Đồng Nai'. Phần đầu khổ dọc gồm mục đích, thời gian, tiến độ; trang cuối chuyển sang khổ ngang (Landscape) chứa Phụ lục bảng phân công giảng viên hướng dẫn nhiều cột. Đánh số trang tự động từ trang 2."*
-
-### Mẫu 4: Soạn Giấy Giới Thiệu
-> *"Làm Giấy giới thiệu cho học viên Lê Văn Hùng, lớp CK2-2024 đến Trung tâm Kiểm soát bệnh tật TP.HCM (HCDC) thu thập số liệu luận văn chuyên khoa. Header cấp Trường UMP, chức danh ký TL. Hiệu trưởng / Trưởng khoa."*
-
----
-
-## 4. Cách Dạy AI Hiểu Ý Hơn Mỗi Ngày (Cơ chế Memory Loop)
-
-Chuyên viên có thể "huấn luyện" AI ghi nhớ thói quen soạn thảo qua 2 cách đơn giản:
-
-### Cách 1: Nhắc nhở Trực tiếp trên Chat
-> *"Hãy ghi nhớ: Từ nay chuyên viên soạn thảo chính của mảng Quản lý Đào tạo là cô Nguyễn Thị Tuyết Nhung, mã lưu hồ sơ tại nơi nhận là `QLĐT_NTTN`."*  
-> → AI sẽ tự động ghi vào `knowledge_base/memory/user_preferences.md` để tự áp dụng cho mọi văn bản sau này.
-
-### Cách 2: Gửi File Word Đã Chỉnh Sửa Tay
-> *"Tôi vừa chỉnh sửa lại câu chữ trong file `drafts/2026-11/ca1_phuc_dap_ghi_hinh_htv7.docx`. Hãy chạy so sánh và ghi nhớ bài học kinh nghiệm để lần sau viết chuẩn hơn."*  
-> → AI sẽ chạy `diff_draft.py`, bóc tách các điểm sửa và tự đúc kết thành bài học trong `knowledge_base/memory/lessons_learned.md`.
+### G. Thăng hạng Bản mẫu Vàng (`promote`)
+Kiểm tra đạt 0 ERROR và lưu mẫu chuẩn vào `knowledge_base/golden_jsons/`:
+```powershell
+.venv\Scripts\python.exe tools/ytcc.py promote "drafts/.../final.json" --name "to_trinh_mau_moi.json"
+```

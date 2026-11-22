@@ -1,0 +1,67 @@
+{
+  "doc_type": "bao_cao",
+  "target_one_page": false,
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "....",
+    "ma_loai": "BC-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "....",
+    "thang": "....",
+    "nam": "2026",
+    "trich_yeu": "Báo cáo tổng kết công tác chuyên môn và đào tạo năm học 2025-2026"
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "I. CÔNG TÁC ĐÀO TẠO VÀ QUẢN LÝ NGƯỜI HỌC"
+    },
+    {
+      "type": "p",
+      "text": "Trong năm học 2025-2026, Khoa Y tế Công cộng đã duy trì và nâng cao chất lượng giảng dạy đại học và sau đại học, hoàn thành 100% khối lượng giờ giảng theo kế hoạch của Nhà trường."
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Bậc đào tạo", "Quy mô sinh viên", "Tỷ lệ tốt nghiệp đúng hạn", "Ghi chú"],
+      "rows": [
+        ["1", "Đại học chính quy", "320", "96.5%", "Đạt chỉ tiêu"],
+        ["2", "Thạc sĩ Y tế Công cộng", "45", "92.0%", "Đạt chỉ tiêu"],
+        ["3", "Tiến sĩ Y tế Công cộng", "12", "100%", "Đạt chỉ tiêu"]
+      ],
+      "col_widths": [15, 60, 40, 50, 40]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "II. CÔNG TÁC NGHIÊN CỨU KHOA HỌC VÀ HỢP TÁC QUỐC TẾ"
+    },
+    {
+      "type": "p",
+      "text": "Khoa đã chủ trì 05 đề tài cấp cơ sở, nghiệm thu đúng tiến độ 02 đề tài cấp Đại học Quốc gia và công bố hơn 15 bài báo trên các tạp chí quốc tế uy tín thuộc danh mục ISI/Scopus."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "III. ĐÁNH GIÁ CHUNG VÀ PHƯƠNG HƯỚNG NĂM HỌC TỚI"
+    },
+    {
+      "type": "p",
+      "text": "Toàn thể viên chức và người lao động của Khoa luôn nêu cao tinh thần trách nhiệm, đoàn kết và hoàn thành tốt nhiệm vụ được giao. Năm học 2026-2027, Khoa tập trung kiểm định chương trình đào tạo theo chuẩn quốc tế."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Ban Giám hiệu (để b/c);",
+      "- Phòng QLĐT, Phòng KHCN (để p/h);",
+      "- Lưu: VT, VP_YTCC."
+    ],
+    "dept_code": "VP",
+    "creator_initials": "YTCC"
+  }
+}

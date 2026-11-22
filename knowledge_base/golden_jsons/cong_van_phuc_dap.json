@@ -1,0 +1,74 @@
+{
+  "doc_type": "cong_van",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "....",
+    "ma_loai": "YTCC-VP",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "....",
+    "thang": "....",
+    "nam": "2026",
+    "trich_yeu": "V/v cử viên chức tham gia công tác chuyên môn theo đề nghị"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược TP. Hồ Chí Minh",
+        "Đơn vị đề nghị / Đối tác"
+      ]
+    },
+    {
+      "type": "p",
+      "italic": true,
+      "text": "Căn cứ văn bản đề nghị về việc phối hợp triển khai công tác chuyên môn;"
+    },
+    {
+      "type": "p",
+      "italic": true,
+      "text": "Căn cứ ý kiến chỉ đạo của Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;"
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế Công cộng trân trọng phúc đáp và thông báo ý kiến như sau:"
+    },
+    {
+      "type": "p",
+      "prefix_bold": "1. Về nhân sự:",
+      "text": "Thống nhất cử viên chức [HỌ VÀ TÊN VIÊN CHỨC] – Giảng viên [TÊN BỘ MÔN], Khoa Y tế Công cộng tham gia thực hiện nhiệm vụ chuyên môn theo đề nghị."
+    },
+    {
+      "type": "bullet",
+      "text": "Thời gian thực hiện: [THỜI GIAN CỤ THỂ]."
+    },
+    {
+      "type": "bullet",
+      "text": "Địa điểm: [ĐỊA ĐIỂM TỔ CHỨC]."
+    },
+    {
+      "type": "p",
+      "prefix_bold": "2. Trách nhiệm viên chức:",
+      "text": "Viên chức được cử có trách nhiệm sắp xếp công tác giảng dạy tại Khoa, hoàn thành tốt nhiệm vụ được giao và tuân thủ đúng quy định của Nhà trường."
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế Công cộng trân trọng thông báo đến Quý cơ quan để phối hợp triển khai thực hiện./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Như kính gửi;",
+      "- BCN Khoa (để b/c);",
+      "- [TÊN BỘ MÔN] (để biết);",
+      "- Lưu: VT, VP_YTCC."
+    ],
+    "dept_code": "VP",
+    "creator_initials": "YTCC"
+  }
+}

@@ -1,4 +1,4 @@
-# AGENTS.md - QUY CHUẨN VẬN HÀNH AI V2.0 (KHOA YTCC)
+# AGENTS.md - QUY CHUẨN VẬN HÀNH AI V2.5 (KHOA YTCC)
 
 Tài liệu này xác lập quy chuẩn vận hành, phân vai và các ràng buộc kỹ thuật bắt buộc cho toàn bộ dự án tự động hóa văn bản hành chính Khoa Y tế Công cộng (Đại học Y Dược TP.HCM).
 
@@ -11,30 +11,31 @@ Tài liệu này xác lập quy chuẩn vận hành, phân vai và các ràng bu
 
 ---
 
-## 2. Bảng Định tuyến Rules & Skills Nghiệp vụ v2.0
+## 2. Bảng Định tuyến Rules & Skills Nghiệp vụ v2.5
 
 ### A. Bộ Rules Cốt lõi (`.agents/rules/`)
 | Quy tắc | Đường dẫn | Trọng tâm áp dụng |
 |:---|:---|:---|
 | **Thể thức & Văn phong** | [.agents/rules/format_and_style.md](file:///d:/TH/vanban-ytcc/.agents/rules/format_and_style.md) | Header 2 cột, vạch kẻ chuẩn S0, adaptive layout 1 trang vs nhiều trang, bảng nền trắng NĐ 30, dòng lưu Khoa YTCC. |
 | **Thẩm quyền & Định tuyến** | [.agents/rules/authority_and_routing.md](file:///d:/TH/vanban-ytcc/.agents/rules/authority_and_routing.md) | Thẩm quyền ký, quy tắc placeholder người ký, cảnh báo trường `noi_nhan` nội bộ trong CSDL lịch sử, cách xác định cơ quan nhận thật. |
-| **An toàn & Tiến trình** | [.agents/rules/execution_safety.md](file:///d:/TH/vanban-ytcc/.agents/rules/execution_safety.md) | Thứ bậc S0 > S1 > S2, quy trình bắt buộc 4 bước (soạn JSON → DOCX/PDF → QA script → soi ảnh PNG 100%), cấm kill WINWORD hàng loạt. |
+| **An toàn & Tiến trình** | [.agents/rules/execution_safety.md](file:///d:/TH/vanban-ytcc/.agents/rules/execution_safety.md) | Thứ bậc S0 > S1 > S2, quy trình bắt buộc 4 bước qua `ytcc.py`, linter hành chính, telemetry lố trang, cấm kill WINWORD hàng loạt. |
 
 ### B. Bộ Skills Thực chiến (`.agents/skills/`)
 | Kỹ năng | Đường dẫn | Nhiệm vụ chính |
 |:---|:---|:---|
-| **ytcc-intake-and-search** | [.agents/skills/ytcc-intake-and-search/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-intake-and-search/SKILL.md) | Tiếp nhận văn bản đến/yêu cầu mới, bóc tách thực thể, tra cứu FTS5 SQLite và đối chiếu PDF S0 để học cấu trúc lập luận. |
-| **ytcc-draft-and-build** | [.agents/skills/ytcc-draft-and-build/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-draft-and-build/SKILL.md) | Soạn thảo JSON chuẩn schema, tích hợp placeholder thông tin thiếu, gọi `build_doc.py --pdf` tạo song song Word DOCX và PDF. |
-| **ytcc-qa-review** | [.agents/skills/ytcc-qa-review/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-qa-review/SKILL.md) | Chạy kiểm định tự động `inspect_pdf.py` và thẩm định thị giác trực tiếp bằng mắt thường qua 100% ảnh PNG trước khi bàn giao. |
-| **ytcc-learn-and-memorize** | [.agents/skills/ytcc-learn-and-memorize/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-learn-and-memorize/SKILL.md) | Tự học thói quen người dùng qua góp ý chat hoặc chạy `diff_draft.py` khi người dùng sửa Word, cập nhật bộ nhớ dài hạn. |
+| **ytcc-intake-and-search** | [.agents/skills/ytcc-intake-and-search/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-intake-and-search/SKILL.md) | `ytcc.py ingest` tiền xử lý văn bản đến, `ytcc.py search --mode all` tra cứu FTS5 (metadata & toàn văn) và kho PDF S0. |
+| **ytcc-draft-and-build** | [.agents/skills/ytcc-draft-and-build/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-draft-and-build/SKILL.md) | Soạn thảo JSON v2.5 (hỗ trợ Inline Markdown), gọi `ytcc.py build --pdf` (hoặc `batch`) tạo song song Word DOCX và PDF. |
+| **ytcc-qa-review** | [.agents/skills/ytcc-qa-review/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-qa-review/SKILL.md) | Đọc Linter & Telemetry `OVERFLOW_PAGE_2`, thẩm định thị giác trực tiếp bằng mắt thường qua 100% ảnh PNG trước khi bàn giao. |
+| **ytcc-learn-and-memorize** | [.agents/skills/ytcc-learn-and-memorize/SKILL.md](file:///d:/TH/vanban-ytcc/.agents/skills/ytcc-learn-and-memorize/SKILL.md) | So sánh bản sửa tay qua `ytcc.py diff`, lưu bài học gắn tag [TAG] (trần 50 dòng), thăng hạng mẫu vàng bằng `ytcc.py promote`. |
 
 ---
 
 ## 3. Hệ thống Tự học & Bộ nhớ Dài hạn (Memory Loop)
 > [!IMPORTANT] NGUYÊN TẮC BẮT BUỘC TRƯỚC MỖI PHIÊN SOẠN THẢO
-> Trước khi tạo bất kỳ văn bản nào, Agent bắt buộc phải đọc 2 file bộ nhớ sau:
+> Trước khi tạo bất kỳ văn bản nào, Agent bắt buộc phải đọc 3 file bộ nhớ sau:
 > 1. [knowledge_base/memory/user_preferences.md](file:///d:/TH/vanban-ytcc/knowledge_base/memory/user_preferences.md): Nắm thói quen chuyên viên, mã lưu văn thư và danh sách lãnh đạo ký đã được xác nhận.
-> 2. [knowledge_base/memory/lessons_learned.md](file:///d:/TH/vanban-ytcc/knowledge_base/memory/lessons_learned.md): Rà soát các bài học kinh nghiệm về câu từ, thể thức và kỹ thuật để tuyệt đối không lặp lại lỗi cũ.
+> 2. [knowledge_base/memory/lessons_learned.md](file:///d:/TH/vanban-ytcc/knowledge_base/memory/lessons_learned.md): Rà soát bài học kinh nghiệm có gắn tag `[ALL]`, `[CV]`, `[TTr]`,... để không lặp lại lỗi cũ (trần <= 50 dòng).
+> 3. [knowledge_base/memory/citations_bank.md](file:///d:/TH/vanban-ytcc/knowledge_base/memory/citations_bank.md): Ngân hàng căn cứ pháp lý và quy định nội bộ chuẩn; tuyệt đối không tự đoán số quyết định.
 
 ---
 

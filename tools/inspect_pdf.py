@@ -4,7 +4,7 @@ import sys
 import argparse
 import pymupdf
 
-def inspect_pdf(pdf_path, render_dir=None, dpi=150):
+def inspect_pdf(pdf_path, render_dir=None, dpi=150, target_one_page=False):
     if not os.path.exists(pdf_path):
         print(f"Lỗi: Không tìm thấy file PDF tại: {pdf_path}")
         return False
@@ -16,10 +16,35 @@ def inspect_pdf(pdf_path, render_dir=None, dpi=150):
     print(f"BÁO CÁO KIỂM ĐỊNH PDF: {os.path.basename(pdf_path)}")
     print(f"Đường dẫn: {os.path.abspath(pdf_path)}")
     print(f"Tổng số trang: {total_pages}")
+    if target_one_page:
+        print("Mục tiêu định dạng: 1 trang duy nhất (target_one_page = True)")
     print("=" * 80)
     
     warnings = []
     errors = []
+    
+    # Kiểm tra telemetry tràn trang nếu bật target_one_page
+    if target_one_page and total_pages >= 2:
+        page2 = doc[1]
+        p2_text = page2.get_text()
+        p2_lines = [l.strip() for l in p2_text.split("\n") if l.strip()]
+        p2_chars = len(p2_text.strip())
+        blocks = page2.get_text("blocks")
+        text_blocks = [b for b in blocks if len(b) > 4 and b[4].strip() and (len(b) <= 6 or b[6] == 0)]
+        if text_blocks:
+            min_y = min(b[1] for b in text_blocks)
+            max_y = max(b[3] for b in text_blocks)
+            used_h = max_y - min_y
+            pct_height = round((used_h / page2.rect.height) * 100, 1)
+        else:
+            pct_height = 0.0
+            
+        overflow_msg = (
+            f"OVERFLOW_PAGE_2: Văn bản yêu cầu 1 trang (target_one_page=True) nhưng bị tràn sang {total_pages} trang! "
+            f"Trang 2 chiếm {len(p2_lines)} dòng, {p2_chars} ký tự, {pct_height}% chiều cao trang."
+        )
+        errors.append(overflow_msg)
+        print(f"\n❌ [CẢNH BÁO LỐ TRANG] {overflow_msg}")
     
     # 1. Kiểm tra kích thước và hướng từng trang
     print("\n1. KÍCH THƯỚC & ĐỊNH DẠNG TRANG:")
@@ -141,9 +166,10 @@ def main():
     parser.add_argument("--pdf", required=True, help="Đường dẫn file PDF cần kiểm tra")
     parser.add_argument("--render-dir", help="Thư mục xuất ảnh PNG để soi trực quan")
     parser.add_argument("--dpi", type=int, default=150, help="Độ phân giải ảnh PNG (mặc định 150)")
+    parser.add_argument("--target-one-page", action="store_true", help="Kích hoạt kiểm tra telemetry lố trang (chặn nếu > 1 trang)")
     
     args = parser.parse_args()
-    success = inspect_pdf(args.pdf, args.render_dir, args.dpi)
+    success = inspect_pdf(args.pdf, args.render_dir, args.dpi, target_one_page=args.target_one_page)
     sys.exit(0 if success else 1)
 
 if __name__ == "__main__":

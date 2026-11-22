@@ -1,56 +1,58 @@
 ---
 name: ytcc-draft-and-build
-description: Lắp ráp cấu trúc JSON theo doc_schema.md, soạn thảo nội dung hành chính chuẩn Khoa YTCC và tự động sinh file DOCX/PDF qua Word COM.
+description: Lắp ráp cấu trúc JSON theo doc_schema.md v2.5, soạn thảo nội dung hành chính chuẩn Khoa YTCC (hỗ trợ Inline Markdown) và tự động sinh file DOCX/PDF qua Word COM bằng lệnh ytcc.py.
 ---
 
-# SKILL: Soạn thảo Dữ liệu & Sinh Văn bản (ytcc-draft-and-build)
+# SKILL: Soạn thảo Dữ liệu & Sinh Văn bản (ytcc-draft-and-build v2.5)
 
-Skill này chuyển đổi các thông tin nghiệp vụ và văn phong tiền lệ thành file dữ liệu JSON chuẩn, sau đó gọi Engine `build_doc.py` để tạo tài liệu Word và xuất bản PDF cố định.
+Skill này chuyển đổi các thông tin nghiệp vụ và văn phong tiền lệ thành file dữ liệu JSON chuẩn v2.5, tự động chạy qua Validator & Linter, sau đó gọi Engine tạo tài liệu Word và xuất bản PDF cố định bằng **01 lệnh duy nhất**.
 
 ---
 
 ## 1. Đầu vào (Inputs)
 - Dữ liệu bóc tách từ yêu cầu mới hoặc văn bản đến (kết quả từ `ytcc-intake-and-search`).
-- Mẫu câu, lập luận học từ văn bản tiền lệ.
-- Thư mục lưu trữ: `drafts/YYYY-MM/` (Ví dụ: `drafts/2026-11/`).
+- Mẫu câu, lập luận học từ văn bản tiền lệ hoặc bản mẫu vàng `knowledge_base/golden_jsons/`.
+- Thư mục vụ việc: `drafts/YYYY-MM/<YYYYMMDD_case>/`.
 
 ---
 
 ## 2. Quy trình Thực hiện (Steps)
 
-### Bước 1: Xác định Loại Văn bản & Thiết lập Khung
-Chọn 1 trong các loại văn bản chính:
-- `cong_van`: Trích yếu đặt ở góc trái dưới số hiệu. Phù hợp trao đổi công tác với cơ quan bên ngoài hoặc thông báo nội bộ.
-- `to_trinh`: Tiêu đề lớn in hoa `TỜ TRÌNH`, trích yếu có đường kẻ ngang bên dưới. Bật `"has_bgh_approval": true` nếu trình cấp Ban Giám hiệu.
-- `giay_gioi_thieu`: Header tự động đổi thành cấp Trường (`header_level: "ump"`), chức danh ký `TL. HIỆU TRƯỞNG\nTRƯỞNG KHOA`.
-- `ke_hoach`: Kế hoạch hoạt động có tiến độ, phân công nhiệm vụ.
-- `bao_cao`: Báo cáo đánh giá, tổng kết.
-- `chung`: Định dạng chung khác.
+### Bước 1: Soạn thảo JSON Chuẩn v2.5
+1. **Thiết lập loại văn bản & cờ tối ưu:**
+   - `cong_van`: Trích yếu ở cột 1 dưới số hiệu.
+   - `to_trinh`: Tiêu đề `TỜ TRÌNH`, mã loại bắt buộc chứa `TTr` (ví dụ `TTr-YTCC`), bật `"has_bgh_approval": true` nếu trình BGH.
+   - `giay_gioi_thieu`: Bắt buộc `"header_level": "ump"` và mã loại `GGT-YTCC`.
+   - `ke_hoach`: Mã loại `KH-YTCC`.
+   - `bao_cao`: Mã loại `BC-YTCC`.
+   - Bật `"target_one_page": true` nếu văn bản ngắn (1 trang).
+2. **Sử dụng cú pháp linh hoạt v2.5:**
+   - Dùng bí danh: `p` (thay paragraph), `h1`, `h2`, `h3` (thay heading), `quote` (trích dẫn lùi lề nghiêng).
+   - Dùng cú pháp **Inline Markdown**: `***đậm nghiêng***`, `**in đậm**`, `*in nghiêng*` trong đoạn văn, gạch đầu dòng, ô bảng biểu.
+3. **Quy tắc Placeholder thông tin chưa rõ:**
+   - `so_hieu`: để `"...."` (Ví dụ: `Số: ..../YTCC-VP`).
+   - `signer_name`: để `"[HỌ TÊN NGƯỜI KÝ]"`.
+   - Căn cứ nội bộ: trích từ `citations_bank.md` hoặc để `"[CHỜ NGƯỜI DÙNG XÁC NHẬN SỐ/NGÀY]"`.
+4. **Lưu file JSON:** Lưu tại `drafts/YYYY-MM/<YYYYMMDD_case>/v1.json` (hoặc `v2.json`, `final.json`).
 
-Nếu văn bản ngắn dự kiến chỉ trong 1 trang, bắt buộc bật `"target_one_page": true`.
-
-### Bước 2: Soạn thảo Nội dung & Xử lý Placeholder
-1. **Kết hợp linh hoạt:** Đưa các thông tin mới của sự việc vào cấu trúc lập luận chuẩn mực của Khoa YTCC.
-2. **Quy tắc Placeholder cho thông tin chưa rõ:**
-   - Số hiệu văn bản đi: để `"...."` (Ví dụ: `Số: ..../YTCC-HCTC`).
-   - Ngày tháng ký: để `"...."` nếu chưa rõ ngày phát hành chính thức.
-   - Họ tên người ký: nếu người dùng chưa chỉ định rõ đích danh người ký hiện thời, bắt buộc ghi `"[HỌ TÊN NGƯỜI KÝ]"`.
-   - Chức danh ký: nếu chưa rõ ai ký thay, dùng `"[CHỨC VỤ NGƯỜI KÝ]"` hoặc `TRƯỞNG KHOA`.
-   - Chuyên viên soạn thảo: để `[TÊN_VIẾT_TẮT]` trong dòng lưu trữ nếu chưa rõ.
-3. **Lưu file JSON:** Lưu tại `drafts/YYYY-MM/<Ten_file_gon>.json` với mã hóa UTF-8.
-
-### Bước 3: Biên dịch sang DOCX và Xuất PDF qua Word COM
+### Bước 2: Sinh DOCX & Xuất PDF bằng 1 Lệnh Duy Nhất (`ytcc.py build`)
 Chạy lệnh bằng môi trường ảo Python:
 ```powershell
-d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\build_doc.py --input "drafts/2026-11/<Ten_file>.json" --output "drafts/2026-11/<Ten_file>.docx" --pdf
+d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\ytcc.py build "drafts/YYYY-MM/<YYYYMMDD_case>/v1.json" --pdf
 ```
-- Lệnh trên sẽ tự động gọi `tools/export_pdf.ps1` để kích hoạt Word COM xuất file PDF cùng tên trong cùng thư mục.
-- Kiểm tra kết quả trả về `exit code 0` và xác nhận file `.docx` và `.pdf` đã xuất hiện trên đĩa.
+- Lệnh trên tự động thực hiện tuần tự:
+  1. Kiểm tra cấu trúc Schema (`validate_schema`).
+  2. Kiểm tra tính toán bảng, lịch thực tế và thể thức (`lint_doc`).
+  3. Dựng file Word `.docx` tương ứng.
+  4. Mở Word COM xuất file `.pdf`.
+  5. Tự động chạy `inspect_pdf` kiểm tra kích thước và telemetry lố trang (`OVERFLOW_PAGE_2`).
+- Nếu cần nghiệm thu gắt gao không còn placeholder, thêm cờ `--strict-final`.
+- Nếu cần xuất hàng loạt nhiều văn bản cùng lúc, dùng lệnh `ytcc.py batch <batch.json>`.
 
 ---
 
 ## 3. Đầu ra (Outputs)
-1. File dữ liệu JSON: `drafts/YYYY-MM/<Ten_file>.json`
-2. File Word có thể chỉnh sửa: `drafts/YYYY-MM/<Ten_file>.docx`
-3. File PDF xuất bản: `drafts/YYYY-MM/<Ten_file>.pdf`
-4. **Bảng liệt kê "Các mục cần chuyên viên bổ sung/xác nhận":** Liệt kê chi tiết các vị trí placeholder vừa dùng để người dùng dễ dàng hoàn thiện trước khi trình ký.
+1. File dữ liệu JSON: `drafts/YYYY-MM/<YYYYMMDD_case>/v1.json`
+2. File Word có thể chỉnh sửa: `drafts/YYYY-MM/<YYYYMMDD_case>/v1.docx`
+3. File PDF xuất bản: `drafts/YYYY-MM/<YYYYMMDD_case>/v1.pdf`
+4. **Bảng checklist placeholder:** Liệt kê rõ các vị trí cần chuyên viên/lãnh đạo điền trước khi ký chính thức.
