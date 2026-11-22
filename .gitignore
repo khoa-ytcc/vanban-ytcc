@@ -35,5 +35,6 @@ audit/p2_tests/*.pdf
 audit/p2_tests/*.png
 audit/p2_tests/renders/
 audit/p25_tests/
+audit/benchmark_v26/
 knowledge_base/metadata_index/*.db
 *.db

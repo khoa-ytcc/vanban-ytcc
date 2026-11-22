@@ -69,17 +69,35 @@ def handle_build(args):
         
     print("\n✅ Hoàn tất thành công!")
 
-def handle_batch(args):
-    batch_file = args.batch_json
-    if not os.path.exists(batch_file):
-        print(f"Lỗi: Không tìm thấy file batch: {batch_file}", file=sys.stderr)
+def execute_batch_job(batch_target):
+    items = []
+    temp_batch_file = None
+    
+    if os.path.isdir(batch_target):
+        json_files = [os.path.join(batch_target, f) for f in os.listdir(batch_target) if f.lower().endswith(".json") and not f.startswith("_")]
+        if not json_files:
+            print(f"Lỗi: Không tìm thấy file JSON nào trong thư mục: {batch_target}", file=sys.stderr)
+            sys.exit(1)
+        for jf in json_files:
+            docx_out = os.path.splitext(jf)[0] + ".docx"
+            pdf_out = os.path.splitext(jf)[0] + ".pdf"
+            items.append({"json": jf, "docx": docx_out, "pdf": pdf_out})
+    elif os.path.isfile(batch_target):
+        with open(batch_target, "r", encoding="utf-8-sig") as f:
+            raw = json.load(f)
+        if isinstance(raw, list):
+            items = raw
+        elif isinstance(raw, dict) and "tasks" in raw:
+            items = raw["tasks"]
+        else:
+            print("Lỗi: File batch phải chứa mảng các task JSON hoặc dict có khóa 'tasks'.", file=sys.stderr)
+            sys.exit(1)
+    else:
+        print(f"Lỗi: Không tìm thấy file hoặc thư mục batch: {batch_target}", file=sys.stderr)
         sys.exit(1)
         
-    with open(batch_file, "r", encoding="utf-8-sig") as f:
-        items = json.load(f)
-        
-    if not isinstance(items, list) or not items:
-        print("Lỗi: File batch phải chứa mảng các task JSON.", file=sys.stderr)
+    if not items:
+        print("Lỗi: Danh sách batch trống.", file=sys.stderr)
         sys.exit(1)
         
     start_time = time.time()
@@ -152,19 +170,42 @@ def handle_batch(args):
             
     elapsed = round(time.time() - start_time, 2)
     print(f"\n=== HOÀN TẤT BATCH TRONG {elapsed}s (Trung bình {round(elapsed/len(items), 2)}s/file) ===")
-    sys.exit(0 if all_passed else 1)
+    if not all_passed:
+        sys.exit(1)
+
+def handle_batch(args):
+    execute_batch_job(args.batch_json)
 
 def handle_ingest(args):
-    res = ingest_document(args.file, args.case, month_str=args.month, max_pages=args.max_pages)
+    file_path = args.file or args.file_pos
+    if not file_path:
+        print("Lỗi: Vui lòng cung cấp đường dẫn file cần tiếp nhận (ví dụ: ytcc ingest input.pdf --case case_name).", file=sys.stderr)
+        sys.exit(1)
+    case_name = args.case or args.case_pos
+    if not case_name:
+        base_name = os.path.splitext(os.path.basename(file_path))[0]
+        case_name = re.sub(r'[^a-zA-Z0-9_]+', '_', base_name).strip('_').lower()
+        if not case_name:
+            case_name = "incoming_case"
+    res = ingest_document(file_path, case_name, month_str=args.month, max_pages=args.max_pages, out_dir=args.out_dir)
     print_ingest_report(res)
 
 def handle_search(args):
-    meta_res = search_documents(args.query, doc_type=args.type, limit=args.limit) if args.mode in ("meta", "all") else []
-    ft_res = search_fulltext(args.query, limit=args.limit) if args.mode in ("fulltext", "all") else []
-    print_results(meta_res, ft_res, args.query, doc_type=args.type, mode=args.mode, limit=args.limit)
+    q = args.query or args.query_opt
+    if not q:
+        print("Lỗi: Vui lòng nhập từ khóa tìm kiếm (ví dụ: ytcc search \"Nghị định 30\" hoặc --q \"Nghị định 30\").", file=sys.stderr)
+        sys.exit(1)
+    meta_res = search_documents(q, doc_type=args.type, limit=args.limit) if args.mode in ("meta", "all") else []
+    ft_res = search_fulltext(q, limit=args.limit) if args.mode in ("fulltext", "all") else []
+    print_results(meta_res, ft_res, q, doc_type=args.type, mode=args.mode, limit=args.limit)
 
 def handle_diff(args):
-    analyze_diff(args.original, args.revised)
+    orig = args.original or args.orig_pos
+    rev = args.revised or args.rev_pos
+    if not orig or not rev:
+        print("Lỗi: Cần cung cấp đủ 2 file để so sánh (ví dụ: ytcc diff orig.docx revised.docx hoặc --original orig.docx --revised revised.docx).", file=sys.stderr)
+        sys.exit(1)
+    analyze_diff(orig, rev)
 
 def handle_sync(args):
     sync_knowledge_base(from_mysql=args.from_mysql)
@@ -229,20 +270,24 @@ def main():
     
     # Subcommand: batch
     p_batch = subparsers.add_parser("batch", help="Xây dựng và xuất PDF hàng loạt tối ưu qua 1 phiên Word COM")
-    p_batch.add_argument("batch_json", help="Đường dẫn file JSON mô tả danh sách các tài liệu cần xuất")
+    p_batch.add_argument("batch_json", help="Đường dẫn file JSON mô tả danh sách các tài liệu cần xuất (hoặc thư mục chứa các file .json)")
     p_batch.set_defaults(func=handle_batch)
     
     # Subcommand: ingest
     p_ingest = subparsers.add_parser("ingest", help="Tiếp nhận và tiền xử lý văn bản đến (.pdf, .docx, .png)")
-    p_ingest.add_argument("--file", required=True, help="Đường dẫn file văn bản đến")
-    p_ingest.add_argument("--case", required=True, help="Tên case xử lý")
+    p_ingest.add_argument("file_pos", nargs="?", default=None, help="Đường dẫn file văn bản đến (positional)")
+    p_ingest.add_argument("case_pos", nargs="?", default=None, help="Tên case xử lý (positional, tùy chọn)")
+    p_ingest.add_argument("--file", default=None, help="Đường dẫn file văn bản đến")
+    p_ingest.add_argument("--case", default=None, help="Tên case xử lý")
     p_ingest.add_argument("--month", help="Tháng lưu trữ YYYY-MM")
+    p_ingest.add_argument("--out-dir", help="Chỉ định thư mục đích trực tiếp")
     p_ingest.add_argument("--max-pages", type=int, default=5, help="Số trang tối đa render ảnh PNG (mặc định 5)")
     p_ingest.set_defaults(func=handle_ingest)
     
     # Subcommand: search
     p_search = subparsers.add_parser("search", help="Tra cứu văn bản lịch sử qua SQLite FTS5 (Metadata & Toàn văn)")
-    p_search.add_argument("query", help="Từ khóa tìm kiếm (hỗ trợ có dấu hoặc không dấu)")
+    p_search.add_argument("query", nargs="?", default=None, help="Từ khóa tìm kiếm (hỗ trợ có dấu hoặc không dấu)")
+    p_search.add_argument("-q", "--q", dest="query_opt", default=None, help="Từ khóa tìm kiếm (tùy chọn qua flag --q)")
     p_search.add_argument("--mode", choices=["meta", "fulltext", "all"], default="all", help="Chế độ tra cứu (meta, fulltext, all)")
     p_search.add_argument("--type", choices=["all", "di", "den"], default="all", help="Loại văn bản metadata (all, di, den)")
     p_search.add_argument("--limit", type=int, default=5, help="Giới hạn số kết quả trả về")
@@ -250,8 +295,10 @@ def main():
     
     # Subcommand: diff
     p_diff = subparsers.add_parser("diff", help="So sánh khác biệt văn bản giữa bản AI dự thảo và bản sửa tay")
-    p_diff.add_argument("--original", required=True, help="Đường dẫn file .docx bản AI ban đầu")
-    p_diff.add_argument("--revised", required=True, help="Đường dẫn file .docx bản người dùng sửa")
+    p_diff.add_argument("orig_pos", nargs="?", default=None, help="Đường dẫn file .docx bản AI ban đầu (positional)")
+    p_diff.add_argument("rev_pos", nargs="?", default=None, help="Đường dẫn file .docx bản người dùng sửa (positional)")
+    p_diff.add_argument("--original", default=None, help="Đường dẫn file .docx bản AI ban đầu")
+    p_diff.add_argument("--revised", default=None, help="Đường dẫn file .docx bản người dùng sửa")
     p_diff.set_defaults(func=handle_diff)
     
     # Subcommand: sync

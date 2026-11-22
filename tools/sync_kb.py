@@ -87,7 +87,11 @@ def sync_knowledge_base(from_mysql=False):
     skipped_count = 0
     now_iso = datetime.datetime.now().isoformat()
     
-    # 1. Quét sample_pdfs
+    pdf_skipped = 0
+    golden_skipped = 0
+    draft_skipped = 0
+
+    # 1. Quét sample_pdfs (800 files)
     if os.path.exists(pdf_dir):
         for fname in os.listdir(pdf_dir):
             if fname.lower().endswith(".pdf"):
@@ -99,6 +103,7 @@ def sync_knowledge_base(from_mysql=False):
                 if rel_path in indexed_map:
                     old_mtime, old_size = indexed_map[rel_path]
                     if abs(fmtime - old_mtime) < 0.001 and fsize == old_size:
+                        pdf_skipped += 1
                         skipped_count += 1
                         continue
                     else:
@@ -107,15 +112,15 @@ def sync_knowledge_base(from_mysql=False):
                     is_update = False
                     
                 pages, text = extract_pdf_text(fpath)
+                if is_update:
+                    cur.execute("DELETE FROM fulltext_fts WHERE file_path = ?", (rel_path,))
+                    cur.execute("DELETE FROM indexed_files WHERE file_path = ?", (rel_path,))
+                    updated_count += 1
+                else:
+                    added_count += 1
+
                 if len(text) >= 50:
                     text_unaccent = remove_accents(text)
-                    if is_update:
-                        cur.execute("DELETE FROM fulltext_fts WHERE file_path = ?", (rel_path,))
-                        cur.execute("DELETE FROM indexed_files WHERE file_path = ?", (rel_path,))
-                        updated_count += 1
-                    else:
-                        added_count += 1
-                        
                     cur.execute("""
                         INSERT INTO fulltext_fts (file_path, title, content, content_no_accent, source_type, page_count)
                         VALUES (?, ?, ?, ?, ?, ?)
@@ -126,7 +131,11 @@ def sync_knowledge_base(from_mysql=False):
                         VALUES (?, ?, ?, ?, ?, ?)
                     """, (rel_path, fmtime, fsize, "sample_pdf", pages, now_iso))
                 else:
-                    skipped_count += 1
+                    # Ghi nhận cả file scan/text ngắn vào indexed_files để không phải mở lại ở lần sync sau
+                    cur.execute("""
+                        INSERT INTO indexed_files (file_path, mtime, file_size, source_type, page_count, indexed_at)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                    """, (rel_path, fmtime, fsize, "sample_pdf_scan", pages, now_iso))
 
     # 2. Quét golden_jsons
     if os.path.exists(golden_dir):
@@ -140,6 +149,7 @@ def sync_knowledge_base(from_mysql=False):
                 if rel_path in indexed_map:
                     old_mtime, old_size = indexed_map[rel_path]
                     if abs(fmtime - old_mtime) < 0.001 and fsize == old_size:
+                        golden_skipped += 1
                         skipped_count += 1
                         continue
                     else:
@@ -167,6 +177,7 @@ def sync_knowledge_base(from_mysql=False):
                         VALUES (?, ?, ?, ?, ?, ?)
                     """, (rel_path, fmtime, fsize, "golden_json", 1, now_iso))
                 else:
+                    golden_skipped += 1
                     skipped_count += 1
                     
     # 3. Quét drafts
@@ -185,6 +196,7 @@ def sync_knowledge_base(from_mysql=False):
                     if rel_path in indexed_map:
                         old_mtime, old_size = indexed_map[rel_path]
                         if abs(fmtime - old_mtime) < 0.001 and fsize == old_size:
+                            draft_skipped += 1
                             skipped_count += 1
                             continue
                         else:
@@ -212,7 +224,12 @@ def sync_knowledge_base(from_mysql=False):
                             VALUES (?, ?, ?, ?, ?, ?)
                         """, (rel_path, fmtime, fsize, f"draft_{ext.lstrip('.')}", pages, now_iso))
                     else:
+                        draft_skipped += 1
                         skipped_count += 1
+
+    # Chỉ tối ưu FTS5 khi có thay đổi thực tế
+    if added_count > 0 or updated_count > 0:
+        cur.execute("INSERT INTO fulltext_fts(fulltext_fts) VALUES('optimize')")
 
     conn.commit()
     conn.close()
@@ -228,6 +245,7 @@ def sync_knowledge_base(from_mysql=False):
             print(res.stdout.strip())
             
     print(f"\n=== ĐỒNG BỘ TĂNG DẦN HOÀN TẤT (SYNC KB) ===")
+    print(f"- Chi tiết nguồn đã quét  : {pdf_skipped} PDF mẫu | {golden_skipped} Golden JSONs | {draft_skipped} Drafts")
     print(f"- File thêm mới (added)   : {added_count}")
     print(f"- File cập nhật (updated) : {updated_count}")
     print(f"- File bỏ qua (skipped)   : {skipped_count} (không đổi)")

@@ -811,28 +811,32 @@ def add_signature_block(doc, data, target_one_page=False):
         p_rec.paragraph_format.line_spacing = 1.05
         p_rec.paragraph_format.keep_with_next = True
         
-        prefix = "- " if not rec.strip().startswith("-") else ""
-        r = p_rec.add_run(f"{prefix}{rec.lstrip('- ')}")
+        clean_rec = rec.strip()
+        if not clean_rec.startswith("-"):
+            clean_rec = f"- {clean_rec}"
+        r = p_rec.add_run(clean_rec)
         r.font.name = "Times New Roman"
         r.font.size = Pt(10.5 if not target_one_page else 9.5)
         
-    # Dòng lưu đặc thù Khoa YTCC
-    custom_luu = sign_data.get("custom_luu", "")
-    if custom_luu:
-        luu_text = custom_luu
-    else:
-        dept = sign_data.get("dept_code", "VP")
-        initials = sign_data.get("creator_initials", "YTCC")
-        luu_text = f"- Lưu: VT, {dept}_{initials}."
-        
-    p_luu = c1.add_paragraph()
-    p_luu.paragraph_format.space_before = Pt(0)
-    p_luu.paragraph_format.space_after = Pt(0)
-    p_luu.paragraph_format.line_spacing = 1.05
-    p_luu.paragraph_format.keep_with_next = True
-    r_l = p_luu.add_run(luu_text)
-    r_l.font.name = "Times New Roman"
-    r_l.font.size = Pt(10.5 if not target_one_page else 9.5)
+    # Dòng lưu đặc thù Khoa YTCC (chỉ thêm nếu recipients chưa có dòng Lưu:)
+    has_luu_in_recipients = any("lưu:" in rec.lower() for rec in recipients)
+    if not has_luu_in_recipients:
+        custom_luu = sign_data.get("custom_luu", "")
+        if custom_luu:
+            luu_text = custom_luu
+        else:
+            dept = sign_data.get("dept_code", "VP")
+            initials = sign_data.get("creator_initials", "YTCC")
+            luu_text = f"- Lưu: VT, {dept}_{initials}."
+            
+        p_luu = c1.add_paragraph()
+        p_luu.paragraph_format.space_before = Pt(0)
+        p_luu.paragraph_format.space_after = Pt(0)
+        p_luu.paragraph_format.line_spacing = 1.05
+        p_luu.paragraph_format.keep_with_next = True
+        r_l = p_luu.add_run(luu_text)
+        r_l.font.name = "Times New Roman"
+        r_l.font.size = Pt(10.5 if not target_one_page else 9.5)
     
     # CỘT PHẢI: QUYỀN HẠN, CHỨC VỤ VÀ HỌ TÊN NGƯỜI KÝ
     p2 = c2.paragraphs[0]

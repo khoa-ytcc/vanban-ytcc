@@ -39,15 +39,16 @@ def search_documents(query_str, doc_type="all", limit=5):
     raw_phrase = " ".join(tokens_raw)
     unaccent_phrase = " ".join(tokens_unaccent)
     
+    # Ưu tiên 1 (Exact Phrase): Tìm khớp chính xác cả cụm từ
     if len(tokens_raw) > 1:
-        fts_match_expr = f'("{raw_phrase}") OR ("{unaccent_phrase}")'
+        fts_match_expr = f'"{raw_phrase}" OR "{unaccent_phrase}"'
     else:
         t_raw = tokens_raw[0]
         t_un = tokens_unaccent[0]
         if t_raw == t_un:
-            fts_match_expr = f'"{t_raw}"*'
+            fts_match_expr = f'"{t_raw}"'
         else:
-            fts_match_expr = f'"{t_raw}"* OR "{t_un}"*'
+            fts_match_expr = f'"{t_raw}" OR "{t_un}"'
             
     type_condition = ""
     params = [fts_match_expr]
@@ -74,10 +75,11 @@ def search_documents(query_str, doc_type="all", limit=5):
     except sqlite3.OperationalError:
         pass
         
+    # Ưu tiên 2 (Fallback khi cụm chính xác ra ít hơn limit): Đủ tất cả từ nguyên vẹn (AND các token, KHÔNG có *)
     if len(rows) < limit and len(tokens_raw) > 1:
         existing_ids = set(r[0] for r in rows)
-        and_expr_raw = " AND ".join(f'"{t}"*' for t in tokens_raw)
-        and_expr_un = " AND ".join(f'"{t}"*' for t in tokens_unaccent)
+        and_expr_raw = " AND ".join(f'"{t}"' for t in tokens_raw)
+        and_expr_un = " AND ".join(f'"{t}"' for t in tokens_unaccent)
         fallback_expr = f'({and_expr_raw}) OR ({and_expr_un})'
         
         fb_params = [fallback_expr]
@@ -124,15 +126,16 @@ def search_fulltext(query_str, limit=5):
     raw_phrase = " ".join(tokens_raw)
     unaccent_phrase = " ".join(tokens_unaccent)
     
+    # Ưu tiên 1 (Exact Phrase): Tìm khớp chính xác cả cụm từ
     if len(tokens_raw) > 1:
-        fts_match_expr = f'("{raw_phrase}") OR ("{unaccent_phrase}")'
+        fts_match_expr = f'"{raw_phrase}" OR "{unaccent_phrase}"'
     else:
         t_raw = tokens_raw[0]
         t_un = tokens_unaccent[0]
         if t_raw == t_un:
-            fts_match_expr = f'"{t_raw}"*'
+            fts_match_expr = f'"{t_raw}"'
         else:
-            fts_match_expr = f'"{t_raw}"* OR "{t_un}"*'
+            fts_match_expr = f'"{t_raw}" OR "{t_un}"'
             
     sql = """
         SELECT file_path, title, snippet(fulltext_fts, 2, '【', '】', '...', 25), source_type, page_count, rank
@@ -149,16 +152,19 @@ def search_fulltext(query_str, limit=5):
     except sqlite3.OperationalError:
         pass
         
+    # Ưu tiên 2 (Fallback khi cụm chính xác ra ít hơn limit): Đủ tất cả từ nguyên vẹn (AND các token, KHÔNG có *)
     if len(rows) < limit and len(tokens_raw) > 1:
         existing_paths = set(r[0] for r in rows)
-        and_expr_raw = " AND ".join(f'"{t}"*' for t in tokens_raw)
-        and_expr_un = " AND ".join(f'"{t}"*' for t in tokens_unaccent)
+        and_expr_raw = " AND ".join(f'"{t}"' for t in tokens_raw)
+        and_expr_un = " AND ".join(f'"{t}"' for t in tokens_unaccent)
         fb_expr = f'({and_expr_raw}) OR ({and_expr_un})'
         try:
             cur.execute(sql, (fb_expr, limit - len(rows)))
             for r in cur.fetchall():
                 if r[0] not in existing_paths:
                     rows.append(r)
+        except sqlite3.OperationalError:
+            pass
         except sqlite3.OperationalError:
             pass
             

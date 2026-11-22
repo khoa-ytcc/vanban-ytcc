@@ -47,7 +47,7 @@ def render_pdf_pages(pdf_path, output_dir, max_pages=5, dpi=150):
     doc.close()
     return rendered_images
 
-def ingest_document(file_path, case_name, month_str=None, max_pages=5, base_dir=None):
+def ingest_document(file_path, case_name, month_str=None, max_pages=5, base_dir=None, out_dir=None):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Không tìm thấy file nguồn: {file_path}")
         
@@ -58,10 +58,13 @@ def ingest_document(file_path, case_name, month_str=None, max_pages=5, base_dir=
     date_prefix = now.strftime("%Y%m%d")
     folder_name = f"{date_prefix}_{case_name}"
     
-    if not base_dir:
-        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    if out_dir:
+        case_dir = os.path.abspath(out_dir)
+    else:
+        if not base_dir:
+            base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        case_dir = os.path.join(base_dir, "drafts", month_str, folder_name)
         
-    case_dir = os.path.join(base_dir, "drafts", month_str, folder_name)
     incoming_dir = os.path.join(case_dir, "incoming")
     os.makedirs(incoming_dir, exist_ok=True)
     
@@ -129,11 +132,12 @@ def main():
     parser.add_argument("--file", required=True, help="Đường dẫn file văn bản đến (.pdf, .docx, .png, .jpg)")
     parser.add_argument("--case", required=True, help="Tên case xử lý (ví dụ: giao_vien_chu_nhiem, tap_huan_y_te)")
     parser.add_argument("--month", help="Thư mục tháng lưu trữ (mặc định lấy tháng hiện tại YYYY-MM)")
+    parser.add_argument("--out-dir", help="Chỉ định trực tiếp thư mục lưu trữ đích (bỏ qua cấu trúc drafts/YYYY-MM)")
     parser.add_argument("--max-pages", type=int, default=5, help="Số trang tối đa render ra ảnh PNG (mặc định 5)")
     
     args = parser.parse_args()
     try:
-        res = ingest_document(args.file, args.case, month_str=args.month, max_pages=args.max_pages)
+        res = ingest_document(args.file, args.case, month_str=args.month, max_pages=args.max_pages, out_dir=args.out_dir)
         print_ingest_report(res)
         sys.exit(0)
     except Exception as e:
