@@ -23,7 +23,7 @@
 *(Dùng để tự động gợi ý chính xác danh sách Kính gửi và Nơi nhận)*
 - **Trong Trường Đại học Y Dược TP.HCM:**
   - Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh
-  - Phòng Tổ chức – Nhân sự (hoặc P. TCNL / Phòng Tổ chức Cán bộ)
+  - Phòng Tổ chức – Nhân sự (tên viết tắt: P. TCNS - đây là tên chính thức hiện hành theo chứng cứ S0 trên dấu đến và văn bản ký duyệt số 947/YTCC-HCTC; tên cũ trước đây: Phòng Tổ chức Cán bộ / TCCB vẫn còn xuất hiện trong tên file lưu trữ, cần lưu ý phân biệt rõ ràng).
   - Phòng Kế hoạch Tài chính (KHTC)
   - Phòng Đào tạo Đại học (ĐTĐH)
   - Phòng Đào tạo Sau đại học (ĐTSĐH)

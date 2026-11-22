@@ -18,7 +18,7 @@ Tiếp nối kết quả dọn dẹp repo và thiết lập khung v2.0/v2.5 ở 
 
 ### Ca 1: Công văn trình BGH & Phòng TCNS cử viên chức tham gia ghi hình HTV7
 - **Văn bản đến:** Công văn số `10.11/CV2026` ngày 10/11/2026 của Công ty TNHH Truyền hình Kết Nối về việc mời tham gia ghi hình 02 nội dung Talkshow "Sức Khỏe 24h" trên HTV7.
-- **Bút phê BGH & Khoa:** Chuyển Khoa cử viên chức; Trưởng khoa đồng ý cử ThS. BS. Phan Nhật Khuê Tường.
+- **Bút phê BGH & Khoa:** Chuyển Khoa cử viên chức; Trưởng khoa đồng ý cử ThS. BS. Trương Nhật Khuê Tường.
 - **Tiến trình hiệu chỉnh:**
   - `v1`: Soạn theo dạng công văn phúc đáp đối ngoại gửi đối tác truyền thông.
   - `v2` & `final`: Hiệu chỉnh sang **Công văn nội bộ** trình BGH và Phòng Tổ chức – Nhân sự (mã số `947/YTCC-HCTC`), loại bỏ đối tác khỏi nơi nhận, tinh chỉnh toàn bộ lề, giãn dòng 1.5, tiêu ngữ và khoảng trống ký số.
