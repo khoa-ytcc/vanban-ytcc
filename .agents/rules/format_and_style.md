@@ -4,27 +4,24 @@
 ---
 
 ## 1. Cấu trúc Tiêu ngữ & Header 2 cột
-- **Kích thước cột in:** Trang A4 in dọc lề 30/20mm (vùng in khả dụng 160 mm). Bảng header 2 cột: Cột 1 = 68 mm, Cột 2 = 92 mm. Không viền.
-- **Cột 1 (Đơn vị ban hành & Số hiệu):**
-  - **Mặc định cấp Khoa (`header_level: "ytcc"`):**
-    - Dòng 1: `ĐẠI HỌC Y DƯỢC` (10 pt, đứng)
-    - Dòng 2: `THÀNH PHỐ HỒ CHÍ MINH` (10 pt, đứng)
-    - Dòng 3: `KHOA Y TẾ CÔNG CỘNG` (11 pt, **đậm**). Gạch dưới nét liền 1/2 độ dài dòng chữ (13 ký tự `─` cỡ 8 pt căn giữa).
-  - **Ngoại lệ cấp Trường (`header_level: "ump"` — dùng cho Giấy giới thiệu):**
-    - Dòng 1: `BỘ Y TẾ` (10.5 pt, đứng)
-    - Dòng 2: `ĐẠI HỌC Y DƯỢC` (10.5 pt, **đậm**)
-    - Dòng 3: `THÀNH PHỐ HỒ CHÍ MINH` (10.5 pt, **đậm**). Gạch dưới nét liền 1/2 độ dài (14 ký tự `─` cỡ 8 pt).
-- **Mã định danh số hiệu từng loại văn bản:**
-  - Công văn: `Số: .../YTCC-VP`, `Số: .../YTCC-QLĐT`, `Số: .../YTCC-HCTC` (gắn liền bộ phận tham mưu).
-  - Tờ trình: `Số: .../TTr-YTCC` (luôn dùng tiền tố `TTr` trước `YTCC`).
-  - Giấy giới thiệu: `Số: .../GGT-YTCC`.
-  - Kế hoạch: `Số: .../KH-YTCC`.
-  - Báo cáo: `Số: .../BC-YTCC`.
-- **Cột 2 (Quốc hiệu, Tiêu ngữ & Ngày tháng):**
-  - Dòng 1: `CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM` (10.5 pt, **đậm**, tuyệt đối không để rớt chữ `NAM`).
-  - Dòng 2: `Độc lập – Tự do – Hạnh phúc` (11 pt, **đậm**).
-  - Vạch kẻ dưới Tiêu ngữ: Nét liền kéo dài 100% độ dài dòng chữ (30 ký tự `─` cỡ 8 pt).
-  - Ngày tháng: `Thành phố Hồ Chí Minh, ngày ... tháng ... năm ...` (11 pt, *nghiêng*, chèn số 0 nếu ngày/tháng có 1 chữ số).
+- **Kích thước & Căn lề chuẩn:** Trang A4 in dọc lề Trái 25 mm (2.5 cm), Trên 20 mm, Dưới 20 mm, Phải 20 mm (vùng in khả dụng 165 mm).
+- **Cấu trúc Bảng Header 2 dòng (2 rows x 2 cols):**
+  - **Dòng 0:**
+    - Cột 1 (70 mm): Đơn vị ban hành (Dòng 1-2: `ĐẠI HỌC Y DƯỢC` / `THÀNH PHỐ HỒ CHÍ MINH` cỡ 10pt đứng; Dòng 3: `KHOA Y TẾ CÔNG CỘNG` cỡ 11pt **đậm**) + Vạch kẻ liền 13 ký tự `─` cỡ 8pt ở giữa.
+    - Cột 2 (95 mm): `CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM` (10.5pt **đậm**) / `Độc lập – Tự do – Hạnh phúc` (11pt **đậm**) + Vạch kẻ liền 24 ký tự `─` cỡ 8pt vừa khít dòng chữ (độ rộng ~136pt khớp với 138pt chữ).
+  - **Dòng 1:**
+    - Cột 1: `Số: .../YTCC-HCTC` (11pt đứng) và dòng trích yếu `V/v ...` (11pt, **CHỮ ĐỨNG, KHÔNG NGHIÊNG**).
+    - Cột 2: `Thành phố Hồ Chí Minh, ngày ... tháng ... năm ...` (11pt, nghiêng).
+  - *Ý nghĩa:* Tách thành 2 dòng bảng bảo đảm dòng `Số: ...` và dòng `Thành phố Hồ Chí Minh, ngày ...` luôn **thẳng hàng ngang thị giác tuyệt đối 100%**.
+
+---
+
+## 2. Quy chuẩn Font chữ, Căn lề & Dãn dòng Thân bài
+- **Cỡ chữ & Dãn dòng thân bài:** Toàn bộ các đoạn thân bài dùng cỡ chữ **13 pt** Times New Roman, dãn dòng **1.5 lines**, thụt đầu dòng 1.27 cm.
+- **Căn cứ văn bản:** Tuyệt đối dùng **chữ đứng (KHÔNG in nghiêng)**.
+- **Kính gửi:** Chữ đứng bình thường cỡ 13pt, **KHÔNG in đậm (bold), KHÔNG gạch chân (line)**. Các đơn vị nhận bên dưới thụt lề 2.5 cm, dấu gạch đầu dòng `-`.
+- **Khối Nơi nhận:** Dòng tiêu đề `Nơi nhận:` cỡ **12 pt** (đậm nghiêng); các dòng danh sách bên dưới (`- Như trên;`, `- Lưu: ...`) cỡ **11 pt**.
+- **Khối Chữ ký & Chữ ký số:** Chừa khoảng trống giữa chức vụ (`TRƯỞNG KHOA`) và họ tên người ký từ **50–55 pt** để đủ không gian đóng dấu điện tử và chèn chữ ký số theo Nghị định 30.
 
 ---
 

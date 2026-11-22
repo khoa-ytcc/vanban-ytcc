@@ -27,7 +27,7 @@ VALID_BLOCK_TYPES = [
 ]
 ALLOWED_ROOT_KEYS = [
     "doc_type", "target_one_page", "title", "trich_yeu",
-    "has_bgh_approval", "bgh_approver_title", "bgh_approver_name",
+    "has_bgh_approval", "bgh_approver_title", "bgh_approver_name", "bgh_sign_gap_pt",
     "header", "blocks", "sign_block", "post_sign_blocks"
 ]
 
@@ -268,10 +268,10 @@ def setup_page_layout(section, is_landscape=False, target_one_page=False, is_fir
         section.orientation = WD_ORIENTATION.PORTRAIT
         section.page_width = Mm(210)
         section.page_height = Mm(297)
-        section.top_margin = Mm(18 if target_one_page else 20)
-        section.bottom_margin = Mm(18 if target_one_page else 20)
-        section.left_margin = Mm(25 if target_one_page else 30)
-        section.right_margin = Mm(18 if target_one_page else 20)
+        section.top_margin = Mm(20)
+        section.bottom_margin = Mm(20)
+        section.left_margin = Mm(25)
+        section.right_margin = Mm(20)
 
     if is_first_section:
         # Đánh số trang tự động từ trang 2 ở chính giữa lề trên (Header)
@@ -296,44 +296,52 @@ def add_header_table(doc, data, target_one_page=False):
     header_data = data.get("header", {})
     header_level = header_data.get("header_level", "ump" if doc_type == "giay_gioi_thieu" else "ytcc")
     
-    # Kích thước 2 cột: 68mm bên trái, 92mm bên phải (Tổng 160mm)
-    table = doc.add_table(rows=1, cols=2)
+    # Kích thước 2 cột: 70mm bên trái, 95mm bên phải (Tổng 165mm khớp lề 25/20mm)
+    # Dùng bảng 2 dòng (2 rows x 2 cols):
+    # Dòng 0: Cơ quan ban hành (trái) và Quốc hiệu, Tiêu ngữ + Vạch kẻ (phải)
+    # Dòng 1: Số hiệu + Trích yếu (trái) và Địa danh ngày tháng (phải)
+    # -> Đảm bảo "Số: ..." và "Thành phố Hồ Chí Minh, ngày ..." THẲNG HÀNG THỊ GIÁC TUYỆT ĐỐI!
+    table = doc.add_table(rows=2, cols=2)
     table.alignment = WD_TABLE_ALIGNMENT.CENTER
     set_table_no_borders(table)
     
-    c1 = table.cell(0, 0)
-    c2 = table.cell(0, 1)
-    c1.width = Mm(68)
-    c2.width = Mm(92)
-    set_cell_margins(c1, top=0, bottom=0, left=0, right=72)
-    set_cell_margins(c2, top=0, bottom=0, left=72, right=0)
+    for r in table.rows:
+        set_row_cant_split(r)
+        r.cells[0].width = Mm(70)
+        r.cells[1].width = Mm(95)
+        set_cell_margins(r.cells[0], top=0, bottom=0, left=0, right=36)
+        set_cell_margins(r.cells[1], top=0, bottom=0, left=36, right=0)
+        
+    c00 = table.cell(0, 0)
+    c01 = table.cell(0, 1)
+    c10 = table.cell(1, 0)
+    c11 = table.cell(1, 1)
     
-    # 1. CỘT TRÁI: ĐƠN VỊ BAN HÀNH & SỐ HIỆU
-    p1 = c1.paragraphs[0]
-    p1.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p1.paragraph_format.space_before = Pt(0)
-    p1.paragraph_format.space_after = Pt(0)
-    p1.paragraph_format.line_spacing = 1.05
+    # 1. DÒNG 0 - CỘT TRÁI: ĐƠN VỊ BAN HÀNH
+    p_org = c00.paragraphs[0]
+    p_org.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_org.paragraph_format.space_before = Pt(0)
+    p_org.paragraph_format.space_after = Pt(0)
+    p_org.paragraph_format.line_spacing = 1.05
     
     if header_level == "ump":
-        r1 = p1.add_run("BỘ Y TẾ\n")
+        r1 = p_org.add_run("BỘ Y TẾ\n")
         r1.font.name = "Times New Roman"
         r1.font.size = Pt(10.5)
         
-        r2 = p1.add_run("ĐẠI HỌC Y DƯỢC\n")
+        r2 = p_org.add_run("ĐẠI HỌC Y DƯỢC\n")
         r2.font.name = "Times New Roman"
         r2.font.size = Pt(10.5)
         r2.font.bold = True
         
-        r3 = p1.add_run("THÀNH PHỐ HỒ CHÍ MINH")
+        r3 = p_org.add_run("THÀNH PHỐ HỒ CHÍ MINH")
         r3.font.name = "Times New Roman"
         r3.font.size = Pt(10.5)
         r3.font.bold = True
         
-        # Đường gạch dưới nét liền
-        p_line = c1.add_paragraph()
+        p_line = c00.add_paragraph()
         p_line.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_line.paragraph_format.space_before = Pt(0)
+        p_line.paragraph_format.space_before = Pt(1)
         p_line.paragraph_format.space_after = Pt(2)
         p_line.paragraph_format.line_spacing = Pt(5)
         r_line = p_line.add_run("─" * 14)
@@ -344,25 +352,51 @@ def add_header_table(doc, data, target_one_page=False):
         org2 = header_data.get("organ_line2", "THÀNH PHỐ HỒ CHÍ MINH")
         org3 = header_data.get("organ_line3", "KHOA Y TẾ CÔNG CỘNG")
         
-        r1 = p1.add_run(f"{org1}\n{org2}\n")
+        r1 = p_org.add_run(f"{org1}\n{org2}\n")
         r1.font.name = "Times New Roman"
         r1.font.size = Pt(10)
         
-        r3 = p1.add_run(org3)
+        r3 = p_org.add_run(org3)
         r3.font.name = "Times New Roman"
         r3.font.size = Pt(11)
         r3.font.bold = True
         
-        p_line = c1.add_paragraph()
+        p_line = c00.add_paragraph()
         p_line.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_line.paragraph_format.space_before = Pt(0)
+        p_line.paragraph_format.space_before = Pt(1)
         p_line.paragraph_format.space_after = Pt(2)
         p_line.paragraph_format.line_spacing = Pt(5)
         r_line = p_line.add_run("─" * 13)
         r_line.font.name = "Times New Roman"
         r_line.font.size = Pt(8)
         
-    # Số hiệu văn bản
+    # 2. DÒNG 0 - CỘT PHẢI: QUỐC HIỆU, TIÊU NGỮ & VẠCH KẺ
+    p_qh = c01.paragraphs[0]
+    p_qh.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_qh.paragraph_format.space_before = Pt(0)
+    p_qh.paragraph_format.space_after = Pt(0)
+    p_qh.paragraph_format.line_spacing = 1.05
+    
+    r_qh = p_qh.add_run("CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\n")
+    r_qh.font.name = "Times New Roman"
+    r_qh.font.size = Pt(10.5)
+    r_qh.font.bold = True
+    
+    r_tn = p_qh.add_run("Độc lập – Tự do – Hạnh phúc")
+    r_tn.font.name = "Times New Roman"
+    r_tn.font.size = Pt(11)
+    r_tn.font.bold = True
+    
+    p_line2 = c01.add_paragraph()
+    p_line2.alignment = WD_ALIGN_PARAGRAPH.CENTER
+    p_line2.paragraph_format.space_before = Pt(1)
+    p_line2.paragraph_format.space_after = Pt(2)
+    p_line2.paragraph_format.line_spacing = Pt(5)
+    r_line2 = p_line2.add_run("─" * 24)
+    r_line2.font.name = "Times New Roman"
+    r_line2.font.size = Pt(8)
+    
+    # 3. DÒNG 1 - CỘT TRÁI: SỐ HIỆU & TRÍCH YẾU
     so_raw = str(header_data.get("so_hieu", "....")).strip()
     ma_loai = header_data.get("ma_loai", "")
     if "/" in so_raw:
@@ -377,55 +411,30 @@ def add_header_table(doc, data, target_one_page=False):
             else: ma_loai = "YTCC"
         full_so = f"{so_raw}/{ma_loai}"
         
-    p_so = c1.add_paragraph()
+    p_so = c10.paragraphs[0]
     p_so.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_so.paragraph_format.space_before = Pt(2)
     p_so.paragraph_format.space_after = Pt(0)
+    p_so.paragraph_format.line_spacing = 1.05
     r_so = p_so.add_run(f"Số: {full_so}")
     r_so.font.name = "Times New Roman"
-    r_so.font.size = Pt(10.5)
+    r_so.font.size = Pt(11)
     
     # Riêng Công văn: Trích yếu đặt ngay dưới Số hiệu ở cột trái
     if doc_type == "cong_van":
         raw_trich_yeu = header_data.get("trich_yeu", "")
         clean_trich_yeu = sanitize_trich_yeu(raw_trich_yeu)
-        p_ty = c1.add_paragraph()
+        p_ty = c10.add_paragraph()
         p_ty.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_ty.paragraph_format.space_before = Pt(1)
+        p_ty.paragraph_format.space_before = Pt(2)
         p_ty.paragraph_format.space_after = Pt(0)
         p_ty.paragraph_format.line_spacing = 1.05
         r_ty = p_ty.add_run(f"V/v {clean_trich_yeu}")
         r_ty.font.name = "Times New Roman"
-        r_ty.font.size = Pt(10.5)
-        r_ty.font.italic = True
+        r_ty.font.size = Pt(11)
+        r_ty.font.italic = False # CHUẨN MỚI: Text trích yếu KHÔNG NGHIÊNG theo phản hồi người dùng!
         
-    # 2. CỘT PHẢI: QUỐC HIỆU, TIÊU NGỮ & NGÀY THÁNG
-    p2 = c2.paragraphs[0]
-    p2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p2.paragraph_format.space_before = Pt(0)
-    p2.paragraph_format.space_after = Pt(0)
-    p2.paragraph_format.line_spacing = 1.05
-    
-    r_qh = p2.add_run("CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM\n")
-    r_qh.font.name = "Times New Roman"
-    r_qh.font.size = Pt(10.5)
-    r_qh.font.bold = True
-    
-    r_tn = p2.add_run("Độc lập – Tự do – Hạnh phúc")
-    r_tn.font.name = "Times New Roman"
-    r_tn.font.size = Pt(11)
-    r_tn.font.bold = True
-    
-    p_line2 = c2.add_paragraph()
-    p_line2.alignment = WD_ALIGN_PARAGRAPH.CENTER
-    p_line2.paragraph_format.space_before = Pt(0)
-    p_line2.paragraph_format.space_after = Pt(2)
-    p_line2.paragraph_format.line_spacing = Pt(5)
-    r_line2 = p_line2.add_run("─" * 30)
-    r_line2.font.name = "Times New Roman"
-    r_line2.font.size = Pt(8)
-    
-    # Địa danh ngày tháng
+    # 4. DÒNG 1 - CỘT PHẢI: ĐỊA DANH NGÀY THÁNG (CÙNG DÒNG VỚI SỐ HIỆU)
     dia_danh = header_data.get("dia_danh", "Thành phố Hồ Chí Minh")
     ngay = str(header_data.get("ngay", "....")).strip()
     thang = str(header_data.get("thang", "....")).strip()
@@ -435,17 +444,18 @@ def add_header_table(doc, data, target_one_page=False):
     if ngay.isdigit() and len(ngay) == 1: ngay = f"0{ngay}"
     if thang.isdigit() and len(thang) == 1: thang = f"0{thang}"
     
-    p_date = c2.add_paragraph()
+    p_date = c11.paragraphs[0]
     p_date.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_date.paragraph_format.space_before = Pt(2)
     p_date.paragraph_format.space_after = Pt(0)
+    p_date.paragraph_format.line_spacing = 1.05
     r_date = p_date.add_run(f"{dia_danh}, ngày {ngay} tháng {thang} năm {nam}")
     r_date.font.name = "Times New Roman"
     r_date.font.size = Pt(11)
     r_date.font.italic = True
     
     # Khoảng cách sau Header
-    doc.add_paragraph().paragraph_format.space_after = Pt(4 if target_one_page else 10)
+    doc.add_paragraph().paragraph_format.space_after = Pt(2)
 
 def add_document_title(doc, data, target_one_page=False):
     doc_type = data.get("doc_type", "cong_van").lower()
@@ -516,36 +526,31 @@ def render_blocks(doc, blocks, target_one_page=False):
                 items = [text]
                 
             p_kg = doc.add_paragraph()
-            p_kg.paragraph_format.space_before = Pt(3 if target_one_page else 6)
-            p_kg.paragraph_format.space_after = Pt(2 if target_one_page else 4)
+            p_kg.paragraph_format.space_before = Pt(6)
+            p_kg.paragraph_format.space_after = Pt(2)
             p_kg.paragraph_format.keep_with_next = True
             
-            if len(items) == 1:
-                p_kg.paragraph_format.left_indent = Mm(15)
-                r_tag = p_kg.add_run("Kính gửi: ")
-                r_tag.font.name = "Times New Roman"
-                r_tag.font.size = Pt(13 if not target_one_page else 12.5)
-                r_tag.font.bold = True
-                
-                r_val = p_kg.add_run(items[0])
-                r_val.font.name = "Times New Roman"
-                r_val.font.size = Pt(13 if not target_one_page else 12.5)
-            else:
-                p_kg.paragraph_format.left_indent = Mm(15)
-                r_tag = p_kg.add_run("Kính gửi:")
-                r_tag.font.name = "Times New Roman"
-                r_tag.font.size = Pt(13 if not target_one_page else 12.5)
-                r_tag.font.bold = True
-                
-                for item in items:
-                    p_item = doc.add_paragraph()
-                    p_item.paragraph_format.left_indent = Mm(25)
-                    p_item.paragraph_format.space_before = Pt(0)
-                    p_item.paragraph_format.space_after = Pt(1)
-                    p_item.paragraph_format.keep_with_next = True
-                    r_it = p_item.add_run(f"- {item}")
-                    r_it.font.name = "Times New Roman"
-                    r_it.font.size = Pt(13 if not target_one_page else 12.5)
+            p_kg.paragraph_format.left_indent = Mm(15)
+            r_tag = p_kg.add_run("Kính gửi:")
+            r_tag.font.name = "Times New Roman"
+            r_tag.font.size = Pt(13)
+            r_tag.font.bold = False # CHUẨN MỚI: Kính gửi không in đậm theo phản hồi người dùng
+            r_tag.font.underline = False # Kính gửi không gạch chân
+            
+            for item in items:
+                p_item = doc.add_paragraph()
+                p_item.paragraph_format.left_indent = Mm(25)
+                p_item.paragraph_format.space_before = Pt(0)
+                p_item.paragraph_format.space_after = Pt(2)
+                p_item.paragraph_format.line_spacing = 1.3
+                p_item.paragraph_format.keep_with_next = True
+                clean_item = item.strip()
+                if not clean_item.startswith("-"):
+                    clean_item = f"- {clean_item}"
+                r_it = p_item.add_run(clean_item)
+                r_it.font.name = "Times New Roman"
+                r_it.font.size = Pt(13)
+                r_it.font.bold = False
                     
         elif btype in ("heading", "h1", "h2", "h3"):
             if btype == "h1":
@@ -597,8 +602,8 @@ def render_blocks(doc, blocks, target_one_page=False):
                 p.paragraph_format.first_line_indent = Mm(12.7) # 1.27 cm chuẩn
                 
             p.paragraph_format.space_before = Pt(0)
-            p.paragraph_format.space_after = Pt(2 if target_one_page else 4)
-            p.paragraph_format.line_spacing = 1.05 if target_one_page else 1.15
+            p.paragraph_format.space_after = Pt(2)
+            p.paragraph_format.line_spacing = 1.5 # CHUẨN MỚI: Dãn dòng 1.5 lines theo yêu cầu người dùng
             
             # Gắn keep_with_next nếu là đoạn cuối cùng trước khối chữ ký
             if is_last:
@@ -607,13 +612,13 @@ def render_blocks(doc, blocks, target_one_page=False):
             if prefix_bold:
                 r_pfx = p.add_run(f"{prefix_bold} ")
                 r_pfx.font.name = "Times New Roman"
-                r_pfx.font.size = Pt(13 if not target_one_page else 12)
+                r_pfx.font.size = Pt(13)
                 r_pfx.font.bold = True
                 
             add_markdown_runs(
                 p,
                 text,
-                font_size=Pt(13 if not target_one_page else 12),
+                font_size=Pt(13),
                 base_bold=b.get("bold", False),
                 base_italic=b.get("italic", False)
             )
@@ -786,9 +791,9 @@ def add_signature_block(doc, data, target_one_page=False):
     c1 = row.cells[0]
     c2 = row.cells[1]
     c1.width = Mm(70)
-    c2.width = Mm(90)
-    set_cell_margins(c1, top=0, bottom=0, left=0, right=72)
-    set_cell_margins(c2, top=0, bottom=0, left=72, right=0)
+    c2.width = Mm(95)
+    set_cell_margins(c1, top=0, bottom=0, left=0, right=36)
+    set_cell_margins(c2, top=0, bottom=0, left=36, right=0)
     
     # CỘT TRÁI: NƠI NHẬN
     p1 = c1.paragraphs[0]
@@ -799,7 +804,7 @@ def add_signature_block(doc, data, target_one_page=False):
     
     r_nn = p1.add_run("Nơi nhận:")
     r_nn.font.name = "Times New Roman"
-    r_nn.font.size = Pt(11.5 if not target_one_page else 11)
+    r_nn.font.size = Pt(12) # CHUẨN MỚI: Nơi nhận: cỡ chữ 12 theo yêu cầu người dùng
     r_nn.font.bold = True
     r_nn.font.italic = True
     
@@ -816,7 +821,7 @@ def add_signature_block(doc, data, target_one_page=False):
             clean_rec = f"- {clean_rec}"
         r = p_rec.add_run(clean_rec)
         r.font.name = "Times New Roman"
-        r.font.size = Pt(10.5 if not target_one_page else 9.5)
+        r.font.size = Pt(11) # CHUẨN MỚI: Các mục nơi nhận cỡ chữ 11 theo yêu cầu người dùng
         
     # Dòng lưu đặc thù Khoa YTCC (chỉ thêm nếu recipients chưa có dòng Lưu:)
     has_luu_in_recipients = any("lưu:" in rec.lower() for rec in recipients)
@@ -836,7 +841,7 @@ def add_signature_block(doc, data, target_one_page=False):
         p_luu.paragraph_format.keep_with_next = True
         r_l = p_luu.add_run(luu_text)
         r_l.font.name = "Times New Roman"
-        r_l.font.size = Pt(10.5 if not target_one_page else 9.5)
+        r_l.font.size = Pt(11) # CHUẨN MỚI: Dòng lưu cỡ chữ 11 theo yêu cầu người dùng
     
     # CỘT PHẢI: QUYỀN HẠN, CHỨC VỤ VÀ HỌ TÊN NGƯỜI KÝ
     p2 = c2.paragraphs[0]
@@ -857,8 +862,12 @@ def add_signature_block(doc, data, target_one_page=False):
         r_r.font.size = Pt(12.5 if not target_one_page else 12)
         r_r.font.bold = True
         
-    # Chừa khoảng trống chữ ký và con dấu (khoảng 30-40pt)
-    sign_gap = docx.shared.Pt(28 if target_one_page else 42)
+    # Chừa khoảng trống chữ ký và con dấu (45-60pt để đủ không gian chèn chữ ký số / dấu điện tử theo NĐ 30)
+    custom_gap = sign_data.get("sign_gap_pt")
+    if custom_gap is not None:
+        sign_gap = docx.shared.Pt(float(custom_gap))
+    else:
+        sign_gap = docx.shared.Pt(48 if target_one_page else 55)
     p_gap = c2.add_paragraph()
     p_gap.alignment = WD_ALIGN_PARAGRAPH.CENTER
     p_gap.paragraph_format.space_before = sign_gap
@@ -897,10 +906,16 @@ def add_signature_block(doc, data, target_one_page=False):
         rb.font.size = Pt(12.5 if not target_one_page else 12)
         rb.font.bold = True
         
-        # Khoảng trống ký tên BGH
+        # Khoảng trống ký tên BGH (chừa diện tích chèn chữ ký số / con dấu BGH)
+        custom_bgh_gap = data.get("bgh_sign_gap_pt")
+        if custom_bgh_gap is not None:
+            bgh_gap = Pt(float(custom_bgh_gap))
+        else:
+            bgh_gap = Pt(45 if target_one_page else 55)
+            
         p_bgap = doc.add_paragraph()
         p_bgap.alignment = WD_ALIGN_PARAGRAPH.CENTER
-        p_bgap.paragraph_format.space_before = Pt(24 if target_one_page else 36)
+        p_bgap.paragraph_format.space_before = bgh_gap
         p_bgap.paragraph_format.space_after = Pt(0)
         p_bgap.paragraph_format.line_spacing = Pt(1)
         p_bgap.paragraph_format.keep_with_next = True

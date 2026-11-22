@@ -26,14 +26,21 @@
 > Trong CSDL quản lý văn bản cũ, trường `noi_nhan` ở rất nhiều bản ghi thực chất chỉ lưu **tên hoặc mã viết tắt của chuyên viên xử lý nội bộ** trong Khoa (ví dụ: `Luận`, `Quyết`, `Phương`, `Thảo`, `Tường`...), hoàn toàn **KHÔNG PHẢI** là tên cơ quan, đơn vị nhận văn bản bên ngoài.
 
 ### Quy tắc xác định nơi nhận chuẩn xác:
-1. **Đối với Công văn phúc đáp văn bản đến:**
-   - Cơ quan nhận chính (`Kính gửi:`) phải được bóc tách trực tiếp từ **Đơn vị phát hành văn bản đến** (hoặc theo nội dung chỉ đạo trong văn bản đến).
-   - Danh sách `Nơi nhận:` bên cột trái gồm:
-     - `Như trên;` (hoặc tên đơn vị nhận chính).
-     - Ban Chủ nhiệm Khoa (để báo cáo/để biết): `BCN Khoa (để b/c);`
-     - Các đơn vị, cá nhân phối hợp thực hiện nội bộ: ví dụ `Bộ môn ... (để t/h);`, `Học viên ...;`
-     - Dòng lưu văn thư: `- Lưu: VT, <MÃ_PHÒNG>_<TÊN_VIẾT_TẮT>.`
-2. **Đối với Tờ trình nội bộ:**
+1. **Phân biệt Luồng Văn bản Đến & Thẩm quyền Ban hành:**
+   - **Trường hợp A — Văn bản đến gửi thẳng Khoa YTCC:** Khoa là cơ quan nhận chính -> Soạn Công văn phúc đáp gửi trực tiếp Đơn vị đối tác (`Kính gửi: Tên đơn vị đối tác`).
+   - **Trường hợp B — Văn bản đến gửi ĐẠI HỌC Y DƯỢC TPHCM (BGH bút phê chuyển P. TCNL đầu mối, Khoa YTCC phối hợp):** Thẩm quyền quyết định và ban hành văn bản cử viên chức hoặc phúc đáp đối ngoại thuộc về Nhà trường -> Khoa **KHÔNG** gửi văn bản cho đối tác bên ngoài mà soạn **Công văn nội bộ trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự** (mã số hiệu `YTCC-HCTC`) để đề xuất Nhà trường cho phép.
+2. **Đối với Công văn trình nội bộ BGH & Phòng chức năng (như TH B):**
+   - `Kính gửi:`
+     - `Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;`
+     - `Phòng Tổ chức – Nhân sự.`
+   - `Nơi nhận:` Tối giản, chỉ gồm:
+     - `- Như trên;`
+     - `- Lưu: VT, HCTC_<TÊN_VIẾT_TẮT>.` (ví dụ: `- Lưu: VT, HCTC_VTTH.`).
+   - Câu kết thúc: Dùng văn phong trình duyệt (`Khoa Y tế công cộng kính trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự xem xét, phê duyệt.\nTrân trọng./.`).
+3. **Đối với Công văn phúc đáp đối tác bên ngoài (như TH A):**
+   - `Kính gửi:` Đơn vị phát hành văn bản đến.
+   - `Nơi nhận:` Gồm `Như trên;`, `BCN Khoa (để b/c);`, các Bộ môn/cá nhân phối hợp, `- Lưu: VT, <MÃ_PHÒNG>_<TÊN_VIẾT_TẮT>.`
+4. **Đối với Tờ trình nội bộ:**
    - `Kính gửi:` Ban Giám hiệu Đại học Y Dược TP.HCM và các phòng chức năng liên quan (Tổ chức cán bộ, Kế hoạch tài chính, Quản lý khoa học...).
    - `Nơi nhận:`
      - `Như trên;`

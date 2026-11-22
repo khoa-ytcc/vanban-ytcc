@@ -1,0 +1,69 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": true,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "Trần Diệp Tuấn",
+  "bgh_sign_gap_pt": 50,
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "....",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "17",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Về việc xin phép cho viên chức tham dự họp Tổ soạn thảo, Tổ biên tập xây dựng tài liệu chuyên môn: Dinh dưỡng lâm sàng cơ bản"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;",
+        "Phòng Tổ chức – Nhân sự."
+      ]
+    },
+    {
+      "type": "p",
+      "italic": false,
+      "text": "Căn cứ Giấy mời số 1615/GM-KCB ngày 16 tháng 11 năm 2026 của Cục Quản lý Khám, chữa bệnh – Bộ Y tế về việc mời tham dự họp Tổ soạn thảo, Tổ biên tập xây dựng tài liệu chuyên môn “Dinh dưỡng lâm sàng cơ bản”;"
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế công cộng kính trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự xét duyệt cho TS. BS. Phạm Thị Lan Anh – Trưởng Bộ môn Dinh dưỡng và Thực phẩm được tham dự cuộc họp nêu trên, cụ thể như sau:"
+    },
+    {
+      "type": "p",
+      "prefix_bold": "Thời gian:",
+      "text": "01 ngày, bắt đầu từ 8h30 ngày 23 tháng 11 năm 2026."
+    },
+    {
+      "type": "p",
+      "prefix_bold": "Địa điểm:",
+      "text": "Phòng 609B, Nhà A, Cục Quản lý Khám, chữa bệnh, Bộ Y tế. Số 138A, Phố Giảng Võ, Phường Giảng Võ, Thành phố Hà Nội."
+    },
+    {
+      "type": "p",
+      "prefix_bold": "Kinh phí:",
+      "text": "Chi phí vé máy bay, di chuyển, khách sạn và công tác phí từ nguồn Chi thường xuyên của Khoa Y tế công cộng."
+    },
+    {
+      "type": "p",
+      "text": "Rất mong nhận được sự đồng ý của Ban Giám hiệu và Phòng Tổ chức – Nhân sự.\nTrân trọng./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "Nguyễn Duy Phong",
+    "sign_gap_pt": 55,
+    "recipients": [
+      "- Như trên;",
+      "- Lưu: VT, HCTC_VTTH."
+    ],
+    "dept_code": "HCTC",
+    "creator_initials": "VTTH"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "doc_type": "cong_van",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "947",
+    "ma_loai": "YTCC-HCTC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "16",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "cho phép viên chức tham gia ghi hình 02 nội dung Talk show phát sóng trong chương trình truyền hình HTV7"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;",
+        "Phòng Tổ chức – Nhân sự."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Căn cứ Công văn số 10.11/CV2026 ngày 10 tháng 11 năm 2026 của Công ty TNHH Truyền hình kết nối về việc mời tham gia ghi hình 02 nội dung Talk show trong chương trình truyền hình: Sức Khỏe 24h, phát sóng vào lúc 17h30 từ thứ Hai đến thứ Sáu hằng tuần trên kênh HTV7;"
+    },
+    {
+      "type": "p",
+      "text": "Ban Chủ nhiệm khoa Y tế công cộng thống nhất cho phép viên chức tham gia ghi hình, với thông tin như sau:"
+    },
+    {
+      "type": "p",
+      "text": "Họ và tên: ThS. Trương Nhật Khuê Tường; Số điện thoại: 0908433334"
+    },
+    {
+      "type": "p",
+      "text": "Đơn vị công tác: Giảng viên Bộ môn Dinh dưỡng và Thực phẩm, Khoa Y tế công cộng."
+    },
+    {
+      "type": "p",
+      "text": "Nội dung tham gia: Ghi hình 02 nội dung Talk show với chủ đề: \"Dinh dưỡng và sức khỏe đường ruột\" trong chương trình \"Sức Khỏe 24h\" phát sóng trên kênh HTV7 (thời lượng dự kiến: 10 phút/1 nội dung)."
+    },
+    {
+      "type": "p",
+      "text": "Thời gian ghi hình dự kiến: thứ Tư, ngày 18 tháng 11 năm 2026."
+    },
+    {
+      "type": "p",
+      "text": "Địa điểm ghi hình: Phim trường HTV, Thành phố Hồ Chí Minh."
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế công cộng kính trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự xem xét, phê duyệt."
+    },
+    {
+      "type": "p",
+      "text": "Trân trọng./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "Nguyễn Duy Phong",
+    "sign_gap_pt": 55,
+    "recipients": [
+      "- Như trên;",
+      "- Lưu: VT, HCTC_VTTH."
+    ]
+  }
+}

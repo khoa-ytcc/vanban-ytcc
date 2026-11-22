@@ -38,6 +38,7 @@
   "sign_block": {
     "signer_role": "TRƯỞNG KHOA",
     "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "sign_gap_pt": 55,
     "recipients": [
       "- Như trên;",
       "- Phòng Đào tạo Sau đại học;"
