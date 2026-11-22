@@ -1,0 +1,127 @@
+{
+  "doc_type": "ke_hoach",
+  "target_one_page": false,
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "....",
+    "ma_loai": "KH-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Tổ chức đợt Thực tế cộng đồng cho sinh viên khóa 2026 tại tỉnh Đồng Nai"
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "I. MỤC ĐÍCH, YÊU CẦU"
+    },
+    {
+      "type": "paragraph",
+      "prefix_bold": "1. ",
+      "text": "Giúp sinh viên củng cố kiến thức lý thuyết đã học về Y tế Công cộng và Y học dự phòng, tiếp cận thực tế công tác chăm sóc sức khỏe ban đầu tại tuyến y tế cơ sở (Trung tâm Y tế huyện và Trạm Y tế xã)."
+    },
+    {
+      "type": "paragraph",
+      "prefix_bold": "2. ",
+      "text": "Rèn luyện kỹ năng điều tra dịch tễ học, thu thập và phân tích số liệu sức khỏe cộng đồng, truyền thông giáo dục sức khỏe và xây dựng kế hoạch can thiệp y tế phù hợp với đặc điểm địa phương."
+    },
+    {
+      "type": "paragraph",
+      "prefix_bold": "3. ",
+      "text": "Yêu cầu 100% sinh viên chấp hành nghiêm túc quy chế thực tập, bảo đảm an toàn tuyệt đối về người và tài sản trong suốt thời gian lưu trú tại địa bàn thực địa."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "II. ĐỊA ĐIỂM VÀ THỜI GIAN THỰC HIỆN"
+    },
+    {
+      "type": "bullet",
+      "text": "Địa bàn thực địa: Huyện Trảng Bom và Huyện Định Quán, tỉnh Đồng Nai."
+    },
+    {
+      "type": "bullet",
+      "text": "Thời gian: Từ ngày 05/01/2027 đến ngày 23/01/2027 (03 tuần làm việc liên tục)."
+    },
+    {
+      "type": "bullet",
+      "text": "Đối tượng tham gia: 120 sinh viên Cử nhân Y tế Công cộng và Bác sĩ Y học dự phòng khóa 2026."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "III. TIẾN ĐỘ THỰC HIỆN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ban Chủ nhiệm Khoa phân công các Bộ môn và Tổ công tác triển khai các nội dung theo tiến độ sau:"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Nội dung công việc", "Thời gian", "Đơn vị chủ trì", "Ghi chú"],
+      "col_widths": [14, 60, 26, 35, 25],
+      "rows": [
+        ["1", "Khảo sát tiền trạm địa bàn và liên hệ TTYT huyện", "15/12/2026", "Văn phòng Khoa & BCN", "Đã liên hệ"],
+        ["2", "Họp phổ biến quy chế thực địa và phân nhóm sinh viên", "25/12/2026", "Bộ môn Dịch tễ & QLĐT", "Hội trường 3D"],
+        ["3", "Tập huấn bộ công cụ điều tra phỏng vấn hộ gia đình", "30/12/2026", "Bộ môn YTCC & NCKH", "01 ngày"],
+        ["4", "Tổ chức đưa sinh viên xuống địa bàn thực địa", "05/01/2027", "Tổ công tác thực địa", "Xe Trường"],
+        ["5", "Báo cáo tổng kết đợt thực tế cộng đồng tại huyện", "23/01/2027", "Toàn thể giảng viên & SV", "Hội trường TTYT"]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "IV. TỔ CHỨC THỰC HIỆN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ban Chủ nhiệm Khoa yêu cầu các Bộ môn, giảng viên hướng dẫn và toàn thể sinh viên nghiêm túc thực hiện kế hoạch này. Chi tiết danh sách phân công giảng viên phụ trách các nhóm thực địa được ban hành tại Phụ lục đính kèm./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Ban Giám hiệu (để b/c);",
+      "- Phòng QLĐT, Phòng CTSV;",
+      "- TTYT huyện Trảng Bom, Định Quán;",
+      "- Các Bộ môn thuộc Khoa;",
+      "- Lưu: VT, QLĐT_VTTH."
+    ],
+    "dept_code": "QLĐT",
+    "creator_initials": "[TÊN_VIẾT_TẮT]"
+  },
+  "post_sign_blocks": [
+    {
+      "type": "landscape_section",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "PHỤ LỤC: PHÂN CÔNG GIẢNG VIÊN HƯỚNG DẪN THỰC ĐỊA TẠI TỈNH ĐỒNG NAI"
+        },
+        {
+          "type": "paragraph",
+          "italic": true,
+          "align": "center",
+          "text": "(Kèm theo Kế hoạch số ..../KH-YTCC ngày 22 tháng 11 năm 2026 của Khoa Y tế Công cộng)"
+        },
+        {
+          "type": "table",
+          "headers": ["STT", "Họ và tên giảng viên", "Học vị / Chức danh", "Bộ môn công tác", "Địa bàn phụ trách", "Số lượng SV", "Nội dung hướng dẫn chuyên môn", "Ghi chú"],
+          "col_widths": [10, 36, 26, 28, 30, 16, 72, 24],
+          "rows": [
+            ["1", "TS. BS. Huỳnh Ngọc Vân Anh", "Tiến sĩ - Giảng viên", "Bộ môn Dịch tễ học", "Xã Hố Nai 3, Trảng Bom", "20 SV", "Giám sát điều tra dịch tễ sốt xuất huyết và bệnh truyền nhiễm", "Trưởng đoàn"],
+            ["2", "ThS. BS. Lê Hoàng Nam", "Thạc sĩ - Bác sĩ", "Bộ môn Dinh dưỡng", "Xã Bắc Sơn, Trảng Bom", "20 SV", "Đánh giá tình trạng dinh dưỡng trẻ dưới 5 tuổi tại trạm", "Phó đoàn"],
+            ["3", "TS. Y tế CC. Phạm Thị Lan", "Tiến sĩ - Giảng viên", "Bộ môn Quản lý Y tế", "TT. Trảng Bom", "20 SV", "Khảo sát quy trình quản lý khám chữa bệnh BHYT tại TTYT", "Thành viên"],
+            ["4", "ThS. Trương Nhật Khuê Tường", "Thạc sĩ - Giảng viên", "Bộ môn SK Môi trường", "Xã Phú Cường, Định Quán", "20 SV", "Quan trắc nguồn nước sinh hoạt và vệ sinh môi trường nông thôn", "Thành viên"],
+            ["5", "BS. CKI. Trần Văn Phúc", "Bác sĩ CKI", "Bộ môn Y học Gia đình", "Xã Gia Tân 1, Định Quán", "20 SV", "Thực hành khám sàng lọc bệnh không lây nhiễm tại trạm y tế", "Thành viên"],
+            ["6", "ThS. Nguyễn Thị Thu Trang", "Thạc sĩ - Giảng viên", "Bộ môn Thống kê Y học", "Xã Phú Ngọc, Định Quán", "20 SV", "Hướng dẫn nhập liệu, làm sạch số liệu và viết báo cáo thực địa", "Thư ký"]
+          ]
+        }
+      ]
+    }
+  ]
+}

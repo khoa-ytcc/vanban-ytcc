@@ -1,0 +1,58 @@
+{
+  "doc_type": "giay_gioi_thieu",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ump",
+    "so_hieu": "952",
+    "ma_loai": "GGT-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Trung tâm Kiểm soát bệnh tật Thành phố Hồ Chí Minh (HCDC)",
+        "Khoa Phòng chống bệnh truyền nhiễm"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Đại học Y Dược Thành phố Hồ Chí Minh xin trân trọng giới thiệu:",
+      "indent": false
+    },
+    {
+      "type": "key_value",
+      "items": [
+        {"key": "Học viên", "value": "Lê Văn Hùng", "key_bold": true, "value_bold": true},
+        {"key": "Ngành học", "value": "Y học dự phòng", "key_bold": true},
+        {"key": "Bậc học", "value": "Bác sĩ Chuyên khoa cấp 2", "key_bold": true},
+        {"key": "Mã số học viên", "value": "CK2-2024-YTCC-012", "key_bold": true},
+        {"key": "Về việc", "value": "Thu thập số liệu cho đề tài: 'Nghiên cứu đặc điểm dịch tễ học và các yếu tố tiên lượng sốt xuất huyết Dengue nặng tại TP. Hồ Chí Minh năm 2026'", "key_bold": true, "value_italic": true},
+        {"key": "Người hướng dẫn", "value": "PGS. TS. Tô Gia Kiên", "key_bold": true}
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Kính mong Quý cơ quan, đơn vị tạo điều kiện thuận lợi để học viên hoàn thành nhiệm vụ thu thập số liệu nghiên cứu khoa học theo quy định.",
+      "indent": false
+    },
+    {
+      "type": "paragraph",
+      "text": "Giấy này có giá trị đến hết ngày 31 tháng 05 năm 2027./.",
+      "indent": false
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TL. HIỆU TRƯỞNG\nTRƯỞNG KHOA",
+    "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "recipients": [
+      "- Như trên;",
+      "- Lưu: VT, QLĐT_ĐTTA."
+    ],
+    "dept_code": "QLĐT",
+    "creator_initials": "ĐTTA"
+  }
+}

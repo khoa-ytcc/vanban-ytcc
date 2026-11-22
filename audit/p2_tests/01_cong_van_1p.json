@@ -1,0 +1,58 @@
+{
+  "doc_type": "cong_van",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "950",
+    "ma_loai": "YTCC-HCTC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Về việc cử viên chức tham gia Hội đồng chuyên môn tư vấn xây dựng chuẩn CTĐT"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Trường Đại học Y Dược Cần Thơ",
+        "Khoa Y tế Công cộng - Trường ĐHYD Cần Thơ"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng – Đại học Y Dược Thành phố Hồ Chí Minh nhận được Công văn số 1245/ĐHYDCT-YTCC ngày 15 tháng 11 năm 2026 của Quý Trường về việc đề nghị cử chuyên gia tham gia Hội đồng chuyên môn tư vấn xây dựng và thẩm định chuẩn chương trình đào tạo trình độ Thạc sĩ ngành Y tế công cộng."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sau khi rà soát phân công công tác chuyên môn, Khoa Y tế Công cộng trân trọng giới thiệu và cử viên chức sau đây tham gia Hội đồng:"
+    },
+    {
+      "type": "bullet",
+      "text": "Họ và tên: PGS. TS. Thái Thanh Trúc"
+    },
+    {
+      "type": "bullet",
+      "text": "Chức vụ, đơn vị: Phó Trưởng khoa Khoa Y tế Công cộng, Trưởng Bộ môn Dịch tễ học"
+    },
+    {
+      "type": "bullet",
+      "text": "Số điện thoại: 0903.xxx.xxx – Email: thaithanhtruc@ump.edu.vn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng trân trọng thông báo đến Quý Trường để phối hợp triển khai các bước tiếp theo./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "recipients": [
+      "- Như trên;",
+      "- BCN Khoa (để biết);",
+      "- PGS. TS. Thái Thanh Trúc (để thực hiện);"
+    ],
+    "dept_code": "HCTC",
+    "creator_initials": "VTTH"
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "doc_type": "ke_hoach",
+  "target_one_page": false,
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "953",
+    "ma_loai": "KH-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Kế hoạch tổ chức Hội nghị Khoa học Kỹ thuật thường niên Khoa Y tế Công cộng năm 2026"
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "I. MỤC ĐÍCH, YÊU CẦU"
+    },
+    {
+      "type": "paragraph",
+      "text": "1. Tạo diễn đàn khoa học uy tín để các nhà khoa học, giảng viên, học viên sau đại học và sinh viên công bố, trao đổi các kết quả nghiên cứu mới nhất trong lĩnh vực Y tế công cộng, Dịch tễ học, Dinh dưỡng, Quản lý Y tế và Sức khỏe môi trường."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. Nâng cao năng lực nghiên cứu khoa học, thúc đẩy hợp tác liên ngành giữa Khoa với các cơ sở y tế dự phòng và đối tác quốc tế; tuyển chọn các báo cáo xuất sắc để khen thưởng và xuất bản kỷ yếu."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "II. THỜI GIAN, ĐỊA ĐIỂM VÀ HÌNH THỨC TỔ CHỨC"
+    },
+    {
+      "type": "bullet",
+      "text": "Thời gian tổ chức: 01 ngày, khai mạc lúc 08h00 ngày 18 tháng 12 năm 2026 (Thứ Sáu)."
+    },
+    {
+      "type": "bullet",
+      "text": "Địa điểm: Giảng đường 3D và Trung tâm Thực hành Đa năng, Đại học Y Dược TP.HCM (217 Hồng Bàng, Quận 5)."
+    },
+    {
+      "type": "bullet",
+      "text": "Hình thức: Kết hợp trực tiếp và trực tuyến qua nền tảng Zoom Webinar đối với các báo cáo viên quốc tế."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "III. TIẾN ĐỘ THỰC HIỆN VÀ PHÂN CÔNG NHIỆM VỤ CHI TIẾT"
+    },
+    {
+      "type": "paragraph",
+      "text": "Chi tiết các hạng mục công việc chuẩn bị, triển khai và hoàn tất hội nghị được phân công cụ thể trong bảng dưới đây:"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Hạng mục công việc", "Thời gian", "Đơn vị / Cá nhân phụ trách", "Ghi chú"],
+      "col_widths": [12, 55, 30, 45, 18],
+      "rows": [
+        ["1", "Ban hành Thông báo số 1 kêu gọi gửi bài tóm tắt (Call for Abstracts)", "01/10/2026", "Tổ NCKH & HTQT", "Đã xong"],
+        ["2", "Thu nhận báo cáo tóm tắt và phân loại theo chuyên ban", "01/10 - 30/10/2026", "ThS. Trương Nhật Khuê Tường", "95 bài"],
+        ["3", "Họp Hội đồng Khoa học duyệt và thẩm định bài báo cáo", "05/11/2026", "Hội đồng Khoa học Khoa", "Chọn 48 bài"],
+        ["4", "Gửi thư mời chính thức đến các báo cáo viên và đại biểu khách mời", "15/11/2026", "Văn phòng Khoa", "250 thư mời"],
+        ["5", "Biên tập, thiết kế và in ấn Kỷ yếu tóm tắt công trình khoa học", "20/11 - 05/12/2026", "Bộ phận Truyền thông", "300 cuốn"],
+        ["6", "Dự trù kinh phí chi tiết và trình Ban Giám hiệu phê duyệt", "25/11/2026", "Phòng TC-KT & BCN Khoa", "Đang duyệt"],
+        ["7", "Khảo sát và kiểm tra kỹ thuật âm thanh, ánh sáng, mạng Internet GĐ 3D", "01/12/2026", "Tổ Kỹ thuật & CNTT", "Test trực tiếp"],
+        ["8", "Thiết kế backdrop, standee, thẻ đeo ban tổ chức và đại biểu", "03/12/2026", "Tổ Truyền thông", "Duyệt mẫu"],
+        ["9", "Tập huấn tình nguyện viên phục vụ lễ tân và điều phối phòng họp", "10/12/2026", "Đoàn Thanh niên Khoa", "25 SV"],
+        ["10", "Tổng duyệt chương trình Hội nghị, chạy thử slide và đường truyền trực tuyến", "17/12/2026", "Ban Tổ chức", "Buổi chiều"],
+        ["11", "Tổ chức phiên khai mạc chính thức và các phiên báo cáo chuyên đề", "18/12/2026", "Toàn thể cán bộ Khoa", "Cả ngày"],
+        ["12", "Trao giải thưởng báo cáo viên trẻ xuất sắc và bế mạc Hội nghị", "18/12/2026 (16h30)", "Ban Chủ nhiệm Khoa", "05 giải thưởng"],
+        ["13", "Viết bài đưa tin, tổng hợp hình ảnh đăng cổng thông tin ĐHYD TP.HCM", "19/12/2026", "Tổ Truyền thông Khoa", "Tin tức web"],
+        ["14", "Quyết toán các khoản kinh phí tổ chức theo quy định tài chính", "20/12 - 30/12/2026", "Kế toán Khoa & Phòng TC-KT", "Chứng từ gốc"],
+        ["15", "Họp tổng kết, rút kinh nghiệm công tác tổ chức và lưu trữ hồ sơ", "05/01/2027", "Văn phòng Khoa", "Biên bản họp"]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "IV. TỔ CHỨC THỰC HIỆN"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ban Chủ nhiệm Khoa Y tế Công cộng yêu cầu các Bộ môn, các đơn vị trực thuộc và toàn thể viên chức, người lao động nghiêm túc phối hợp triển khai thực hiện đúng tiến độ kế hoạch đề ra."
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong quá trình thực hiện, nếu phát sinh khó khăn, vướng mắc, các đơn vị kịp thời báo cáo Ban Chủ nhiệm Khoa để có hướng chỉ đạo giải quyết kịp thời./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "recipients": [
+      "- Ban Giám hiệu (để báo cáo);",
+      "- Phòng NCKH, Phòng TC-KT (để phối hợp);",
+      "- Các Bộ môn, Đơn vị thuộc Khoa;",
+      "- Lưu: VT, VP_NTTN."
+    ],
+    "dept_code": "VP",
+    "creator_initials": "NTTN"
+  }
+}

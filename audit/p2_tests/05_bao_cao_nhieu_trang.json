@@ -1,0 +1,101 @@
+{
+  "doc_type": "bao_cao",
+  "target_one_page": false,
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "954",
+    "ma_loai": "BC-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Báo cáo tổng kết công tác đào tạo Đại học và Sau đại học năm học 2025 – 2026"
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "I. ĐẶC ĐIỂM TÌNH HÌNH CHUNG"
+    },
+    {
+      "type": "paragraph",
+      "text": "Trong năm học 2025 – 2026, Khoa Y tế Công cộng tiếp tục thực hiện sứ mạng đào tạo nguồn nhân lực y tế chất lượng cao, đẩy mạnh đổi mới chương trình đào tạo theo chuẩn đầu ra và tăng cường nghiên cứu khoa học gắn liền với thực hành cộng đồng."
+    },
+    {
+      "type": "paragraph",
+      "text": "Đội ngũ viên chức, người lao động của Khoa tính đến tháng 11/2026 gồm 48 người, trong đó có 02 Giáo sư, 08 Phó Giáo sư, 18 Tiến sĩ, 16 Thạc sĩ và 04 Cử nhân. Toàn thể giảng viên đều đáp ứng chuẩn trình độ đào tạo và tích cực tham gia giảng dạy, hướng dẫn khóa luận, luận văn, luận án."
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "II. KẾT QUẢ ĐẠT ĐƯỢC TRONG CÔNG TÁC ĐÀO TẠO"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "1. Đào tạo bậc Đại học"
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa quản lý và tổ chức đào tạo cho 02 ngành đào tạo đại học chính quy gồm Cử nhân Y tế Công cộng và Cử nhân Dinh dưỡng, đồng thời đảm nhiệm giảng dạy các môn học cơ sở ngành cho sinh viên Bác sĩ Y đa khoa, Y học cổ truyền, Răng Hàm Mặt và Dược học."
+    },
+    {
+      "type": "bullet",
+      "text": "Ngành Cử nhân Y tế Công cộng: Quy mô 215 sinh viên. Tỷ lệ tốt nghiệp đúng hạn đạt 94.2%, tỷ lệ sinh viên có việc làm sau 06 tháng đạt 91.5%."
+    },
+    {
+      "type": "bullet",
+      "text": "Ngành Cử nhân Dinh dưỡng: Quy mô 180 sinh viên. Tỷ lệ tốt nghiệp loại Giỏi và Khá đạt 86.8%, 100% sinh viên hoàn thành tốt kỳ thực tập bệnh viện và cộng đồng."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "2. Đào tạo bậc Sau đại học"
+    },
+    {
+      "type": "paragraph",
+      "text": "Công tác đào tạo Sau đại học được tổ chức chặt chẽ, đảm bảo tiến độ nghiệm thu đề cương và bảo vệ luận văn đúng kế hoạch năm học của Nhà trường:"
+    },
+    {
+      "type": "table",
+      "headers": ["Bậc đào tạo", "Chuyên ngành", "Số lượng học viên", "Đúng hạn (%)", "Số bài báo công bố"],
+      "col_widths": [35, 45, 30, 25, 25],
+      "rows": [
+        ["Thạc sĩ", "Y tế công cộng", "42", "95.2%", "24 bài"],
+        ["Thạc sĩ", "Dịch tễ học", "18", "94.4%", "12 bài"],
+        ["CK1", "Y học dự phòng", "25", "100%", "Báo cáo ca"],
+        ["CK2", "Quản lý Y tế", "16", "93.7%", "08 đề án"],
+        ["Tiến sĩ", "Y tế công cộng", "11", "90.9%", "18 bài ISI/Scopus"]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "III. ĐÁNH GIÁ CHUNG VÀ PHƯƠNG HƯỚNG NĂM HỌC 2026 – 2027"
+    },
+    {
+      "type": "paragraph",
+      "text": "a) Ưu điểm: Đội ngũ giảng viên đoàn kết, chương trình đào tạo liên tục được cập nhật theo khuyến nghị kiểm định chất lượng quốc tế AUN-QA; công tác quản trị dữ liệu học viên được số hóa đồng bộ."
+    },
+    {
+      "type": "paragraph",
+      "text": "b) Tồn tại, hạn chế: Một số cơ sở thực hành cộng đồng tại các tỉnh xa gặp khó khăn trong việc bố trí chỗ ở cho sinh viên thực tập dài ngày; cơ sở vật chất phòng máy tính phục vụ môn Thống kê y học cần được nâng cấp bổ sung."
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng trân trọng báo cáo Ban Giám hiệu Nhà trường để theo dõi, chỉ đạo và hỗ trợ Khoa tiếp tục hoàn thành thắng lợi nhiệm vụ năm học mới./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "recipients": [
+      "- Ban Giám hiệu (để báo cáo);",
+      "- Phòng Đào tạo ĐH & SĐH;",
+      "- Phòng ĐBCL & KT;",
+      "- Lưu: VT, ĐBCL_NTYN."
+    ],
+    "dept_code": "ĐBCL",
+    "creator_initials": "NTYN"
+  }
+}

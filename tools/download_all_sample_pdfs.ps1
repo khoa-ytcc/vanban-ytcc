@@ -1,12 +1,40 @@
-param(
-    [string]$outputDir = "D:\TH\vanban-ytcc\knowledge_base\sample_pdfs",
+﻿param(
+    [string]$outputDir = "$PSScriptRoot\..\knowledge_base\sample_pdfs",
     [int]$threads = 10
 )
+
+# Load environment configuration from .env.local
+$envFile = Join-Path (Split-Path $PSScriptRoot -Parent) ".env.local"
+if (-not (Test-Path $envFile)) {
+    $envFile = Join-Path (Get-Location) ".env.local"
+}
+if (-not (Test-Path $envFile)) {
+    throw "Không tìm thấy file .env.local chứa cấu hình kết nối CSDL."
+}
+
+$envVars = @{}
+Get-Content $envFile | ForEach-Object {
+    $line = $_.Trim()
+    if ($line -and -not $line.StartsWith("#") -and $line.Contains("=")) {
+        $parts = $line.Split("=", 2)
+        $envVars[$parts[0].Trim()] = $parts[1].Trim()
+    }
+}
+
+$server = $envVars["MYSQL_SERVER"]
+$port = if ($envVars["MYSQL_PORT"]) { $envVars["MYSQL_PORT"] } else { "3306" }
+$user = $envVars["MYSQL_USER"]
+$pass = $envVars["MYSQL_PASSWORD"]
+$db = $envVars["MYSQL_DATABASE"]
+
+if (-not $server -or -not $user -or -not $pass -or -not $db) {
+    throw "Thiếu thông tin kết nối CSDL trong file .env.local."
+}
 
 $dllPath = Join-Path $PSScriptRoot "MySql.Data.dll"
 [System.Reflection.Assembly]::Load([System.IO.File]::ReadAllBytes($dllPath)) | Out-Null
 
-$connStr = "server=45.117.169.194; port=3306; userid=dvdung_user; password=D0.4nhuy; database=dvdung_dbase; pooling=false; Character Set=utf8; convert zero datetime=True"
+$connStr = "server=$server; port=$port; userid=$user; password=$pass; database=$db; pooling=false; Character Set=utf8; convert zero datetime=True"
 $conn = New-Object MySql.Data.MySqlClient.MySqlConnection($connStr)
 $conn.Open()
 

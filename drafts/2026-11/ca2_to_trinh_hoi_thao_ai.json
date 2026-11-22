@@ -1,0 +1,77 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": false,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "[HỌ TÊN LÃNH ĐẠO BGH]",
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "....",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "20",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Xin phê duyệt chủ trương và kinh phí tổ chức Hội thảo chuyên đề ứng dụng Trí tuệ nhân tạo (AI) trong công tác Y tế Công cộng năm 2026"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;",
+        "Phòng Khoa học Công nghệ;",
+        "Phòng Kế hoạch Tài chính."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Nhằm cập nhật xu hướng công nghệ số và thúc đẩy việc ứng dụng Trí tuệ nhân tạo (AI) trong nghiên cứu dịch tễ học, phân tích dữ liệu y tế lớn và quản lý y tế cộng đồng, Khoa Y tế Công cộng kính trình Ban Giám hiệu xem xét, phê duyệt chủ trương và hỗ trợ một phần kinh phí tổ chức Hội thảo chuyên đề với các thông tin sau:"
+    },
+    {
+      "type": "key_value",
+      "items": [
+        { "key": "1. Tên hội thảo", "value": "Ứng dụng Trí tuệ nhân tạo (AI) trong công tác Y tế Công cộng năm 2026", "key_bold": true },
+        { "key": "2. Thời gian dự kiến", "value": "Ngày 15 tháng 12 năm 2026 (01 ngày)", "key_bold": true },
+        { "key": "3. Địa điểm", "value": "Hội trường 3D, Đại học Y Dược TP.HCM và phát trực tuyến", "key_bold": true },
+        { "key": "4. Quy mô tham dự", "value": "Dự kiến 150 đại biểu (giảng viên, học viên, chuyên gia CNTT y tế)", "key_bold": true }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "prefix_bold": "5. Dự trù kinh phí chi tiết: ",
+      "text": "Kinh phí tổ chức hội thảo được lập dự toán cụ thể theo bảng dưới đây:"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Nội dung chi", "Số lượng / ĐVT", "Đơn giá (VNĐ)", "Thành tiền (VNĐ)"],
+      "col_widths": [14, 62, 26, 28, 30],
+      "rows": [
+        ["1", "Thù lao báo cáo viên chuyên đề AI", "03 chuyên gia", "3.000.000", "9.000.000"],
+        ["2", "In ấn tài liệu kỷ yếu hội thảo", "150 cuốn", "50.000", "7.500.000"],
+        ["3", "Teabreak giữa giờ cho đại biểu", "150 suất", "40.000", "6.000.000"],
+        ["4", "Trang trí backdrop, standee, thẻ đeo", "01 gói", "4.500.000", "4.500.000"],
+        ["5", "Văn phòng phẩm, kỹ thuật đường truyền", "01 gói", "3.000.000", "3.000.000"]
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Tổng kinh phí đề nghị hỗ trợ: 30.000.000 đồng (Bằng chữ: Ba mươi triệu đồng chẵn). Nguồn kinh phí: Đề nghị Nhà trường hỗ trợ từ Quỹ phát triển hoạt động sự nghiệp và nguồn thu hợp pháp của Khoa."
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng kính trình Ban Giám hiệu xem xét, phê duyệt chủ trương và kinh phí để Khoa chủ động triển khai công tác chuẩn bị./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Như trên;",
+      "- Phòng KHCN (để phối hợp);",
+      "- Phòng KHTC (để thẩm định);",
+      "- BCN Khoa (để b/c);"
+    ],
+    "dept_code": "KHCN",
+    "creator_initials": "[TÊN_VIẾT_TẮT]"
+  }
+}

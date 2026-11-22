@@ -1,0 +1,62 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": true,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "PGS. TS. Trần Diệp Tuấn",
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "951",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Xin chủ trương cử viên chức tham gia Hội nghị Quốc tế về Y tế Công cộng tại Thái Lan"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh",
+        "Phòng Hợp tác Quốc tế",
+        "Phòng Tổ chức - Cán bộ"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Căn cứ Thư mời ngày 10/11/2026 của Hiệp hội các Trường Y tế Công cộng khu vực Châu Á – Thái Bình Dương (APACPH) về việc tham dự Hội nghị Khoa học thường niên năm 2026 tổ chức tại Băng Cốc, Thái Lan từ ngày 15/12/2026 đến ngày 18/12/2026;"
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng kính trình Ban Giám hiệu xem xét, phê duyệt chủ trương cho phép viên chức sau được cử đi công tác nước ngoài:"
+    },
+    {
+      "type": "bullet",
+      "text": "Họ và tên: TS. BS. Trần Thị Lan Anh – Giảng viên Bộ môn Quản lý Y tế"
+    },
+    {
+      "type": "bullet",
+      "text": "Mục đích chuyến đi: Báo cáo tham luận và kết nối hợp tác nghiên cứu quốc tế"
+    },
+    {
+      "type": "bullet",
+      "text": "Kinh phí: Do Ban Tổ chức Hội nghị đài thọ toàn bộ vé máy bay và ăn ở"
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng kính đề nghị Ban Giám hiệu và các Phòng chức năng xem xét, chấp thuận để viên chức kịp làm thủ tục./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "recipients": [
+      "- Như trên;",
+      "- Phòng TCCB;",
+      "- Phòng HTQT;"
+    ],
+    "dept_code": "VP",
+    "creator_initials": "NTHM"
+  }
+}

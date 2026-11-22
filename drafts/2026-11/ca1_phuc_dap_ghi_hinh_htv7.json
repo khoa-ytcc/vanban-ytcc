@@ -1,0 +1,76 @@
+{
+  "doc_type": "cong_van",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "....",
+    "ma_loai": "YTCC-VP",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "14",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Đồng ý để viên chức tham gia ghi hình chương trình truyền hình"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Công ty TNHH Truyền hình Kết Nối;",
+        "Ban Giám hiệu Đại học Y Dược TP. Hồ Chí Minh;",
+        "Phòng Tổ chức - Cán bộ, Đại học Y Dược TP. Hồ Chí Minh."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "italic": true,
+      "text": "Căn cứ Công văn số 10-11/CV2026 ngày 10 tháng 11 năm 2026 của Công ty TNHH Truyền hình Kết Nối về việc mời viên chức tham gia ghi hình 02 nội dung talk show trong chương trình truyền hình trên kênh HTV7;"
+    },
+    {
+      "type": "paragraph",
+      "italic": true,
+      "text": "Căn cứ ý kiến chỉ đạo của Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sau khi xem xét kế hoạch công tác và sự thống nhất của Bộ môn Dinh dưỡng, Khoa Y tế Công cộng có ý kiến như sau:"
+    },
+    {
+      "type": "paragraph",
+      "prefix_bold": "1. ",
+      "text": "Thống nhất cử ThS. Trương Nhật Khuê Tường – Giảng viên Bộ môn Dinh dưỡng, Khoa Y tế Công cộng tham gia ghi hình 02 nội dung talk show với chủ đề \"Dinh dưỡng và sức khỏe đường ruột\" trong chương trình truyền hình phát sóng trên kênh HTV7."
+    },
+    {
+      "type": "bullet",
+      "text": "Thời gian ghi hình: Ngày 18 tháng 11 năm 2026."
+    },
+    {
+      "type": "bullet",
+      "text": "Địa điểm: Phim trường Đài Truyền hình TP. Hồ Chí Minh (HTV)."
+    },
+    {
+      "type": "bullet",
+      "text": "Thời lượng: 10 phút/01 nội dung."
+    },
+    {
+      "type": "paragraph",
+      "prefix_bold": "2. ",
+      "text": "ThS. Trương Nhật Khuê Tường có trách nhiệm chủ động bố trí lịch giảng dạy tại Bộ môn để tham gia đúng thời gian; tuân thủ nghiêm túc các quy định chuyên môn và giữ gìn uy tín, hình ảnh của Nhà trường và Khoa."
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng trân trọng thông báo đến Quý Công ty và báo cáo Ban Giám hiệu, Phòng Tổ chức - Cán bộ để phối hợp thực hiện./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "[HỌ TÊN NGƯỜI KÝ]",
+    "recipients": [
+      "- Như trên;",
+      "- BCN Khoa (để b/c);",
+      "- Bộ môn Dinh dưỡng (để biết);",
+      "- ThS. Trương Nhật Khuê Tường (để t/h);"
+    ],
+    "dept_code": "VP",
+    "creator_initials": "[TÊN_VIẾT_TẮT]"
+  }
+}

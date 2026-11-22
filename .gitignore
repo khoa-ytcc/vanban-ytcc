@@ -12,5 +12,23 @@ Thumbs.db
 
 # Bulk PDF sample downloads (Keep repo under GitHub 1GB limit, run tools/download_all_sample_pdfs.ps1 to populate locally)
 knowledge_base/sample_pdfs/CVDi_*.pdf
-drafts/2026-11/*.png
+drafts/**/*.png
+drafts/**/renders/
 knowledge_base/sample_pdfs/*.png
+
+# Archive & Sensitive local files
+_archive/
+.env.local
+MASTER_CONTEXT_BUNDLE.md
+
+# Virtual environment & P1/P2 renders & local SQLite
+.venv/
+__pycache__/
+*.pyc
+tools/__pycache__/
+audit/p1_renders/
+audit/p2_tests/*.docx
+audit/p2_tests/*.pdf
+audit/p2_tests/*.png
+audit/p2_tests/renders/
+knowledge_base/metadata_index/*.db

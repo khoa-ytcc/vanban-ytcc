@@ -1,0 +1,81 @@
+{
+  "doc_type": "cong_van",
+  "target_one_page": false,
+  "header": {
+    "header_level": "ytcc",
+    "so_hieu": "955",
+    "ma_loai": "YTCC-HCTC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "22",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "V/v cử giảng viên tham gia công tác chuyên môn, hỗ trợ đào tạo thực hành tại Bệnh viện"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Bệnh viện Đa khoa Khu vực Thủ Đức",
+        "Phòng Kế hoạch Tổng hợp"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng – Đại học Y Dược Thành phố Hồ Chí Minh nhận được đề nghị của Quý Bệnh viện về việc cử giảng viên có chứng chỉ hành nghề khám bệnh, chữa bệnh chuyên khoa Dinh dưỡng và Y học dự phòng tham gia công tác chuyên môn và hướng dẫn lâm sàng cho học viên thực hành."
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng trân trọng thông báo đã thống nhất phân công danh sách các giảng viên tham gia công tác hỗ trợ chuyên môn chi tiết tại Phụ lục đính kèm văn bản này."
+    },
+    {
+      "type": "paragraph",
+      "text": "Khoa Y tế Công cộng kính gửi Quý Bệnh viện để phối hợp sắp xếp lịch trình và tạo điều kiện thuận lợi cho các viên chức hoàn thành tốt nhiệm vụ được giao."
+    },
+    {
+      "type": "paragraph",
+      "text": "Trân trọng./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "PGS. TS. Nguyễn Duy Phong",
+    "recipients": [
+      "- Như trên;",
+      "- BCN Khoa (để theo dõi);",
+      "- Các giảng viên có tên tại Phụ lục;",
+      "- Lưu: VT, HCTC_VTTH."
+    ],
+    "dept_code": "HCTC",
+    "creator_initials": "VTTH"
+  },
+  "post_sign_blocks": [
+    {
+      "type": "landscape_section",
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 1,
+          "text": "PHỤ LỤC: DANH SÁCH GIẢNG VIÊN VÀ LỊCH LÀM VIỆC TẠI BỆNH VIỆN ĐA KHOA KHU VỰC THỦ ĐỨC"
+        },
+        {
+          "type": "paragraph",
+          "text": "(Kèm theo Công văn số 955/YTCC-HCTC ngày 22 tháng 11 năm 2026 của Khoa Y tế Công cộng)",
+          "align": "center",
+          "italic": true,
+          "indent": false
+        },
+        {
+          "type": "table",
+          "headers": ["STT", "Họ và tên giảng viên", "Học vị / Chức danh", "Bộ môn công tác", "Phạm vi chuyên môn", "Thời gian làm việc", "Nhiệm vụ đảm nhiệm"],
+          "col_widths": [12, 45, 30, 38, 48, 42, 35],
+          "rows": [
+            ["1", "TS. BS. Nguyễn Thị Lan Anh", "Tiến sĩ - Bác sĩ", "Bộ môn Dinh dưỡng", "Khám, tư vấn dinh dưỡng lâm sàng", "Thứ Ba (13h30 - 16h30)", "Khám ngoại trú & Hướng dẫn SV"],
+            ["2", "ThS. BS. Lê Hoàng Nam", "Thạc sĩ - Bác sĩ", "Bộ môn Dinh dưỡng", "Hội chẩn dinh dưỡng bệnh nhân nặng", "Thứ Năm (08h00 - 11h30)", "Hội chẩn khoa ICU"],
+            ["3", "BS. CKI. Trần Văn Phúc", "Bác sĩ CKI", "Bộ môn Y học dự phòng", "Tư vấn tiêm chủng & Kiểm soát NK", "Thứ Sáu (08h00 - 16h30)", "Chuyên môn khoa KSCL"],
+            ["4", "ThS. Trương Nhật Khuê Tường", "Thạc sĩ", "Bộ môn Quản lý Y tế", "Đánh giá an toàn người bệnh & 5S", "Thứ Tư (13h30 - 16h30)", "Tập huấn QLCL bệnh viện"]
+          ]
+        }
+      ]
+    }
+  ]
+}
