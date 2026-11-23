@@ -34,3 +34,5 @@ flowchart LR
   - Các tác vụ xuất PDF phải được Main Worker thực thi tuần tự, từng file một. Tuyệt đối không spawn subagent để xuất Word COM đồng thời.
 - **Bảo mật thông tin:**
   - Tuyệt đối không ghi thông tin tài khoản, mật khẩu CSDL MySQL, IP mạng nội bộ hay khóa giải mã vào bất kỳ file mã nguồn, file cấu hình hay báo cáo markdown nào.
+- **Tự động Đồng bộ GitHub sau mỗi phiên (GitHub Sync):**
+  - Theo yêu cầu bắt buộc của người dùng, mỗi khi hoàn thành bất kỳ tác vụ nào (soạn thảo, chỉnh sửa engine, cập nhật bộ nhớ dài hạn), Agent phải tự động `git add .`, `git commit` và `git push origin main` lên GitHub để bảo đảm tính liên tục khi người dùng chuyển sang làm việc trên máy khác.

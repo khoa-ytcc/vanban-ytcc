@@ -1,0 +1,60 @@
+{
+  "doc_type": "cong_van",
+  "target_one_page": true,
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "...",
+    "ma_loai": "YTCC-HCTC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "23",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "đề xuất điều chỉnh danh sách chuyên gia xây dựng Bộ công cụ đánh giá năng lực đối với bác sĩ Y học dự phòng"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Văn phòng Hội đồng Y khoa Quốc gia."
+      ]
+    },
+    {
+      "type": "p",
+      "text": "Căn cứ Quyết định số 56/QĐ-HĐYKQG ngày 21 tháng 10 năm 2026 của Hội đồng Y khoa Quốc gia về việc ban hành danh sách chuyên gia tham gia hỗ trợ xây dựng Bộ công cụ đánh giá năng lực hành nghề khám bệnh, chữa bệnh đối với bác sĩ Y học dự phòng;"
+    },
+    {
+      "type": "p",
+      "text": "Qua rà soát danh sách chuyên gia ban hành kèm theo Quyết định số 56/QĐ-HĐYKQG, nhằm bảo đảm phân công phù hợp với chuyên môn sâu và kinh nghiệm giảng dạy thực tế của từng cá nhân, góp phần nâng cao chất lượng và tính khả thi trong công tác xây dựng Bộ công cụ, Khoa Y tế Công cộng kính đề xuất Văn phòng Hội đồng Y khoa Quốc gia xem xét điều chỉnh phân công đối với 02 chuyên gia của Khoa, cụ thể như sau:"
+    },
+    {
+      "type": "bullet",
+      "text": "**PGS.TS. Huỳnh Giao:** Hiện đang giảng dạy học phần Giáo dục sức khỏe (Trưởng Bộ môn Giáo dục sức khỏe – Tâm lý y học) nhưng được phân công ra đề ở mảng Y học gia đình. Kính đề nghị điều chuyển sang tham gia hỗ trợ ra đề ở mảng **Giáo dục sức khỏe**."
+    },
+    {
+      "type": "bullet",
+      "text": "**TS. Nguyễn Thị Ánh Nguyệt:** Giảng viên công tác tại Khoa (đang tham gia đào tạo ngành Công tác xã hội), chưa từng tham gia giảng dạy học phần Giáo dục sức khỏe nhưng được phân công ra đề ở mảng Giáo dục sức khỏe. Kính đề nghị xem xét điều chỉnh phân công của TS. Nguyễn Thị Ánh Nguyệt (không phân công ra đề mảng Giáo dục sức khỏe hoặc bố trí chuyên gia phù hợp thay thế)."
+    },
+    {
+      "type": "p",
+      "text": "Khoa Y tế Công cộng kính chuyển đề xuất đến Văn phòng Hội đồng Y khoa Quốc gia để tổng hợp, báo cáo Hội đồng Y khoa Quốc gia xem xét, quyết định."
+    },
+    {
+      "type": "p",
+      "text": "Trân trọng./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "Nguyễn Duy Phong",
+    "sign_gap_pt": 50,
+    "recipients": [
+      "- Như trên;",
+      "- Hội đồng Y khoa Quốc gia (để b/c);",
+      "- Ban Giám hiệu (để b/c);",
+      "- Lưu: VT, HCTC_VTTH."
+    ]
+  }
+}

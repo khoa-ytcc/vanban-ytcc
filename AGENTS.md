@@ -61,3 +61,8 @@ Tài liệu này xác lập quy chuẩn vận hành, phân vai và các ràng bu
   4. Thoát Word và giải phóng COM object (`$word.Quit()`, `[System.Runtime.InteropServices.Marshal]::ReleaseComObject(...)`).
   5. *Lưu ý:* Chỉ đóng đúng phiên Word COM do script khởi tạo; tuyệt đối không dùng lệnh kill hàng loạt (`Stop-Process -Name WINWORD`) làm ảnh hưởng tài liệu người dùng đang mở.
 - **Quy tắc Thẩm định Thị giác:** Mọi văn bản xuất bản phải được render ra ảnh PNG và Agent tự mở xem trực tiếp bằng mắt thường trước khi bàn giao.
+
+---
+
+## 7. Quy chuẩn Tự động Lưu trữ & Đồng bộ Git (GitHub Sync)
+- **Quy tắc bắt buộc từ người dùng:** Sau mỗi lần hoàn tất một tác vụ (soạn thảo văn bản, chỉnh sửa template/script, cập nhật bộ nhớ...), Agent bắt buộc tự động thực hiện chuỗi lệnh `git add .`, `git commit -m "<thông điệp>"` và `git push origin main` lên GitHub để người dùng có thể tiếp tục làm việc trên máy khác liền mạch.

@@ -602,8 +602,15 @@ def render_blocks(doc, blocks, target_one_page=False):
                 p.paragraph_format.first_line_indent = Mm(12.7) # 1.27 cm chuẩn
                 
             p.paragraph_format.space_before = Pt(0)
-            p.paragraph_format.space_after = Pt(2)
-            p.paragraph_format.line_spacing = 1.5 # CHUẨN MỚI: Dãn dòng 1.5 lines theo yêu cầu người dùng
+            p.paragraph_format.space_after = Pt(1 if target_one_page else 2)
+            
+            custom_ls = b.get("line_spacing")
+            if custom_ls is not None:
+                p.paragraph_format.line_spacing = custom_ls
+            elif target_one_page:
+                p.paragraph_format.line_spacing = 1.15
+            else:
+                p.paragraph_format.line_spacing = 1.5 # Chuẩn 1.5 lines cho văn bản nhiều trang
             
             # Gắn keep_with_next nếu là đoạn cuối cùng trước khối chữ ký
             if is_last:

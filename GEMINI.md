@@ -31,12 +31,7 @@ Mọi yêu cầu nghiệp vụ soạn thảo văn bản đều kích hoạt theo
 
 ---
 
-## 3. Môi trường Thực thi
+## 3. Môi trường Thực thi & Đồng bộ Git
 - Python CLI: `.venv\Scripts\python.exe`
-- Không tự `git commit` hay `git push`. Không đóng tiến trình Word bằng `Stop-Process`.
-
----
-
-## 3. Môi trường Thực thi
-- Python CLI: `.venv\Scripts\python.exe`
-- Không tự `git commit` hay `git push`. Không đóng tiến trình Word bằng `Stop-Process`.
+- **Đồng bộ GitHub (Quy chuẩn bắt buộc theo yêu cầu người dùng):** Mỗi lần hoàn tất một tác vụ hoặc phiên làm việc (soạn thảo văn bản, sửa script, cập nhật bộ nhớ...), Agent bắt buộc tự động thực hiện commit và push toàn bộ thay đổi lên GitHub (`origin main`) để người dùng tiếp tục làm việc trên máy khác liền mạch.
+- **Office COM:** Không đóng tiến trình Word bằng `Stop-Process`.

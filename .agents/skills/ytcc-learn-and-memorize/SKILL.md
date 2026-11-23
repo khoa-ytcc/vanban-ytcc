@@ -46,9 +46,19 @@ d:\TH\vanban-ytcc\.venv\Scripts\python.exe d:\TH\vanban-ytcc\tools\ytcc.py promo
 - Lưu vào `knowledge_base/golden_jsons/<ten_mau>.json`.
 - Tự động đồng bộ ngay vào chỉ mục toàn văn SQLite FTS5 qua `sync_kb`.
 
+### Bước 4: Tự động Commit & Push GitHub (Multi-device Sync)
+Theo yêu cầu bắt buộc của người dùng, sau mỗi lần hoàn tất một công việc (soạn thảo văn bản, chỉnh sửa code/template, ghi nhớ bài học hoặc thăng hạng mẫu vàng), Agent tự động thực hiện:
+```powershell
+git add .
+git commit -m "<thông điệp mô tả công việc>"
+git push origin main
+```
+Bảo đảm toàn bộ dữ liệu, bộ nhớ và dự thảo được đồng bộ lên GitHub để làm việc liên tục trên các thiết bị khác.
+
 ---
 
 ## 3. Đầu ra (Outputs)
 1. Cập nhật `knowledge_base/memory/` (user_preferences.md hoặc lessons_learned.md gắn tag chuẩn).
 2. Bản mẫu vàng được lưu trong `knowledge_base/golden_jsons/` (nếu có promote).
-3. Thông báo xác nhận ngắn gọn gửi người dùng.
+3. Tự động commit và push toàn bộ thay đổi lên GitHub repository.
+4. Thông báo xác nhận ngắn gọn gửi người dùng.

@@ -29,6 +29,7 @@
 - [TTr] [2026-11-22] TRÁNH: Đặt ô `DUYỆT BAN GIÁM HIỆU` lệch hẳn về cột trái dưới `Nơi nhận:`. | NÊN: Đặt ô phê duyệt BGH căn giữa toàn trang ở dưới cùng theo đúng mẫu thực tế S0 (`To_trinh_SoDi_927.pdf`).
 - [KH] [2026-11-22] TRÁNH: Chèn bảng rộng từ 6 cột trở lên vào trang dọc gây tràn lề hoặc co chữ. | NÊN: Tách bảng rộng vào section khổ ngang `landscape_section` (297x210 mm) có lặp lại tiêu đề trang (`tblHeader`).
 - [ALL] [2026-11-22] TRÁNH: Để văn bản target_one_page bị tràn 1-2 dòng sang trang 2. | NÊN: Linter & inspect_pdf sẽ báo `OVERFLOW_PAGE_2`; điều chỉnh câu chữ hoặc giãn dòng để vừa khít 1 trang.
+- [CV] [2026-11-23] TRÁNH: Cố định dãn dòng 1.5 lines cho toàn bộ đoạn thân bài trong văn bản `target_one_page` làm rớt khối chữ ký sang trang 2. | NÊN: Dùng dãn dòng thích ứng 1.15 lines khi `target_one_page=True` để bảo đảm toàn bộ nội dung và khối chữ ký nằm trọn vẹn trong 1 trang duy nhất.
 
 ---
 

@@ -33,6 +33,7 @@
   - Phòng Hành chính Tổng hợp (HCTH)
 - **Các Bộ môn thuộc Khoa YTCC:**
   - Bộ môn Dinh dưỡng và Thực phẩm (lưu ý tên đầy đủ kèm Thực phẩm)
+  - Bộ môn Giáo dục sức khỏe – Tâm lý Y học
   - Bộ môn Y học Gia đình
   - Bộ môn Dịch tễ học
   - Bộ môn Thống kê Dân số
@@ -59,3 +60,9 @@
 - **Tiêu đề bảng biểu:** Mặc định nền trắng trong suốt, chữ đậm, viền đen 0.5pt chuẩn Nghị định 30.
 - **Dòng trích yếu Tờ trình:** Luôn có vạch kẻ ngang nét liền thanh mảnh bên dưới theo chuẩn S0.
 - **Đánh số trang:** Tự động đánh số từ trang thứ 2 (`2`, `3`...) tại chính giữa lề trên.
+
+---
+
+## 5. Quy chuẩn Tự động Lưu trữ & Đồng bộ Git (GitHub Sync)
+- **Yêu cầu bắt buộc của người dùng:** Mỗi lần hoàn tất một tác vụ (soạn thảo văn bản, chỉnh sửa template/script, cập nhật bộ nhớ...), Agent bắt buộc tự động thực hiện commit và push toàn bộ thay đổi lên GitHub (`origin main`) để người dùng có thể tiếp tục làm việc trên máy khác liền mạch.
+- **Commit message chuẩn:** Ngắn gọn, súc tích, phản ánh đúng nội dung (ví dụ: `feat(cv): soạn công văn điều chỉnh chuyên gia HĐYKQG`, `fix(engine): hỗ trợ dãn dòng thích ứng cho target_one_page`).
