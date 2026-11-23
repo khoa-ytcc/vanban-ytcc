@@ -1,0 +1,116 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": false,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "[HỌ TÊN LÃNH ĐẠO BGH]",
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "...",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "23",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Về việc thành lập Nhóm phụ trách triển khai công văn của Hội đồng Y khoa Quốc gia về công tác đánh giá năng lực hành nghề khám bệnh, chữa bệnh cho đối tượng bác sĩ Y học dự phòng"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;",
+        "Phòng Tổ chức – Nhân sự."
+      ]
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.15,
+      "text": "Căn cứ Luật Khám bệnh, chữa bệnh ngày 09 tháng 01 năm 2023;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.15,
+      "text": "Căn cứ Công văn số 15/HĐYKQG ngày 26 tháng 03 năm 2026 của Hội đồng Y khoa Quốc gia về việc giao nhiệm vụ đầu mối xây dựng Bộ công cụ đánh giá năng lực hành nghề khám bệnh, chữa bệnh;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.15,
+      "text": "Theo nội dung triển khai của Hội đồng Y khoa Quốc gia giao Đại học Y Dược TP.HCM chủ trì Kỳ thử nghiệm cấu trúc đề kiểm tra đánh giá năng lực hành nghề cho Bác sĩ Y học dự phòng và Ban Giám hiệu giao Khoa Y tế công cộng làm đầu mối; nhằm bảo đảm công tác tổ chức chặt chẽ, đúng tiến độ, đồng thời thu thập lý lịch khoa học, đơn đồng thuận chuyên gia, thực hiện thủ tục đi công tác và thanh quyết toán kinh phí, Khoa kính trình Ban Giám hiệu phê duyệt thành lập **Nhóm phụ trách công tác triển khai công văn của Hội đồng Y khoa Quốc gia** với các nội dung sau:"
+    },
+    {
+      "type": "h1",
+      "text": "I. DỰ KIẾN CƠ CẤU NHÂN SỰ NHÓM PHỤ TRÁCH"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Họ và tên / Chức danh", "Đơn vị công tác", "Nhiệm vụ phân công"],
+      "rows": [
+        ["1", "PGS. TS. BS. Nguyễn Duy Phong", "Trưởng Khoa Y tế Công cộng", "Trưởng nhóm phụ trách chung"],
+        ["2", "PGS. TS. BS. Huỳnh Giao", "Trưởng BM Giáo dục SK - TLYH", "Phó Trưởng nhóm phụ trách chuyên môn và đề thử nghiệm"],
+        ["3", "TS. BS. Huỳnh Hồ Ngọc Quỳnh", "Trưởng Văn phòng Khoa YTCC", "Phó Trưởng nhóm thường trực điều phối chung và hành chính"],
+        ["4", "Đại diện Lãnh đạo các Bộ môn", "Các Bộ môn thuộc Khoa YTCC", "Thành viên phụ trách ngân hàng câu hỏi MCQs và ma trận đề"],
+        ["5", "ThS. Vũ Thị Thu Hương", "Chuyên viên HCTC - VP Khoa", "Thư ký phụ trách hồ sơ chuyên gia, thủ tục công tác, hậu cần"],
+        ["6", "ThS. BS. Nguyễn Văn Tân", "Chuyên viên Văn phòng Khoa", "Thư ký chuyên môn phụ trách dữ liệu thí sinh, quyết toán"]
+      ],
+      "col_widths": [10, 52, 50, 56]
+    },
+    {
+      "type": "h1",
+      "text": "II. CHỨC NĂNG VÀ NHIỆM VỤ CỤ THỂ"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "**1. Nhiệm vụ về chuyên môn:** Chủ trì điều phối công tác rà soát, hoàn thiện ngân hàng câu hỏi trắc nghiệm (MCQs), cấu trúc đề kiểm tra và xác định chuẩn đạt (MCC) theo đúng ma trận chuẩn hóa của Hội đồng Y khoa Quốc gia; tổ chức tập huấn viết câu hỏi thi; tổ chức coi thi, giám sát, chấm thi và tổng hợp báo cáo chuyên môn."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "**2. Nhiệm vụ về hồ sơ chuyên gia:** Đầu mối liên hệ với các chuyên gia, giảng viên được phê duyệt để thu thập đầy đủ Lý lịch khoa học (CV), Văn bản đồng thuận tham gia; rà soát, lập danh mục và nộp hồ sơ về Văn phòng Hội đồng Y khoa Quốc gia theo đúng quy định."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "**3. Nhiệm vụ về thủ tục cử đi công tác và hậu cần:** Tham mưu soạn thảo các Công văn, Tờ trình trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự phê duyệt cử viên chức đi công tác (tham dự hội thảo, tập huấn ra đề...); cấp Giấy đi đường, đặt vé phương tiện di chuyển, phòng nghỉ; chuẩn bị cơ sở vật chất phòng thi máy tính, đường truyền mạng và đón tiếp chu đáo."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "**4. Nhiệm vụ về kinh phí và thanh quyết toán:** Thu thập, kiểm tra đầy đủ chứng từ đi công tác (vé máy bay, thẻ lên tàu bay, hóa đơn, giấy đi đường); lập dự toán và phối hợp Phòng Kế hoạch – Tài chính thực hiện thủ tục thanh quyết toán công tác phí, thù lao theo Quy chế chi tiêu nội bộ."
+    },
+    {
+      "type": "h1",
+      "text": "III. THỜI GIAN HOẠT ĐỘNG VÀ KINH PHÍ THỰC HIỆN"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "- **Thời gian hoạt động:** Từ ngày được phê duyệt thành lập cho đến khi hoàn thành công tác tổ chức, báo cáo kết quả và kết thúc thanh quyết toán các hoạt động của kỳ thử nghiệm."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "- **Kinh phí thực hiện:** Nguồn kinh phí hỗ trợ từ Hội đồng Y khoa Quốc gia và kinh phí hoạt động chuyên môn của Trường, Khoa theo quy định hiện hành."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "Khoa Y tế Công cộng kính trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự xem xét, quyết định thành lập Nhóm phụ trách để Khoa có cơ sở pháp lý triển khai các bước tiếp theo./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "Nguyễn Duy Phong",
+    "sign_gap_pt": 48,
+    "recipients": [
+      "- Như trên;",
+      "- BCN Khoa (để b/c);",
+      "- Lưu: VT, HCTC_VTTH."
+    ],
+    "dept_code": "HCTC",
+    "creator_initials": "VTTH"
+  }
+}
