@@ -1,0 +1,121 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": false,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "[HỌ TÊN LÃNH ĐẠO BGH]",
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "...",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "23",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Về việc thành lập Tổ công tác triển khai xây dựng Bộ công cụ và tổ chức đánh giá năng lực hành nghề khám bệnh, chữa bệnh đối với Bác sĩ Y học dự phòng"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;",
+        "Phòng Tổ chức – Nhân sự."
+      ]
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "Căn cứ Luật Khám bệnh, chữa bệnh ngày 09 tháng 01 năm 2023;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "Căn cứ Công văn số 15/HĐYKQG ngày 26 tháng 03 năm 2026 của Hội đồng Y khoa Quốc gia về việc giao nhiệm vụ đầu mối xây dựng Bộ công cụ đánh giá năng lực hành nghề khám bệnh, chữa bệnh;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "Căn cứ Quyết định số 56/QĐ-HĐYKQG ngày 21 tháng 10 năm 2026 của Hội đồng Y khoa Quốc gia về việc phê duyệt Danh sách chuyên gia tham gia hỗ trợ xây dựng Bộ công cụ đánh giá năng lực hành nghề khám bệnh, chữa bệnh đối với Bác sĩ Y học dự phòng;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "Nhằm bảo đảm tiến độ, chất lượng và tính đồng bộ trong thực hiện nhiệm vụ do Hội đồng Y khoa Quốc gia giao cho Đại học Y Dược TP.HCM và Khoa Y tế Công cộng, Ban Chủ nhiệm Khoa kính trình Ban Giám hiệu xem xét, phê duyệt chủ trương thành lập **Tổ công tác triển khai xây dựng Bộ công cụ và tổ chức đánh giá năng lực hành nghề khám bệnh, chữa bệnh đối với Bác sĩ Y học dự phòng** với các nội dung cụ thể sau:"
+    },
+    {
+      "type": "h1",
+      "text": "I. DỰ KIẾN CƠ CẤU NHÂN SỰ TỔ CÔNG TÁC"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Họ và tên / Chức danh", "Đơn vị công tác", "Nhiệm vụ trong Tổ công tác"],
+      "rows": [
+        ["1", "PGS. TS. BS. Nguyễn Duy Phong", "Trưởng Khoa Y tế Công cộng", "Tổ trưởng phụ trách chung"],
+        ["2", "PGS. TS. BS. Huỳnh Giao", "Trưởng BM Giáo dục SK - TLYH", "Tổ phó phụ trách chuyên môn"],
+        ["3", "TS. BS. Huỳnh Hồ Ngọc Quỳnh", "Trưởng Văn phòng Khoa YTCC", "Tổ phó thường trực điều phối"],
+        ["4", "ThS. BS. Nguyễn Văn Tân", "Chuyên viên Văn phòng Khoa YTCC", "Thư ký Tổ công tác"],
+        ["5", "Đại diện Lãnh đạo các Bộ môn chuyên môn", "Các Bộ môn thuộc Khoa YTCC", "Ủy viên phụ trách ngân hàng câu hỏi và ma trận đề thi"],
+        ["6", "ThS. Vũ Thị Thu Hương", "Chuyên viên HCTC - VP Khoa", "Ủy viên hỗ trợ hành chính, tổng hợp hồ sơ"]
+      ],
+      "col_widths": [12, 54, 52, 50]
+    },
+    {
+      "type": "h1",
+      "text": "II. CHỨC NĂNG VÀ NHIỆM VỤ CỦA TỔ CÔNG TÁC"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "1. Là đầu mối thường trực kết nối, làm việc với Hội đồng Y khoa Quốc gia, Ban Giám hiệu Nhà trường và các cơ quan đối tác trong toàn bộ tiến trình triển khai đánh giá năng lực hành nghề."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "2. Chủ trì điều phối công tác xây dựng, rà soát, thẩm định ngân hàng câu hỏi trắc nghiệm (MCQs), cấu trúc đề kiểm tra và chuẩn đạt (MCC) đối với Bác sĩ Y học dự phòng theo đúng ma trận của Hội đồng Y khoa Quốc gia."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "3. Tổ chức tập huấn, hướng dẫn giảng viên biên soạn câu hỏi; chuẩn bị đầy đủ học liệu và điều kiện kỹ thuật phục vụ các kỳ thử nghiệm và kỳ kiểm tra chính thức."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "4. Định kỳ báo cáo tiến độ lên Ban Giám hiệu và kịp thời đề xuất tháo gỡ các khó khăn, vướng mắc phát sinh."
+    },
+    {
+      "type": "h1",
+      "text": "III. THỜI GIAN HOẠT ĐỘNG VÀ KINH PHÍ THỰC HIỆN"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "- **Thời gian hoạt động:** Từ ngày có quyết định thành lập cho đến khi hoàn thành các giai đoạn của nhiệm vụ đánh giá năng lực do Hội đồng Y khoa Quốc gia phân công."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "- **Kinh phí thực hiện:** Nguồn kinh phí hỗ trợ từ Hội đồng Y khoa Quốc gia và kinh phí hoạt động chuyên môn của Trường, Khoa theo Quy chế chi tiêu nội bộ hiện hành."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "Khoa Y tế Công cộng kính trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự xem xét, quyết định thành lập Tổ công tác để Khoa có cơ sở triển khai các bước tiếp theo./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "Nguyễn Duy Phong",
+    "sign_gap_pt": 48,
+    "recipients": [
+      "- Như trên;",
+      "- BCN Khoa (để b/c);",
+      "- Lưu: VT, HCTC_VTTH."
+    ],
+    "dept_code": "HCTC",
+    "creator_initials": "VTTH"
+  }
+}
