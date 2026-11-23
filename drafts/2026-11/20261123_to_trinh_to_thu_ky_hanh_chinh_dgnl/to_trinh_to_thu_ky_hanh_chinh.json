@@ -1,0 +1,120 @@
+{
+  "doc_type": "to_trinh",
+  "target_one_page": false,
+  "has_bgh_approval": true,
+  "bgh_approver_title": "DUYỆT BAN GIÁM HIỆU",
+  "bgh_approver_name": "[HỌ TÊN LÃNH ĐẠO BGH]",
+  "header": {
+    "header_level": "ytcc",
+    "organ_line1": "ĐẠI HỌC Y DƯỢC",
+    "organ_line2": "THÀNH PHỐ HỒ CHÍ MINH",
+    "organ_line3": "KHOA Y TẾ CÔNG CỘNG",
+    "so_hieu": "...",
+    "ma_loai": "TTr-YTCC",
+    "dia_danh": "Thành phố Hồ Chí Minh",
+    "ngay": "23",
+    "thang": "11",
+    "nam": "2026",
+    "trich_yeu": "Về việc thành lập Tổ Thư ký – Hành chính phục vụ công tác đánh giá năng lực hành nghề và tổ chức Kỳ thử nghiệm cho Bác sĩ Y học dự phòng"
+  },
+  "blocks": [
+    {
+      "type": "kinh_gui",
+      "items": [
+        "Ban Giám hiệu Đại học Y Dược Thành phố Hồ Chí Minh;",
+        "Phòng Tổ chức – Nhân sự."
+      ]
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.18,
+      "text": "Căn cứ Luật Khám bệnh, chữa bệnh ngày 09 tháng 01 năm 2023;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.18,
+      "text": "Căn cứ Công văn số 15/HĐYKQG ngày 26 tháng 03 năm 2026 của Hội đồng Y khoa Quốc gia về việc giao nhiệm vụ đầu mối xây dựng Bộ công cụ đánh giá năng lực hành nghề khám bệnh, chữa bệnh;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.18,
+      "text": "Căn cứ Quyết định số 56/QĐ-HĐYKQG ngày 21 tháng 10 năm 2026 của Hội đồng Y khoa Quốc gia về việc phê duyệt Danh sách chuyên gia tham gia hỗ trợ xây dựng Bộ công cụ đánh giá năng lực hành nghề đối với Bác sĩ Y học dự phòng;"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.2,
+      "text": "Thực hiện nhiệm vụ được Ban Giám hiệu Đại học Y Dược TP.HCM giao Khoa Y tế công cộng chủ trì Kỳ thử nghiệm cấu trúc đề kiểm tra đánh giá năng lực hành nghề cho Bác sĩ Y học dự phòng; nhằm bảo đảm đầy đủ hồ sơ pháp lý chuyên gia, thực hiện kịp thời các thủ tục cử viên chức đi công tác, văn thư và thanh quyết toán kinh phí, Khoa Y tế công cộng kính trình Ban Giám hiệu xem xét, phê duyệt thành lập **Tổ Thư ký – Hành chính** với các nội dung sau:"
+    },
+    {
+      "type": "h1",
+      "text": "I. DỰ KIẾN NHÂN SỰ TỔ THƯ KÝ – HÀNH CHÍNH"
+    },
+    {
+      "type": "table",
+      "headers": ["STT", "Họ và tên / Chức danh", "Đơn vị công tác", "Nhiệm vụ phân công"],
+      "rows": [
+        ["1", "TS. BS. Huỳnh Hồ Ngọc Quỳnh", "Trưởng Văn phòng Khoa YTCC", "Tổ trưởng phụ trách chung, điều phối công tác hành chính"],
+        ["2", "ThS. Vũ Thị Thu Hương", "Chuyên viên HCTC - VP Khoa", "Tổ phó thường trực phụ trách hồ sơ chuyên gia, thủ tục đi công tác"],
+        ["3", "ThS. BS. Nguyễn Văn Tân", "Chuyên viên Văn phòng Khoa", "Thành viên phụ trách hồ sơ chuyên môn và liên hệ HĐYKQG"],
+        ["4", "[Họ tên Chuyên viên]", "Văn phòng Khoa YTCC", "Thành viên hỗ trợ tổng hợp lý lịch khoa học, đơn đồng thuận"],
+        ["5", "[Họ tên Chuyên viên Kế toán]", "Văn phòng Khoa YTCC", "Thành viên phụ trách dự toán, công tác phí và thanh quyết toán"]
+      ],
+      "col_widths": [12, 54, 50, 52]
+    },
+    {
+      "type": "h1",
+      "text": "II. CHỨC NĂNG VÀ NHIỆM VỤ CỤ THỂ"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "1. **Thu thập và hoàn thiện hồ sơ chuyên gia:** Đầu mối liên hệ với các giảng viên, chuyên gia của Khoa đã được Hội đồng Y khoa Quốc gia phê duyệt để thu thập đầy đủ Lý lịch khoa học (CV), Văn bản đồng thuận tham gia; rà soát, lập danh mục và nộp hồ sơ về Văn phòng Hội đồng Y khoa Quốc gia theo đúng quy định."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "2. **Thực hiện thủ tục văn bản khi cử đi công tác:** Tham mưu soạn thảo các Công văn, Tờ trình trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự phê duyệt danh sách viên chức đi công tác (tham dự các hội thảo, tập huấn ra đề, thẩm định đề thi...); cấp Giấy đi đường, liên hệ đặt vé phương tiện di chuyển, phòng nghỉ và hỗ trợ hậu cần chuyến đi."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "3. **Công tác văn thư và lưu trữ:** Tiếp nhận, xử lý, phát hành và lưu trữ toàn bộ hệ thống văn bản đi – đến, quyết định, biên bản làm việc liên quan đến công tác đánh giá năng lực hành nghề và Kỳ thử nghiệm."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "4. **Công tác kinh phí và thanh quyết toán:** Thu thập, kiểm tra đầy đủ chứng từ đi công tác (vé máy bay, thẻ lên tàu, hóa đơn, giấy đi đường có xác nhận); phối hợp với Phòng Kế hoạch – Tài chính thực hiện thủ tục thanh quyết toán công tác phí, thù lao chuyên gia theo đúng Quy chế chi tiêu nội bộ hiện hành."
+    },
+    {
+      "type": "h1",
+      "text": "III. THỜI GIAN HOẠT ĐỘNG VÀ KINH PHÍ THỰC HIỆN"
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "- **Thời gian hoạt động:** Từ ngày được phê duyệt thành lập cho đến khi hoàn thành các nhiệm vụ hành chính và kết thúc thanh quyết toán các hoạt động liên quan."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "- **Kinh phí thực hiện:** Nguồn kinh phí hỗ trợ từ Hội đồng Y khoa Quốc gia và kinh phí hoạt động chuyên môn của Trường, Khoa theo quy định."
+    },
+    {
+      "type": "p",
+      "line_spacing": 1.25,
+      "text": "Khoa Y tế Công cộng kính trình Ban Giám hiệu và Phòng Tổ chức – Nhân sự xem xét, quyết định thành lập Tổ Thư ký – Hành chính để Khoa có cơ sở triển khai các nội dung công việc đảm bảo tiến độ./."
+    }
+  ],
+  "sign_block": {
+    "signer_role": "TRƯỞNG KHOA",
+    "signer_name": "Nguyễn Duy Phong",
+    "sign_gap_pt": 48,
+    "recipients": [
+      "- Như trên;",
+      "- BCN Khoa (để b/c);",
+      "- Lưu: VT, HCTC_VTTH."
+    ],
+    "dept_code": "HCTC",
+    "creator_initials": "VTTH"
+  }
+}
